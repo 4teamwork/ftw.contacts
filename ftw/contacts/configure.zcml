@@ -6,6 +6,10 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="ftw.contacts">
 
+    <include file="permissions.zcml" />
+
+    <i18n:registerTranslations directory="locales" />
+
     <genericsetup:registerProfile
         name="default"
         title="ftw.contacts"
@@ -13,5 +17,6 @@
         description="Installs the ftw.contacts package"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
+
 
 </configure>

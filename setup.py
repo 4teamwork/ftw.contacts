@@ -45,6 +45,7 @@ setup(name='ftw.contacts',
       zip_safe=False,
 
       install_requires=[
+          'Plone',
           'setuptools',
           ],
 
