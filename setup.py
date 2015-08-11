@@ -18,7 +18,7 @@ setup(name='ftw.contacts',
       version=version,
       description='Provides a contact-contenttype',
       long_description=open(
-          'README.rst').read() + '\n' + open(
+          'README.md').read() + '\n' + open(
           os.path.join('docs', 'HISTORY.txt')).read(),
 
       # Get more strings from

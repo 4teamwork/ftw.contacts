@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="ftw.contacts">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="ftw.contacts"
+        directory="profiles/default"
+        description="Installs the ftw.contacts package"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+</configure>
