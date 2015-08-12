@@ -147,7 +147,7 @@ class IContact(model.Schema):
 
     dexteritytextindexer.searchable('phone_private')
     phone_private = schema.TextLine(
-        title=_(u'phone_private', default=u'Private phone number'),
+        title=_(u'label_phone_private', default=u'Private phone number'),
         missing_value=u"",
         required=False)
 

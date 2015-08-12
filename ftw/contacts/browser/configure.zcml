@@ -4,6 +4,15 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="ftw.contacts">
 
+
+    <browser:page
+        for="ftw.contacts.contact.IContact"
+        name="view"
+        class=".contact.ContactView"
+        permission="zope2.View"
+        template="contact.pt"
+        />
+
     <browser:page
         for="ftw.contacts.contact.IContact"
         name="download"

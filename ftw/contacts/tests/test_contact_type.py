@@ -12,9 +12,30 @@ from zope.component import createObject
 from zope.component import queryUtility
 
 
+class TestDefaultView(TestCase):
+    layer = FTW_CONTACTS_FUNCTIONAL_TESTING
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+
+    @browsing
+    def test_call_view_does_not_fail(self, browser):
+        contactfolder = create(
+            Builder('contact folder').titled(u'Contact folder'))
+        browser.login().visit(
+            contactfolder, view="++add++ftw.contacts.Contact")
+
+        browser.fill({
+            'Organization': '',
+            'Firstname': 'Chuck',
+            'Lastname': 'N\xc3\xb6rris'}).submit()
+
+        self.assertEqual(1, len(browser.css('.contactView')))
+
+
 class TestIdGeneration(TestCase):
-    """
-    """
+
     layer = FTW_CONTACTS_FUNCTIONAL_TESTING
 
     def setUp(self):

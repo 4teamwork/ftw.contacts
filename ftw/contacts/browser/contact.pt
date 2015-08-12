@@ -1,0 +1,100 @@
+<html lang="en"
+  metal:use-macro="here/main_template/macros/master"
+  xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  i18n:domain="ftw.contacts">
+
+  <body>
+    <div metal:fill-slot="content-core">
+      <metal:main-macro define-macro="content-core">
+
+        <div class="contactView">
+          <div class="contactPortrait" tal:define="image context/image" tal:condition="image">
+            <!-- <img tal:attributes="src string:${image/absolute_url}_thumbnail;
+             alt string:${context/getFirstname}, ${context/getLastname}" /> -->
+          </div>
+          <div class="contactInfos">
+            <table class="contacInfo">
+              <tr tal:condition="python: context.firstname and context.lastname">
+                <th i18n:translate="label_name">Name</th>
+                <td>
+                  <tal:title tal:condition="context/academic_title" tal:replace="context/academic_title">Dr.</tal:title>
+                  <tal:name tal:replace="string:${context/lastname} ${context/firstname}">Hugo Boss</tal:name>
+                </td>
+              </tr>
+              <tr tal:condition="context/function">
+                <th i18n:translate="label_function">Function</th>
+                <td tal:content="context/function">Boss</td>
+              </tr>
+              <tr tal:condition="context/organization">
+                <th i18n:translate="label_organization">Organization</th>
+                <td tal:content="context/organization">XYZ GmbH</td>
+              </tr>
+              <tr tal:condition="context/department">
+                <th i18n:translate="label_department">Department</th>
+                <td tal:content="context/department">CIA</td>
+              </tr>
+              <tr tal:condition="python: context.postal_code and context.city and context.address">
+                <th i18n:translate="label_address">Address</th>
+                <td>
+                  <span tal:replace="structure python: context.address and str(context.address).replace('\n', '<br />') or ''" /><br />
+                  <span tal:replace="context/postal_code" />
+                  <span tal:replace="context/city" />
+                </td>
+              </tr>
+              <tr tal:condition="context/phone_office">
+                <th i18n:translate="label_phone_office">Office phone number</th>
+                <td tal:content="context/phone_office">031 000 00 00</td>
+              </tr>
+              <tr tal:condition="context/phone_mobile">
+                <th i18n:translate="label_phone_mobile">Mobile phone number</th>
+                <td tal:content="context/phone_mobile">079 000 00 00</td>
+              </tr>
+              <tr tal:condition="context/fax">
+                <th i18n:translate="label_fax">Fax number</th>
+                <td tal:content="context/fax">031 123 45 67</td>
+              </tr>
+              <tr tal:condition="context/email">
+                <th i18n:translate="label_email">E-Mail</th>
+                <td>
+                  <a tal:attributes="href string:mailto:${context/email}"
+                  tal:content="context/email">info@mail.com</a>
+                </td>
+              </tr>
+              <tr tal:condition="context/www">
+                <th i18n:translate="label_www">www</th>
+                <td>
+                <a tal:condition="context/www"
+                   tal:content="python: context.www.replace('https://', '').replace('https://', '')"
+                   tal:attributes="href context/www"
+                   target="_blank">www.google.ch</a>
+                </td>
+              </tr>
+            </table>
+
+            <tal:private condition="context/address_private">
+              <h2 i18n:translate="label_private_address">Privateaddress</h2>
+              <table class="contactPrivateInfo">
+                <tr>
+                  <th i18n:translate="label_address">Address</th>
+                  <td>
+                    <span tal:replace="structure python: context.address_private and str(context.address_private).replace('\n', '<br />') or ''" /><br />
+                    <span tal:replace="context/postal_code_private" />
+                    <span tal:replace="context/city_private" />
+                  </td>
+                </tr>
+                <tr tal:condition="context/phone_private">
+                  <th i18n:translate="label_phone_private">Private phone number</th>
+                  <td tal:content="context/phone_private">031 000 00 00</td>
+                </tr>
+              </table>
+            </tal:private>
+          </div>
+          <div class="contactText" tal:condition="context/text" tal:content="structure context/text/output">Text</div>
+        </div>
+      </metal:main-macro>
+    </div>
+  </body>
+</html>
