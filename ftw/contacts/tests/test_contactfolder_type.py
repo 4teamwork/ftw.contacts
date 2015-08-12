@@ -19,10 +19,10 @@ class TestContactFolderInstallation(TestCase):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
 
     def test_adding(self):
-        contact = create(
-            Builder('contact folder').titled(u'Chuck Norris'))
+        contactfolder = create(
+            Builder('contact folder').titled(u'Contact folder'))
 
-        self.assertTrue(IContactFolder.providedBy(contact))
+        self.assertTrue(IContactFolder.providedBy(contactfolder))
 
     def test_fti(self):
         fti = queryUtility(IDexterityFTI, name='ftw.contacts.ContactFolder')

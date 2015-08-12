@@ -46,7 +46,9 @@ setup(name='ftw.contacts',
 
       install_requires=[
           'Plone',
+          'z3c.schema',
           'setuptools',
+          'collective.dexteritytextindexer',
           ],
 
       tests_require=tests_require,

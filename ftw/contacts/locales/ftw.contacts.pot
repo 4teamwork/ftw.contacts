@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-11 09:30+0000\n"
+"POT-Creation-Date: 2015-08-12 08:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,156 @@ msgstr ""
 
 #: ./ftw/contacts/profiles/default/types/ftw.contacts.ContactFolder.xml
 msgid "ContactFolder"
+msgstr ""
+
+#. Default: "Academic title"
+#: ./ftw/contacts/contact.py:112
+msgid "label_academic_title"
+msgstr ""
+
+#. Default: "Address"
+#: ./ftw/contacts/contact.py:60
+msgid "label_address"
+msgstr ""
+
+#. Default: "Address"
+#: ./ftw/contacts/contact.py:143
+msgid "label_address_private"
+msgstr ""
+
+#. Default: "City"
+#: ./ftw/contacts/contact.py:70
+msgid "label_city"
+msgstr ""
+
+#. Default: "City"
+#: ./ftw/contacts/contact.py:153
+msgid "label_city_private"
+msgstr ""
+
+#. Default: "Country"
+#: ./ftw/contacts/contact.py:79
+msgid "label_country"
+msgstr ""
+
+#. Default: "Department"
+#: ./ftw/contacts/contact.py:122
+msgid "label_department"
+msgstr ""
+
+#. Default: "E-Mail"
+#: ./ftw/contacts/contact.py:85
+msgid "label_email"
+msgstr ""
+
+#. Default: "Fax number"
+#: ./ftw/contacts/contact.py:100
+msgid "label_fax"
+msgstr ""
+
+#. Default: "Female"
+#: ./ftw/contacts/contact.py:24
+msgid "label_female"
+msgstr ""
+
+#. Default: "Extended"
+#: ./ftw/contacts/contact.py:158
+msgid "label_fieldset_extended"
+msgstr ""
+
+#. Default: "Home address"
+#: ./ftw/contacts/contact.py:170
+msgid "label_fieldset_homeaddress"
+msgstr ""
+
+#. Default: "Firstname"
+#: ./ftw/contacts/contact.py:55
+msgid "label_firstname"
+msgstr ""
+
+#. Default: "Function"
+#: ./ftw/contacts/contact.py:117
+msgid "label_function"
+msgstr ""
+
+#. Default: "Gender"
+#: ./ftw/contacts/contact.py:43
+msgid "label_gender"
+msgstr ""
+
+#. Default: "-"
+#: ./ftw/contacts/contact.py:25
+msgid "label_gender_neutral"
+msgstr ""
+
+#. Default: "Image"
+#: ./ftw/contacts/contact.py:108
+msgid "label_image"
+msgstr ""
+
+#. Default: "Lastname"
+#: ./ftw/contacts/contact.py:50
+msgid "label_lastname"
+msgstr ""
+
+#. Default: "Male"
+#: ./ftw/contacts/contact.py:23
+msgid "label_male"
+msgstr ""
+
+#. Default: "Organization"
+#: ./ftw/contacts/contact.py:34
+msgid "label_organization"
+msgstr ""
+
+#. Default: "Mobile phone number"
+#: ./ftw/contacts/contact.py:95
+msgid "label_phone_mobile"
+msgstr ""
+
+#. Default: "Office phone number"
+#: ./ftw/contacts/contact.py:90
+msgid "label_phone_office"
+msgstr ""
+
+#. Default: "Postal code"
+#: ./ftw/contacts/contact.py:65
+msgid "label_postal_code"
+msgstr ""
+
+#. Default: "Postal code"
+#: ./ftw/contacts/contact.py:148
+msgid "label_postal_code_private"
+msgstr ""
+
+#. Default: "Salutation"
+#: ./ftw/contacts/contact.py:127
+msgid "label_salutation"
+msgstr ""
+
+#. Default: "Show on map"
+#: ./ftw/contacts/contact.py:74
+msgid "label_showplacemark"
+msgstr ""
+
+#. Default: "Text"
+#: ./ftw/contacts/contact.py:132
+msgid "label_text"
+msgstr ""
+
+#. Default: "www"
+#: ./ftw/contacts/contact.py:104
+msgid "label_www"
+msgstr ""
+
+#. Default: "Private phone number"
+#: ./ftw/contacts/contact.py:138
+msgid "phone_private"
+msgstr ""
+
+#. Default: "Either the name of the organization or first- and lastname of the person is required."
+#: ./ftw/contacts/contact.py:183
+msgid "validation_error_organization_or_name_required"
 msgstr ""
 
 
