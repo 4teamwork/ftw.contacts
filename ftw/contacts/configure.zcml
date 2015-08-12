@@ -22,4 +22,33 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <genericsetup:importStep
+        name="ftw.contacts"
+        title="ftw.contacts special import handler"
+        description=""
+        handler="ftw.contacts.setuphandlers.import_various"
+        />
+
+    <!-- ftw.geo -->
+    <adapter
+        for="ftw.contacts.contact.IContact"
+        provides="collective.geo.settings.interfaces.IGeoCustomFeatureStyle"
+        factory="collective.geo.contentlocations.geostylemanager.GeoStyleManager"
+    />
+    <subscriber
+        for="ftw.contacts.contact.IContact
+             zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+        handler=".handlers.initializeCustomFeatureStyles"
+        />
+
+    <adapter
+        factory=".adapters.ContactLocationAdapter"
+        for="ftw.contacts.contact.IContact"
+        provides="ftw.geo.interfaces.IGeocodableLocation"
+        />
+
+    <class class="ftw.contacts.contact.Contact">
+        <implements interface="collective.geo.geographer.interfaces.IGeoreferenceable" />
+    </class>
+    <!-- End ftw.geo -->
 </configure>

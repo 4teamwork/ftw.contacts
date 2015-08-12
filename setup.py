@@ -49,6 +49,7 @@ setup(name='ftw.contacts',
           'z3c.schema',
           'setuptools',
           'collective.dexteritytextindexer',
+          'ftw.geo',
           ],
 
       tests_require=tests_require,

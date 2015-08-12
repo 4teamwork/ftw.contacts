@@ -33,6 +33,7 @@ class IContact(model.Schema):
     organization = schema.TextLine(
         title=_(u'label_organization', default=u'Organization'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     gender = schema.Choice(
@@ -45,30 +46,35 @@ class IContact(model.Schema):
     lastname = schema.TextLine(
         title=_(u'label_lastname', default=u'Lastname'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('firstname')
     firstname = schema.TextLine(
         title=_(u'label_firstname', default=u'Firstname'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('address')
     address = schema.Text(
         title=_(u'label_address', default=u'Address'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('postal_code')
     postal_code = schema.TextLine(
         title=_(u'label_postal_code', default=u'Postal code'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('city')
     city = schema.TextLine(
         title=_(u'label_city', default=u'City'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     show_placemark = schema.Bool(
@@ -91,18 +97,21 @@ class IContact(model.Schema):
     phone_office = schema.TextLine(
         title=_(u'label_phone_office', default=u'Office phone number'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('phone_mobile')
     phone_mobile = schema.TextLine(
         title=_(u'label_phone_mobile', default=u'Mobile phone number'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('fax')
     fax = schema.TextLine(
         title=_(u'label_fax', default=u'Fax number'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     www = schema.URI(
@@ -118,30 +127,35 @@ class IContact(model.Schema):
     academic_title = schema.TextLine(
         title=_(u'label_academic_title', default=u'Academic title'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('function')
     function = schema.TextLine(
         title=_(u'label_function', default=u'Function'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('department')
     department = schema.TextLine(
         title=_(u'label_department', default=u'Department'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('salutation')
     salutation = schema.TextLine(
         title=_(u'label_salutation', default=u'Salutation'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('text')
     text = RichText(
         title=_(u'label_text', default=u'Text'),
         missing_value=u"",
+        default=u"",
         required=False,
         allowed_mime_types=('text/html',))
 
@@ -149,24 +163,28 @@ class IContact(model.Schema):
     phone_private = schema.TextLine(
         title=_(u'label_phone_private', default=u'Private phone number'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('address_private')
     address_private = schema.Text(
         title=_(u'label_address_private', default=u'Address'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('postal_code_private')
     postal_code_private = schema.TextLine(
         title=_(u'label_postal_code_private', default=u'Postal code'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     dexteritytextindexer.searchable('city_private')
     city_private = schema.TextLine(
         title=_(u'label_city_private', default=u'City'),
         missing_value=u"",
+        default=u"",
         required=False)
 
     model.fieldset(

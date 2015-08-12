@@ -2,5 +2,6 @@
 <metadata>
   <dependencies>
     <dependency>profile-plone.app.dexterity:default</dependency>
+    <dependency>profile-ftw.geo:default</dependency>
   </dependencies>
 </metadata>
