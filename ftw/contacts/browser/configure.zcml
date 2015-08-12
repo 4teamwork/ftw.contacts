@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="ftw.contacts">
+
+    <browser:page
+        for="ftw.contacts.contact.IContact"
+        name="download"
+        class=".vcard.DownloadVCardView"
+        permission="zope2.View"
+        />
+
+</configure>

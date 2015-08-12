@@ -8,6 +8,7 @@
     i18n_domain="ftw.contacts">
 
     <include file="permissions.zcml" />
+    <include package=".browser" />
 
     <include file="lawgiver.zcml" zcml:condition="installed ftw.lawgiver" />
 

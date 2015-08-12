@@ -1,3 +1,11 @@
+def encode(text):
+    if not text:
+        return ''
+    if isinstance(text, unicode):
+        return text.encode('utf-8')
+    return text
+
+
 def get_contact_title(contact, format=None):
     """This function returns the contacttitle.
 
