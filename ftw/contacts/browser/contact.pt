@@ -12,8 +12,7 @@
 
         <div class="contactView">
           <div class="contactPortrait" tal:define="image context/image" tal:condition="image">
-            <!-- <img tal:attributes="src string:${image/absolute_url}_thumbnail;
-             alt string:${context/getFirstname}, ${context/getLastname}" /> -->
+            <img tal:replace="structure context/@@images/image/preview" alt="context/title"/>
           </div>
           <div class="contactInfos">
             <table class="contacInfo">
