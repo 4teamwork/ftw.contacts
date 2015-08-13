@@ -1,3 +1,11 @@
+from plone.memoize import instance
+import unicodedata
+
+
+ALPHABET = map(chr, range(ord('A'), ord('Z') + 1))
+LETTERS = ALPHABET + ['#']
+
+
 def encode(text):
     if not text:
         return ''
@@ -17,3 +25,58 @@ def get_contact_title(contact, format=None):
             return '%s %s' % (contact.firstname, contact.lastname)
         return '%s %s' % (contact.lastname, contact.firstname)
     return contact.organization or u"..."
+
+
+def normalized_first_letter(text):
+        """Normalizes the first letter of the text
+        """
+        text = make_sortable(text)
+        return text[0].upper()
+
+
+def make_sortable(text):
+    """Makes the text sortable
+    """
+    text = text.lower()
+    text = text.decode('utf-8')
+    normalized = unicodedata.normalize('NFKD', text)
+    text = u''.join(
+        [c for c in normalized if not unicodedata.combining(c)])
+    text = text.encode('utf-8')
+    return text
+
+
+class AlphabeticLetters(object):
+    """
+    """
+    def letters(self, current_letter, brains):
+        """Returns a dict with all available letters and
+        aditional infos for each letter.
+
+        The dict has:
+
+        label: the letter name
+        has_contents: css-class if there are objs with the letter
+        current: css-class if the letter is the current letter
+        """
+        letters_with_content = self._letters_with_content(brains)
+
+        for letter in LETTERS:
+            has_contents = letter in letters_with_content and \
+                "withContent" or ''
+            current = letter == current_letter and 'current' or ''
+            yield {'label': letter,
+                   'has_contents': has_contents,
+                   'current': current}
+
+    @instance.memoize
+    def _letters_with_content(self, brains):
+        letters = set([])
+        for contactname in [brain.Title for brain in brains]:
+            first_letter = normalized_first_letter(contactname)
+            if first_letter in ALPHABET:
+                letters.add(first_letter)
+            else:
+                letters.add('#')
+
+        return sorted(letters, key=LETTERS.index)

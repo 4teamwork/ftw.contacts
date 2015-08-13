@@ -10,10 +10,7 @@
     <div metal:fill-slot="content-core">
       <metal:main-macro define-macro="content-core">
 
-        <div class="contactView">
-          <div class="contactPortrait" tal:define="image context/image" tal:condition="image">
-            <img tal:replace="structure context/@@images/image/preview" alt="context/title"/>
-          </div>
+        <div id="contact-view">
           <div class="contactInfos">
             <table class="contacInfo">
               <tr tal:condition="python: context.firstname and context.lastname">
@@ -79,7 +76,7 @@
                 <tr>
                   <th i18n:translate="label_address">Address</th>
                   <td>
-                    <span tal:replace="structure python: context.address_private and str(context.address_private).replace('\n', '<br />') or ''" /><br />
+                    <span tal:replace="structure python: context.address_private and context.address_private.replace(u'\n', u'<br />') or ''" /><br />
                     <span tal:replace="context/postal_code_private" />
                     <span tal:replace="context/city_private" />
                   </td>
@@ -91,6 +88,11 @@
               </table>
             </tal:private>
           </div>
+          <div class "contactPortrait" tal:condition="context/image">
+            <img tal:replace="structure context/@@images/image/mini" alt="context/title"/>
+          </div>
+          <div tal:condition="not:context/image" tal:attributes="class string:contactPortrait gender-${context/gender}"></div>
+          <div class="visualClear"></div>
           <div class="contactText" tal:condition="context/text" tal:content="structure context/text/output">Text</div>
         </div>
       </metal:main-macro>

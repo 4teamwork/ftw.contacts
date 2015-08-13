@@ -19,5 +19,32 @@
         class=".vcard.DownloadVCardView"
         permission="zope2.View"
         />
+    <browser:page
+        for="ftw.contacts.contact.IContact"
+        name="contact_summary"
+        class=".contact.ContactSummary"
+        template="contact_summary.pt"
+        permission="zope2.View"
+        />
+    <browser:page
+        for="ftw.contacts.contactfolder.IContactFolder"
+        name="letters"
+        class=".contactfolder.Letters"
+        template="letters.pt"
+        permission="zope2.View"
+        />
+    <browser:page
+        for="ftw.contacts.contactfolder.IContactFolder"
+        name="view"
+        class=".contactfolder.ContactFolderView"
+        permission="zope2.View"
+        template="contactfolder.pt"
+        />
+    <browser:page
+        for="ftw.contacts.contactfolder.IContactFolder"
+        name="reload"
+        class=".contactfolder.ContactFolderReload"
+        permission="zope2.View"
+        />
 
 </configure>

@@ -31,7 +31,7 @@ class TestDefaultView(TestCase):
             'Firstname': 'Chuck',
             'Lastname': 'N\xc3\xb6rris'}).submit()
 
-        self.assertEqual(1, len(browser.css('.contactView')))
+        self.assertEqual(1, len(browser.css('#contact-view')))
 
 
 class TestIdGeneration(TestCase):
