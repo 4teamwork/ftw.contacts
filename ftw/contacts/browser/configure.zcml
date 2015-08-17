@@ -12,7 +12,6 @@
         permission="zope2.View"
         template="contact.pt"
         />
-
     <browser:page
         for="ftw.contacts.contact.IContact"
         name="download"
@@ -46,5 +45,11 @@
         class=".contactfolder.ContactFolderReload"
         permission="zope2.View"
         />
-
+    <browser:page
+        for="ftw.contacts.member.IMember"
+        name="view"
+        class=".member.MemberView"
+        permission="zope2.View"
+        template="member.pt"
+        />
 </configure>

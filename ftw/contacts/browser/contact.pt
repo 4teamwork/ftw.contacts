@@ -17,7 +17,7 @@
                 <th i18n:translate="label_name">Name</th>
                 <td>
                   <tal:title tal:condition="context/academic_title" tal:replace="context/academic_title">Dr.</tal:title>
-                  <tal:name tal:replace="string:${context/lastname} ${context/firstname}">Hugo Boss</tal:name>
+                  <tal:name tal:replace="string:${context/lastname} ${context/firstname}">Boss Hugo</tal:name>
                 </td>
               </tr>
               <tr tal:condition="context/function">
@@ -88,7 +88,7 @@
               </table>
             </tal:private>
           </div>
-          <div class "contactPortrait" tal:condition="context/image">
+          <div class="contactPortrait" tal:condition="context/image">
             <img tal:replace="structure context/@@images/image/mini" alt="context/title"/>
           </div>
           <div tal:condition="not:context/image" tal:attributes="class string:contactPortrait gender-${context/gender}"></div>

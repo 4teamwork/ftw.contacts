@@ -1,3 +1,6 @@
+from Products.CMFPlone.utils import safe_unicode
+
+
 class ContactLocationAdapter(object):
     """Adapter that is able to represent the location of Contact in
     a geocodable string form.
@@ -31,3 +34,20 @@ class ContactLocationAdapter(object):
             location = u"%s, %s" % (field, location)
 
         return location
+
+
+class MemberAccessor(object):
+    """Generic member accessor adapter implementation for Dexterity content
+       objects.
+    """
+    def __init__(self, context):
+        object.__setattr__(self, 'context', context)
+        object.__setattr__(self, 'contact', context.contact.to_object)
+
+    def __getattr__(self, name):
+        if self.context.acquire_address and hasattr(self.contact, name):
+            return getattr(self.contact, name, None)
+        return getattr(self.context, name, None)
+
+    def __setattr__(self, name, value):
+        setattr(self.context, name, safe_unicode(value))

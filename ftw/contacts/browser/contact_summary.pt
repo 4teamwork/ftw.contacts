@@ -29,7 +29,12 @@
         </tr>
         <tr tal:condition="context/www">
           <th><span i18n:translate="label_showrt_www">Website</span></th>
-          <td><span tal:content="context/www"></span></td>
+          <td>
+            <a tal:condition="context/www"
+               tal:content="python: context.www.replace('https://', '').replace('https://', '')"
+               tal:attributes="href context/www"
+               target="_blank">www.google.ch</a>
+          </td>
         </tr>
       </table>
     </div>

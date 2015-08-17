@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2015-08-14 13:57+0000\n"
+"POT-Creation-Date: 2015-08-17 15:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,14 +22,24 @@ msgstr ""
 msgid "ContactFolder"
 msgstr ""
 
+#: ./ftw/contacts/profiles/default/types/ftw.contacts.Member.xml
+msgid "Member"
+msgstr ""
+
 #. Default: "Academic title"
 #: ./ftw/contacts/contact.py:128
 msgid "label_academic_title"
 msgstr ""
 
+#. Default: "Acquire address"
+#: ./ftw/contacts/member.py:47
+msgid "label_acquire_address"
+msgstr ""
+
 #. Default: "Address"
 #: ./ftw/contacts/browser/contact.pt:36
 #: ./ftw/contacts/contact.py:61
+#: ./ftw/contacts/member.py:52
 msgid "label_address"
 msgstr ""
 
@@ -40,12 +50,23 @@ msgstr ""
 
 #. Default: "City"
 #: ./ftw/contacts/contact.py:75
+#: ./ftw/contacts/member.py:66
 msgid "label_city"
 msgstr ""
 
 #. Default: "City"
 #: ./ftw/contacts/contact.py:185
 msgid "label_city_private"
+msgstr ""
+
+#. Default: "Contact"
+#: ./ftw/contacts/browser/member.pt:59
+msgid "label_contact_more"
+msgstr ""
+
+#. Default: "Contact reference"
+#: ./ftw/contacts/member.py:27
+msgid "label_contact_reference"
 msgstr ""
 
 #. Default: "Country"
@@ -62,18 +83,25 @@ msgstr ""
 #. Default: "E-Mail"
 #: ./ftw/contacts/browser/contact.pt:56
 #: ./ftw/contacts/contact.py:92
+#: ./ftw/contacts/member.py:73
 msgid "label_email"
 msgstr ""
 
 #. Default: "Fax number"
 #: ./ftw/contacts/browser/contact.pt:52
 #: ./ftw/contacts/contact.py:112
+#: ./ftw/contacts/member.py:93
 msgid "label_fax"
 msgstr ""
 
 #. Default: "Female"
 #: ./ftw/contacts/contact.py:24
 msgid "label_female"
+msgstr ""
+
+#. Default: "Contact"
+#: ./ftw/contacts/member.py:105
+msgid "label_fieldset_contact"
 msgstr ""
 
 #. Default: "Extended"
@@ -94,6 +122,7 @@ msgstr ""
 #. Default: "Function"
 #: ./ftw/contacts/browser/contact.pt:24
 #: ./ftw/contacts/contact.py:135
+#: ./ftw/contacts/member.py:33
 msgid "label_function"
 msgstr ""
 
@@ -118,13 +147,33 @@ msgid "label_lastname"
 msgstr ""
 
 #. Default: "Load more contacts"
-#: ./ftw/contacts/browser/contactfolder.pt:46
+#: ./ftw/contacts/browser/contactfolder.pt:44
 msgid "label_load_next_contacts"
 msgstr ""
 
 #. Default: "Male"
 #: ./ftw/contacts/contact.py:23
 msgid "label_male"
+msgstr ""
+
+#. Default: "Email"
+#: ./ftw/contacts/browser/member.pt:35
+msgid "label_member_email"
+msgstr ""
+
+#. Default: "Mobile"
+#: ./ftw/contacts/browser/member.pt:31
+msgid "label_member_phone_mobile"
+msgstr ""
+
+#. Default: "Office"
+#: ./ftw/contacts/browser/member.pt:27
+msgid "label_member_phone_office"
+msgstr ""
+
+#. Default: "www"
+#: ./ftw/contacts/browser/member.pt:39
+msgid "label_member_www"
 msgstr ""
 
 #. Default: "Name"
@@ -141,12 +190,14 @@ msgstr ""
 #. Default: "Mobile phone number"
 #: ./ftw/contacts/browser/contact.pt:48
 #: ./ftw/contacts/contact.py:105
+#: ./ftw/contacts/member.py:86
 msgid "label_phone_mobile"
 msgstr ""
 
 #. Default: "Office phone number"
 #: ./ftw/contacts/browser/contact.pt:44
 #: ./ftw/contacts/contact.py:98
+#: ./ftw/contacts/member.py:79
 msgid "label_phone_office"
 msgstr ""
 
@@ -158,6 +209,7 @@ msgstr ""
 
 #. Default: "Postal code"
 #: ./ftw/contacts/contact.py:68
+#: ./ftw/contacts/member.py:59
 msgid "label_postal_code"
 msgstr ""
 
@@ -191,6 +243,21 @@ msgstr ""
 msgid "label_short_phone_office"
 msgstr ""
 
+#. Default: "Show address"
+#: ./ftw/contacts/member.py:39
+msgid "label_show_address"
+msgstr ""
+
+#. Default: "Show image"
+#: ./ftw/contacts/member.py:43
+msgid "label_show_image"
+msgstr ""
+
+#. Default: "Show title"
+#: ./ftw/contacts/member.py:23
+msgid "label_show_title"
+msgstr ""
+
 #. Default: "Show on map"
 #: ./ftw/contacts/contact.py:81
 msgid "label_showplacemark"
@@ -206,19 +273,25 @@ msgstr ""
 msgid "label_text"
 msgstr ""
 
+#. Default: "Title"
+#: ./ftw/contacts/member.py:17
+msgid "label_title"
+msgstr ""
+
 #. Default: "www"
 #: ./ftw/contacts/browser/contact.pt:63
 #: ./ftw/contacts/contact.py:118
+#: ./ftw/contacts/member.py:99
 msgid "label_www"
 msgstr ""
 
 #. Default: "Search Contacts"
-#: ./ftw/contacts/browser/contactfolder.pt:28
+#: ./ftw/contacts/browser/contactfolder.pt:26
 msgid "title_search_site"
 msgstr ""
 
 #. Default: "Search Contacts"
-#: ./ftw/contacts/browser/contactfolder.pt:28
+#: ./ftw/contacts/browser/contactfolder.pt:26
 msgid "title_search_title"
 msgstr ""
 

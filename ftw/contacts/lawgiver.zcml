@@ -8,7 +8,8 @@
     <lawgiver:map_permissions
         action_group="add"
         permissions="ftw.contacts: Add ContactFolder,
-                     ftw.contacts: Add Contact"
+                     ftw.contacts: Add Contact,
+                     ftw.contacts: Add Member"
         />
 
 </configure>

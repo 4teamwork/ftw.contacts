@@ -58,3 +58,9 @@ class ContactBuilder(DexterityBuilder):
         return self
 
 builder_registry.register('contact', ContactBuilder)
+
+
+class MemberBuilder(DexterityBuilder):
+    portal_type = 'ftw.contacts.Member'
+
+builder_registry.register('member', MemberBuilder)

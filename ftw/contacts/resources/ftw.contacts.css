@@ -1,3 +1,4 @@
+/* Contactfolder listing */
 #contact-folder-view .contactFolderAlphabeticalSearch {
     margin-top: 1em;
     padding-bottom: 1em;
@@ -77,6 +78,9 @@
     height: 1.5em;
     font-size: 2em;
 }
+/* End Contactfolder listing */
+
+/* Contact view */
 #contact-view {
     margin-bottom: 2em;
 }
@@ -94,6 +98,39 @@
     height: 200px;
     background-size: contain;
 }
+
+/* End Contact view*/
+
+/* Member view */
+#member-view .memberInfos th {
+    padding-right: 1em;
+}
+#member-view .memberPortrait {
+    float: right;
+    margin-right: 1em;
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+}
+#member-view .memberInfos {
+    text-align: left;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    float: left;
+    margin-right: 1em;
+}
+#member-view .memberInfo > span {
+    display: block;
+}
+#member-view .memberInfo > table {
+    margin-top: 1em;
+}
+#member-view .memberInfo > table th{
+    font-weight: normal;
+}
+/* End Member view*/
+
+
 #contact-view .contactPortrait.gender-f,
 #contact-folder-view .contactImage.gender-f {
     background-image: url("++resource++ftw.contacts.resources/female.png");

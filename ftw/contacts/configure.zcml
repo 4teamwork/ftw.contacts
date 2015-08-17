@@ -22,19 +22,21 @@
         description="Installs the ftw.contacts package"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
-
     <genericsetup:importStep
         name="ftw.contacts"
         title="ftw.contacts special import handler"
         description=""
         handler="ftw.contacts.setuphandlers.import_various"
         />
-
     <browser:resourceDirectory
-      name="ftw.contacts.resources"
-      directory="resources"
-      />
-
+        name="ftw.contacts.resources"
+        directory="resources"
+        />
+    <adapter
+        factory=".adapters.MemberAccessor"
+        for="ftw.contacts.member.IMember"
+        provides="ftw.contacts.interfaces.IMemberAccessor"
+        />
     <!-- ftw.geo -->
     <adapter
         for="ftw.contacts.contact.IContact"
@@ -46,13 +48,11 @@
              zope.lifecycleevent.interfaces.IObjectModifiedEvent"
         handler=".handlers.initializeCustomFeatureStyles"
         />
-
     <adapter
         factory=".adapters.ContactLocationAdapter"
         for="ftw.contacts.contact.IContact"
         provides="ftw.geo.interfaces.IGeocodableLocation"
         />
-
     <class class="ftw.contacts.contact.Contact">
         <implements interface="collective.geo.geographer.interfaces.IGeoreferenceable" />
     </class>

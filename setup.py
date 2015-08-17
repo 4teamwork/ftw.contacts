@@ -49,6 +49,8 @@ setup(name='ftw.contacts',
           'z3c.schema',
           'setuptools',
           'collective.dexteritytextindexer',
+          'plone.app.relationfield',
+          'plone.api',
           'ftw.geo',
           ],
 
