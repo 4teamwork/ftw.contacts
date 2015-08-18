@@ -1,5 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="ftw.contacts">
 
     <permission
@@ -17,4 +18,12 @@
         title="ftw.contacts: Add Member"
         />
 
+    <!-- ftw.simplelayout -->
+    <configure zcml:condition="installed ftw.simplelayout">
+        <permission
+        id="ftw.contacts.AddMemberBlock"
+        title="ftw.contacts: Add MemberBlock"
+        />
+    </configure>
+    <!-- End ftw.simplelayout -->
 </configure>

@@ -12,7 +12,7 @@
         <tal:main condition="view/has_related_contact">
           <div id="member-view" tal:define="
             member view/memberaccessor;
-            contact python:context.contact.to_object">
+            contact nocall:context/contact/to_object">
             <div class="memberInfos">
               <h2 tal:condition="python: contact.firstname and contact.lastname">
                 <tal:title condition="contact/academic_title" tal:replace="contact/academic_title">Dr.</tal:title>

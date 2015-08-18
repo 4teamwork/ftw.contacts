@@ -1,0 +1,57 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  tal:omit-tag="python: 1"
+  tal:define="member view/memberaccessor;
+              contact nocall:context/contact/to_object"
+  i18n:domain="ftw.contacts">
+
+  <tal:main condition="view/has_related_contact">
+  <h3 tal:content="context/Title" tal:condition="context/show_title">Title</h3>
+
+  <div tal:condition="python:context.show_image and contact.image" class="sl-image right">
+    <img tal:replace="structure contact/@@images/image/mini" alt="contact/title" />
+    <p tal:define="description view/image_caption"
+    tal:condition="description"
+    tal:content="description">Caption</p>
+  </div>
+  <div>
+    <strong>
+      <a tal:attributes="href contact/absolute_url"
+      tal:content="view/contact_title"></a>
+    </strong>
+    <p>
+       <tal:fn tal:condition="context/function" tal:content="context/function"></tal:fn><br/>
+       <tal:addr tal:condition="context/show_address">
+            <tal:block><span tal:replace="structure python: member.address and member.address.replace('\n', '<br />') or ''" /><br /></tal:block>
+            <span tal:content="member/postal_code"/>
+            <span tal:content="member/city"/><br />
+       </tal:addr>
+       <tal:phone tal:condition="member/phone_office">
+            <span i18n:translate="label_short_office">Office</span>:
+            <a tal:attributes="href string:tel:${member/phone_office}" tal:content="member/phone_office">079 797 79 79</a><br/>
+       </tal:phone>
+       <tal:mobile tal:condition="member/phone_mobile">
+            <span i18n:translate="label_short_mobile">Mobile</span>:
+            <a tal:attributes="href string:tel:${member/phone_mobile}" tal:content="member/phone_mobile">079 797 79 79</a><br/>
+       </tal:mobile>
+       <tal:fax tal:condition="member/fax">
+            <span i18n:translate="label_short_fax">Fax</span>:
+            <a tal:attributes="href string:tel:${member/fax}" tal:content="member/fax">079 797 79 79</a><br/>
+       </tal:fax>
+       <tal:email tal:condition="member/email">
+            <a tal:attributes="href string:mailto:${member/email}"
+               tal:content="member/email"/>
+       </tal:email>
+    </p>
+  </div>
+  </tal:main>
+  <tal:nocontact condition="python:not view.has_related_contact and view.has_permission">
+    <div id="member-no-contact-exist">
+      <h3 i18n:translate="label_contact_does_no_longer_exists">The related contact does no longer exists.</h3>
+      <p i18n:translate="label_contact_does_no_longer_exists_hint">Delete this content or edit it to replace the deleted with an existing contact</p>
+    </div>
+  </tal:nocontact>
+  <tal:nocontactandanonymous condition="python:not view.has_related_contact and not view.has_permission">
+    <div id="member-empty" tal:omit-tag="python: 1"></div>
+  </tal:nocontactandanonymous>
+</html>

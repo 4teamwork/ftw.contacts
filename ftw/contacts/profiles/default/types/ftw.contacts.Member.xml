@@ -15,11 +15,7 @@
   <property name="schema">ftw.contacts.member.IMember</property>
 
   <property name="behaviors">
-      <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
-      <element value="plone.app.dexterity.behaviors.metadata.IPublication"/>
-      <element value="plone.app.dexterity.behaviors.metadata.IOwnership"/>
       <element value="plone.app.content.interfaces.INameFromTitle" />
-      <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
       <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
   </property>
 

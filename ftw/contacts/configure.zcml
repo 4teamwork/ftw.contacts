@@ -10,7 +10,6 @@
 
     <include file="permissions.zcml" />
     <include package=".browser" />
-
     <include file="lawgiver.zcml" zcml:condition="installed ftw.lawgiver" />
 
     <i18n:registerTranslations directory="locales" />
@@ -57,4 +56,18 @@
         <implements interface="collective.geo.geographer.interfaces.IGeoreferenceable" />
     </class>
     <!-- End ftw.geo -->
+
+    <!-- ftw.simplelayout -->
+    <configure zcml:condition="installed ftw.simplelayout">
+        <include package=".simplelayout" />
+
+        <genericsetup:registerProfile
+        name="simplelayout"
+        title="ftw.contact: memberblock for ftw.simplelayout"
+        directory="profiles/simplelayout"
+        description="Installs a memberblock for the ftw.contenpage"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+    </configure>
+    <!-- End ftw.simplelayout -->
 </configure>

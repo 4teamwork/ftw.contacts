@@ -1,0 +1,19 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="ftw.contacts">
+
+    <browser:page
+        for="ftw.contacts.member.IMember"
+        name="block_view"
+        class=".memberblock.MemberBlockView"
+        permission="zope2.View"
+        template="memberblock.pt"
+        />
+
+    <browser:resourceDirectory
+        name="ftw.contacts.simplelayout.resources"
+        directory="resources"
+        />
+</configure>

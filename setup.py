@@ -6,6 +6,7 @@ maintainer = 'Mathias Leimgruber'
 
 tests_require = [
     'ftw.builder',
+    'ftw.simplelayout [contenttypes]',
     'plone.app.testing',
     'ftw.testbrowser'
     ]
@@ -49,9 +50,11 @@ setup(name='ftw.contacts',
           'z3c.schema',
           'setuptools',
           'collective.dexteritytextindexer',
+          'collective.js.jqueryui',
           'plone.app.relationfield',
           'plone.api',
           'ftw.geo',
+          'ftw.simplelayout [contenttypes,mapblock]',
           ],
 
       tests_require=tests_require,

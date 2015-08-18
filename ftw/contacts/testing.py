@@ -25,6 +25,8 @@ class ContactsLayer(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'ftw.contacts:default')
+        applyProfile(portal, 'ftw.contacts:simplelayout')
+        applyProfile(portal, 'ftw.simplelayout:default')
 
 
 FTW_CONTACTS_FIXTURE = ContactsLayer()
