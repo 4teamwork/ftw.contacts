@@ -2,12 +2,12 @@ from ftw.builder import Builder
 from ftw.builder import create
 from ftw.contacts.contact import IContact
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
-from ftw.contacts.testing import FTW_CONTACTS_INTEGRATION_TESTING
 from ftw.testbrowser import browsing
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
 from unittest2 import TestCase
+from z3c.relationfield.interfaces import IHasIncomingRelations
 from zope.component import createObject
 from zope.component import queryUtility
 
@@ -227,7 +227,7 @@ class TestContactValidateOrganizationOrFullname(TestCase):
 
 class TestContactInstallation(TestCase):
 
-    layer = FTW_CONTACTS_INTEGRATION_TESTING
+    layer = FTW_CONTACTS_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']
@@ -251,3 +251,7 @@ class TestContactInstallation(TestCase):
         factory = fti.factory
         new_object = createObject(factory)
         self.assertTrue(IContact.providedBy(new_object))
+
+    def test_relation(self):
+        contact = create(Builder('contact'))
+        self.assertTrue(IHasIncomingRelations.providedBy(contact))

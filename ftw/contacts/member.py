@@ -7,6 +7,7 @@ from plone.supermodel import model
 from z3c.relationfield.schema import RelationChoice
 from z3c.schema.email import RFC822MailAddress
 from zope import schema
+from zope.interface import implements
 
 
 class IMember(model.Schema):

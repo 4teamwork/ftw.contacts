@@ -1,6 +1,3 @@
-from Products.CMFPlone.utils import safe_unicode
-
-
 class ContactLocationAdapter(object):
     """Adapter that is able to represent the location of Contact in
     a geocodable string form.
@@ -48,6 +45,3 @@ class MemberAccessor(object):
         if self.context.acquire_address and hasattr(self.contact, name):
             return getattr(self.contact, name, None)
         return getattr(self.context, name, None)
-
-    def __setattr__(self, name, value):
-        setattr(self.context, name, safe_unicode(value))

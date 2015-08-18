@@ -1,6 +1,7 @@
 from ftw.builder import builder_registry
 from ftw.builder.dexterity import DexterityBuilder
 from plone.namedfile import NamedImage
+from z3c.relationfield.relation import create_relation
 
 
 class ContactFolderBuilder(DexterityBuilder):
@@ -62,5 +63,11 @@ builder_registry.register('contact', ContactBuilder)
 
 class MemberBuilder(DexterityBuilder):
     portal_type = 'ftw.contacts.Member'
+
+    def contact(self, contact):
+        self.arguments.update(
+            contact=create_relation(contact.getPhysicalPath()))
+
+        return self
 
 builder_registry.register('member', MemberBuilder)

@@ -9,57 +9,69 @@
   <body>
     <div metal:fill-slot="content-core">
       <metal:main-macro define-macro="content-core">
+        <tal:main condition="view/has_related_contact">
+          <div id="member-view" tal:define="
+            member view/memberaccessor;
+            contact python:context.contact.to_object">
+            <div class="memberInfos">
+              <h2 tal:condition="python: contact.firstname and contact.lastname">
+                <tal:title condition="contact/academic_title" tal:replace="contact/academic_title">Dr.</tal:title>
+                <tal:name tal:replace="string:${contact/lastname} ${contact/firstname}">Boss Hugo</tal:name>
+              </h2>
+              <div class="memberInfo">
+                <span tal:condition="context/function" tal:content="contact/function" />
+                <tal:address condition="context/show_address">
+                  <span tal:condition="member/address" tal:content="structure python: member.address.replace(u'\n', u'<br />') or ''" />
+                  <span tal:condition="python: member.postal_code and member.city" tal:content="string:${member/postal_code} ${member/city}" />
+                </tal:address>
+                <table>
+                  <tr tal:condition="member/phone_office">
+                    <th><span i18n:translate="label_member_phone_office">Office</span></th>
+                    <td><a tal:attributes="href string:tel:${member/phone_office}" tal:content="member/phone_office">079 797 79 79</a></td>
+                  </tr>
+                  <tr tal:condition="member/phone_mobile">
+                    <th><span i18n:translate="label_member_phone_mobile">Mobile</span></th>
+                    <td><a tal:attributes="href string:tel:${member/phone_mobile}" tal:content="member/phone_mobile">079 797 79 79</a></td>
+                  </tr>
+                  <tr tal:condition="member/email">
+                    <th><span i18n:translate="label_member_email">Email</span></th>
+                    <td><span tal:content="structure python:context.spamProtect(mailaddress=member.email)"></span></td>
+                  </tr>
+                  <tr tal:condition="member/www">
+                    <th><span i18n:translate="label_member_www">www</span></th>
+                    <td>
+                      <a tal:condition="member/www"
+                      tal:content="python: member.www.replace('https://', '').replace('https://', '')"
+                      tal:attributes="href member/www"
+                      target="_blank">www.google.ch</a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="memberPortrait" tal:condition="python:contact.image and context.show_image">
+              <img tal:replace="structure contact/@@images/image/mini" alt="contact/title"/>
+            </div>
+            <div tal:condition="not:contact/image" tal:attributes="class string:memberPortrait gender-${contact/gender}"></div>
+            <div class="visualClear"></div>
 
-        <div id="member-view" tal:define="
-          member view/memberaccessor;
-          contact python:context.contact.to_object">
-          <div class="memberInfos">
-            <h2 tal:condition="python: contact.firstname and contact.lastname">
-              <tal:title condition="contact/academic_title" tal:replace="contact/academic_title">Dr.</tal:title>
-              <tal:name tal:replace="string:${contact/lastname} ${contact/firstname}">Boss Hugo</tal:name>
-            </h2>
-            <div class="memberInfo">
-              <span tal:condition="context/function" tal:content="contact/function" />
-              <span tal:condition="member/address" tal:content="structure python: member.address.replace(u'\n', u'<br />') or ''" />
-              <span tal:condition="python: member.postal_code and member.city" tal:content="string:${member/postal_code} ${member/city}" />
-              <table>
-                <tr tal:condition="member/phone_office">
-                  <th><span i18n:translate="label_member_phone_office">Office</span></th>
-                  <td><a tal:attributes="href string:tel:${member/phone_office}" tal:content="member/phone_office">079 797 79 79</a></td>
-                </tr>
-                <tr tal:condition="member/phone_mobile">
-                  <th><span i18n:translate="label_member_phone_mobile">Mobile</span></th>
-                  <td><a tal:attributes="href string:tel:${member/phone_mobile}" tal:content="member/phone_mobile">079 797 79 79</a></td>
-                </tr>
-                <tr tal:condition="member/email">
-                  <th><span i18n:translate="label_member_email">Email</span></th>
-                  <td><span tal:content="structure python:context.spamProtect(mailaddress=member.email)"></span></td>
-                </tr>
-                <tr tal:condition="member/www">
-                  <th><span i18n:translate="label_member_www">www</span></th>
-                  <td>
-                    <a tal:condition="member/www"
-                    tal:content="python: member.www.replace('https://', '').replace('https://', '')"
-                    tal:attributes="href member/www"
-                    target="_blank">www.google.ch</a>
-                  </td>
-                </tr>
-              </table>
+            <div class="memberText" tal:condition="contact/text" tal:content="structure contact/text/output">Text</div>
+
+            <div class="memberContact">
+              <h3 i18n:translate="label_contact_more">Contact</h3>
+              <a tal:content="contact/Title" tal:attributes="href contact/absolute_url"></a>
             </div>
           </div>
-          <div class="memberPortrait" tal:condition="python:contact.image and context.show_image">
-            <img tal:replace="structure contact/@@images/image/mini" alt="contact/title"/>
+        </tal:main>
+        <tal:nocontact condition="python:not view.has_related_contact and view.has_permission">
+          <div id="member-no-contact-exist">
+            <h3 i18n:translate="label_contact_does_no_longer_exists">The related contact does no longer exists.</h3>
+            <p i18n:translate="label_contact_does_no_longer_exists_hint">Delete this content or edit it to replace the deleted with an existing contact</p>
           </div>
-          <div tal:condition="not:contact/image" tal:attributes="class string:memberPortrait gender-${contact/gender}"></div>
-          <div class="visualClear"></div>
-
-          <div class="memberText" tal:condition="contact/text" tal:content="structure contact/text/output">Text</div>
-
-          <div class="memberContact">
-            <h3 i18n:translate="label_contact_more">Contact</h3>
-            <a tal:content="contact/Title" tal:attributes="href contact/absolute_url"></a>
-          </div>
-        </div>
+        </tal:nocontact>
+        <tal:nocontactandanonymous condition="python:not view.has_related_contact and not view.has_permission">
+          <div id="member-empty"></div>
+        </tal:nocontactandanonymous>
       </metal:main-macro>
     </div>
   </body>

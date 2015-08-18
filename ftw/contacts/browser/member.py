@@ -1,19 +1,20 @@
 from ftw.contacts.interfaces import IMemberAccessor
-from plone.api import user
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 
 
 class MemberView(BrowserView):
     """View to display a member
     """
-    def __call__(self):
-        if self.context.contact.to_object:
-            return super(MemberView, self).__call__(self)
-
-        if user.has_permission('Modify portal content', self.context):
-            return "The related contact of this member does no longer exists"
-
-        return ''
-
     def memberaccessor(self):
         return IMemberAccessor(self.context)
+
+    @property
+    def has_permission(self):
+        mtool = getToolByName(self.context, "portal_membership")
+        return bool(
+            mtool.checkPermission("Modify portal content", self.context))
+
+    @property
+    def has_related_contact(self):
+        return bool(self.context.contact.to_object)
