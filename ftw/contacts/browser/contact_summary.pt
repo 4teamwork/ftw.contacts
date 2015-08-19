@@ -1,6 +1,6 @@
 <div class="contactSummary" i18n:domain="ftw.contacts">
     <div class="contactInfo">
-      <h3>
+      <h3 tal:attributes="class string:state-${view/get_review_state}">
         <a tal:attributes="href context/absolute_url; title context/title" tal:content="context/title">Item Title</a>
         <a tal:attributes="href string:${context/absolute_url}/download" title="vCard Download">
           <img alt="vCard Download" src="++resource++ftw.contacts.resources/vcard.png" />

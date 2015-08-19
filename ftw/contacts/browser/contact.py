@@ -1,5 +1,6 @@
 from ftw.contacts.member import IMember
 from ftw.contacts.utils import get_backreferences
+from plone import api
 from Products.Five.browser import BrowserView
 
 
@@ -11,5 +12,7 @@ class ContactView(BrowserView):
 
 
 class ContactSummary(BrowserView):
-    """Contact view
+    """Contactsummary view
     """
+    def get_review_state(self):
+        return api.content.get_state(obj=self.context, default='')
