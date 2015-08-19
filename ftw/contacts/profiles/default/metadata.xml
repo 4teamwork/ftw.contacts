@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <metadata>
   <dependencies>
+    <version>1000</version>
     <dependency>profile-plone.app.dexterity:default</dependency>
     <dependency>profile-collective.js.jqueryui:default</dependency>
     <dependency>profile-plone.app.relationfield:default</dependency>
