@@ -104,12 +104,13 @@ class ContactFolderReload(BrowserView):
 
     def _cleanup_query(self, query):
         text = query.get('SearchableText')
-        if not text:
-            return query
 
         # Remove unsupported words
         text = re.sub(re.compile(
             r'\W', re.UNICODE), r' ', text.decode('utf-8')).encode('utf-8')
+
+        if not text:
+            return query
 
         # Add wildcard
         text = "{0}*".format(text)

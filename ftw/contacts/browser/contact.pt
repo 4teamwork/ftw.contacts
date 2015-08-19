@@ -34,7 +34,7 @@
               <tr tal:condition="python: context.postal_code and context.city and context.address">
                 <th i18n:translate="label_address">Address</th>
                 <td>
-                  <span tal:replace="structure python: context.address and context.address.replace(u'\n', u'<br />') or ''" /><br />
+                  <span tal:replace="context/address" /><br />
                   <span tal:replace="context/postal_code" />
                   <span tal:replace="context/city" />
                 </td>
@@ -74,7 +74,7 @@
                 <tr>
                   <th i18n:translate="label_address">Address</th>
                   <td>
-                    <span tal:replace="structure python: context.address_private and context.address_private.replace(u'\n', u'<br />') or ''" /><br />
+                    <span tal:replace="context/address" /><br />
                     <span tal:replace="context/postal_code_private" />
                     <span tal:replace="context/city_private" />
                   </td>

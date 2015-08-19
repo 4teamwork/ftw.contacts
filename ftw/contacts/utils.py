@@ -40,14 +40,15 @@ def get_backreferences(source_object, from_interface):
     return result
 
 
-def get_contact_title(contact, format=None):
+def get_contact_title(contact, display=None):
     """This function returns the contacttitle.
 
     The contact title is generated from the firstname and lastname
     or from the organization name. Depends on what fields are filled.
     """
+
     if contact.firstname and contact.lastname:
-        if format == 'natural':
+        if display == 'natural':
             return '%s %s' % (contact.firstname, contact.lastname)
         return '%s %s' % (contact.lastname, contact.firstname)
     return contact.organization or u"..."

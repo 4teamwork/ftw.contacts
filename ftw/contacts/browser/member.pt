@@ -21,7 +21,7 @@
               <div class="memberInfo">
                 <span tal:condition="context/function" tal:content="contact/function" />
                 <tal:address condition="context/show_address">
-                  <span tal:condition="member/address" tal:content="structure python: member.address.replace(u'\n', u'<br />') or ''" />
+                  <span tal:condition="member/address" tal:content="structure member/address" />
                   <span tal:condition="python: member.postal_code and member.city" tal:content="string:${member/postal_code} ${member/city}" />
                 </tal:address>
                 <table>

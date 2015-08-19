@@ -24,13 +24,7 @@ class ContactLocationAdapter(object):
             return None
 
         # Concatenate only the fields with a value into the location string
-        location = country
-        for field in [city, zip_code, street]:
-            if not field:
-                continue
-            location = u"%s, %s" % (field, location)
-
-        return location
+        return u', '.join(filter(None, [street, zip_code, city, country]))
 
 
 class MemberAccessor(object):

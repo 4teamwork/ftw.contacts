@@ -9,7 +9,7 @@ var ContactFolderListing = (function($){
     var $alphabeticalContainer;
     var $searchInput;
     var index = 0;
-    var step = 5;
+    var step = 20;
     var letter = '';
     var maxContacts = 0;
     var searchableText = ''
@@ -19,7 +19,7 @@ var ContactFolderListing = (function($){
         $loadMoreButton = $('#contact-folder-view .contactFolderLoadMoreContacts');
         $searchInput = $('#contact-folder-view input#contactFolderSearchGadget');
 
-        $loadMoreButton.on('click', function(e) {loadNextContacts();});
+        $loadMoreButton.on('click', function(e) {reloadView();});
         $('.contactFolderAlphabeticalSearch div.letter').on('click', function(e) { letterClick($(this)); });
         $searchInput.on('keyup', function() {
             updateSearch($(this).val());
@@ -35,8 +35,8 @@ var ContactFolderListing = (function($){
                 searchable_text: searchableText}, function( data ){
 
             // contacts
-            $contactsContainer.empty();
             $contactsContainer.append( $(data.contacts) );
+
             index = index + step;
             setMoreButtonVisible(index < data.max_contacts);
 
@@ -53,6 +53,8 @@ var ContactFolderListing = (function($){
             return;
         }
         index = 0;
+        $contactsContainer.empty();
+
         // Reset the letter-filter if click on the current selected letter
         letter = ''
         if ( !$this.hasClass('current') ){
@@ -69,6 +71,8 @@ var ContactFolderListing = (function($){
     }
     var updateSearch = function(text){
         index = 0;
+        $contactsContainer.empty();
+
         searchableText = text;
         reloadView();
     };

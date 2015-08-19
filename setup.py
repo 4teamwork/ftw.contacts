@@ -9,7 +9,7 @@ tests_require = [
     'ftw.simplelayout [contenttypes]',
     'plone.app.testing',
     'ftw.testbrowser',
-    'ftw.contacts [zipexport]',
+    'ftw.contacts [zip_export]',
     ]
 zip_export = [
     'ftw.zipexport'

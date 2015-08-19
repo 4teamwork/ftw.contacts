@@ -20,4 +20,4 @@ class MemberBlockView(BaseBlock, MemberView):
     @property
     def contact_title(self):
         return get_contact_title(
-            self.context.contact.to_object, format='natural')
+            self.context.contact.to_object, display='natural')

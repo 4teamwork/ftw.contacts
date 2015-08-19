@@ -55,4 +55,4 @@ class TestContactTitle(TestCase):
             lastname=u"N\xf6rris"))
         self.assertEqual(
             u"Chuck N\xf6rris",
-            get_contact_title(contact, format="natural"))
+            get_contact_title(contact, display="natural"))
