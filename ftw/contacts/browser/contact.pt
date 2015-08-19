@@ -69,7 +69,7 @@
               </tr>
             </table>
             <tal:private condition="context/address_private">
-              <h2 i18n:translate="label_private_address">Privateaddress</h2>
+              <h2 i18n:translate="label_home_address">Home address</h2>
               <table class="contactPrivateInfo">
                 <tr>
                   <th i18n:translate="label_address">Address</th>
