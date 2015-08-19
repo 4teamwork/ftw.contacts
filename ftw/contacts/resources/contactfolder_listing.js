@@ -27,25 +27,6 @@ var ContactFolderListing = (function($){
 
         reloadView();
     }
-    // var loadNextContacts = function(){
-    //     var index_from = index;
-    //     var index_to = index + step;
-
-    //     $.getJSON( "@@load_next_contacts", {
-    //             index_from: index_from,
-    //             index_to: index_to,
-    //             letter: letter,
-    //             searchable_text: searchableText}, function( data ){
-
-    //         $contactsContainer.append( $(data.html) );
-    //         maxContacts = data.max_contacts
-    //         index = index + step;
-
-    //         setMoreButtonVisible(index < maxContacts)
-
-    //     });
-
-    // }
     var reloadView = function() {
         $.getJSON( "@@reload", {
                 index_from: index,
@@ -79,13 +60,6 @@ var ContactFolderListing = (function($){
         }
         reloadView();
     }
-    // var loadLetters = function(){
-    //     $.get( "@@letters", {letter: letter, searchable_text: searchableText}, function( data ){
-    //         $('.contactFolderAlphabeticalSearch').html( data );
-    //         $('.contactFolderAlphabeticalSearch div.letter').on('click', function(e) {letterClick($(this)); })
-    //     });
-
-    // }
     var setMoreButtonVisible = function(setVisible){
         if ( setVisible ){
             $loadMoreButton.show();
