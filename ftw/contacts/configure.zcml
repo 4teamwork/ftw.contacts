@@ -6,6 +6,7 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:profilehook="http://namespaces.zope.org/profilehook"
     i18n_domain="ftw.contacts">
 
     <include file="permissions.zcml" />
@@ -21,12 +22,10 @@
         description="Installs the ftw.contacts package"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
-    <genericsetup:importStep
-        name="ftw.contacts"
-        title="ftw.contacts special import handler"
-        description=""
-        handler="ftw.contacts.setuphandlers.import_various"
-        />
+    <profilehook:hook
+      profile="ftw.contacts:default"
+      handler=".hooks.default_profile_installed"
+      />
     <browser:resourceDirectory
         name="ftw.contacts.resources"
         directory="resources"
