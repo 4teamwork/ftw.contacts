@@ -49,10 +49,12 @@
                 </table>
               </div>
             </div>
-            <div class="memberPortrait" tal:condition="python:contact.image and context.show_image">
-              <img tal:replace="structure contact/@@images/image/mini" alt="contact/title"/>
-            </div>
-            <div tal:condition="not:contact/image" tal:attributes="class string:memberPortrait gender-${contact/gender}"></div>
+            <tal:image tal:condition="context/show_image">
+              <div class="memberPortrait">
+                <img tal:condition="contact/image" tal:replace="structure contact/@@images/image/mini" alt="contact/title"/>
+              </div>
+              <div tal:condition="not:contact/image" tal:attributes="class string:memberPortrait gender-${contact/gender}"></div>
+            </tal:image>
             <div class="visualClear"></div>
 
             <div class="memberText" tal:condition="contact/text" tal:content="structure contact/text/output" />

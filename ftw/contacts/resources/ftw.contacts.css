@@ -130,16 +130,29 @@
 }
 /* End Member view*/
 
+/* Memberblock view */
+.memberBlockPortraitEmpty {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+}
 
+/* End Memberblock view */
 #contact-view .contactPortrait.gender-f,
-#contact-folder-view .contactImage.gender-f {
+#contact-folder-view .contactImage.gender-f,
+#member-view .memberPortrait.gender-f,
+.memberBlockPortraitEmpty.gender-f {
     background-image: url("++resource++ftw.contacts.resources/female.png");
 }
 #contact-view .contactPortrait.gender-m,
-#contact-folder-view .contactImage.gender-m {
+#contact-folder-view .contactImage.gender-m,
+#member-view .memberPortrait.gender-m,
+.memberBlockPortraitEmpty.gender-m {
     background-image: url("++resource++ftw.contacts.resources/male.png");
 }
 #contact-view .contactPortrait.gender-,
-#contact-folder-view .contactImage.gender- {
+#contact-folder-view .contactImage.gender-,
+#member-view .memberPortrait.gender-,
+.memberBlockPortrait.gender- {
     background-image: url("++resource++ftw.contacts.resources/factory.png");
 }
