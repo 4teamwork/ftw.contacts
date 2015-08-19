@@ -15,21 +15,21 @@
               <tr tal:condition="python: context.firstname and context.lastname">
                 <th i18n:translate="label_name">Name</th>
                 <td>
-                  <tal:title tal:condition="context/academic_title" tal:replace="context/academic_title">Dr.</tal:title>
-                  <tal:name tal:replace="string:${context/lastname} ${context/firstname}">Boss Hugo</tal:name>
+                  <tal:title tal:condition="context/academic_title" tal:replace="context/academic_title" />
+                  <tal:name tal:replace="string:${context/lastname} ${context/firstname}" />
                 </td>
               </tr>
               <tr tal:condition="context/function">
                 <th i18n:translate="label_function">Function</th>
-                <td tal:content="context/function">Boss</td>
+                <td tal:content="context/function" />
               </tr>
               <tr tal:condition="context/organization">
                 <th i18n:translate="label_organization">Organization</th>
-                <td tal:content="context/organization">XYZ GmbH</td>
+                <td tal:content="context/organization" />
               </tr>
               <tr tal:condition="context/department">
                 <th i18n:translate="label_department">Department</th>
-                <td tal:content="context/department">CIA</td>
+                <td tal:content="context/department" />
               </tr>
               <tr tal:condition="python: context.postal_code and context.city and context.address">
                 <th i18n:translate="label_address">Address</th>
@@ -41,21 +41,21 @@
               </tr>
               <tr tal:condition="context/phone_office">
                 <th i18n:translate="label_phone_office">Office phone number</th>
-                <td tal:content="context/phone_office">031 000 00 00</td>
+                <td tal:content="context/phone_office" />
               </tr>
               <tr tal:condition="context/phone_mobile">
                 <th i18n:translate="label_phone_mobile">Mobile phone number</th>
-                <td tal:content="context/phone_mobile">079 000 00 00</td>
+                <td tal:content="context/phone_mobile" />
               </tr>
               <tr tal:condition="context/fax">
                 <th i18n:translate="label_fax">Fax number</th>
-                <td tal:content="context/fax">031 123 45 67</td>
+                <td tal:content="context/fax" />
               </tr>
               <tr tal:condition="context/email">
                 <th i18n:translate="label_email">E-Mail</th>
                 <td>
                   <a tal:attributes="href string:mailto:${context/email}"
-                  tal:content="context/email">info@mail.com</a>
+                  tal:content="context/email" />
                 </td>
               </tr>
               <tr tal:condition="context/www">
@@ -64,7 +64,7 @@
                 <a tal:condition="context/www"
                    tal:content="python: context.www.replace('https://', '').replace('https://', '')"
                    tal:attributes="href context/www"
-                   target="_blank">www.google.ch</a>
+                   target="_blank" />
                 </td>
               </tr>
             </table>
@@ -81,7 +81,7 @@
                 </tr>
                 <tr tal:condition="context/phone_private">
                   <th i18n:translate="label_phone_private">Private phone number</th>
-                  <td tal:content="context/phone_private">031 000 00 00</td>
+                  <td tal:content="context/phone_private" />
                 </tr>
               </table>
             </tal:private>
@@ -91,7 +91,7 @@
           </div>
           <div tal:condition="not:context/image" tal:attributes="class string:contactPortrait gender-${context/gender}"></div>
           <div class="visualClear"></div>
-          <div class="contactText" tal:condition="context/text" tal:content="structure context/text/output">Text</div>
+          <div class="contactText" tal:condition="context/text" tal:content="structure context/text/output" />
           <tal:block tal:define="memberships view/get_memberships" tal:condition="memberships">
             <div class="memberships">
               <h3 i18n:translate="label_memberships">Memberships</h3>

@@ -6,26 +6,26 @@
           <img alt="vCard Download" src="++resource++ftw.contacts.resources/vcard.png" />
         </a>
       </h3>
-      <div tal:condition="context/function"><span tal:content="context/function">Function</span></div>
-      <div tal:condition="context/organization"><span tal:content="context/organization">Organization</span></div>
+      <div tal:condition="context/function"><span tal:content="context/function" /></div>
+      <div tal:condition="context/organization"><span tal:content="context/organization" /></div>
 
-      <div><span tal:content="context/title">Lastnaem Firstname</span></div>
-      <div tal:condition="context/address"><span tal:content="context/address">Address</span></div>
+      <div><span tal:content="context/title" /></div>
+      <div tal:condition="context/address"><span tal:content="context/address" /></div>
       <div tal:condition="python: context.postal_code and context.city">
-        <span tal:content="string:${context/postal_code} ${context/city}">ZIP City</span>
+        <span tal:content="string:${context/postal_code} ${context/city}" />
       </div>
       <table>
         <tr tal:condition="context/phone_office">
           <th><span i18n:translate="label_short_phone_office">Phone O</span></th>
-          <td><a tal:attributes="href string:tel:${context/phone_office}" tal:content="context/phone_office">079 797 79 79</a></td>
+          <td><a tal:attributes="href string:tel:${context/phone_office}" tal:content="context/phone_office" /></td>
         </tr>
         <tr tal:condition="context/phone_mobile">
           <th><span i18n:translate="label_short_phone_mobile">Phone M</span></th>
-          <td><a tal:attributes="href string:tel:${context/phone_mobile}" tal:content="context/phone_mobile">079 797 79 79</a></td>
+          <td><a tal:attributes="href string:tel:${context/phone_mobile}" tal:content="context/phone_mobile" /></td>
         </tr>
         <tr tal:condition="context/email">
           <th><span i18n:translate="label_short_email">Email</span></th>
-          <td><a tal:attributes="href string:mailto:${context/email}" tal:content="context/email">info@mail.com</a></td>
+          <td><a tal:attributes="href string:mailto:${context/email}" tal:content="context/email" /></td>
         </tr>
         <tr tal:condition="context/www">
           <th><span i18n:translate="label_showrt_www">Website</span></th>
@@ -33,7 +33,7 @@
             <a tal:condition="context/www"
                tal:content="python: context.www.replace('https://', '').replace('https://', '')"
                tal:attributes="href context/www"
-               target="_blank">www.google.ch</a>
+               target="_blank" />
           </td>
         </tr>
       </table>

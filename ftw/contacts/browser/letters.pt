@@ -1,6 +1,6 @@
 <div tal:repeat="letter view/letters"
     tal:attributes="class string:letter ${letter/current} ${letter/has_contents};
                     data-key letter/label">
-    <span tal:content="letter/label"></span>
+    <span tal:content="letter/label" />
 </div>
 <div class="visualClear"></div>
