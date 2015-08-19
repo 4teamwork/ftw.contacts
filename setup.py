@@ -54,7 +54,6 @@ setup(name='ftw.contacts',
           'plone.app.relationfield',
           'plone.api',
           'ftw.geo',
-          'ftw.simplelayout [contenttypes,mapblock]',
           ],
 
       tests_require=tests_require,

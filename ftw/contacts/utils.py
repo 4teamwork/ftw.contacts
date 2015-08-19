@@ -20,21 +20,21 @@ def encode(text):
 
 
 def get_backreferences(source_object, from_interface):
-        """
-        Return back references from source object on specified attribute_name
-        """
-        catalog = getUtility(ICatalog)
-        intids = getUtility(IIntIds)
-        result = []
-        for rel in catalog.findRelations({
-                'to_id': intids.getId(aq_inner(source_object)),
-                'from_interfaces_flattened': from_interface}):
+    """
+    Return back references from source object on specified attribute_name
+    """
+    catalog = getUtility(ICatalog)
+    intids = getUtility(IIntIds)
+    result = []
+    for rel in catalog.findRelations({
+            'to_id': intids.getId(aq_inner(source_object)),
+            'from_interfaces_flattened': from_interface}):
 
-            obj = intids.queryObject(rel.from_id)
+        obj = intids.queryObject(rel.from_id)
 
-            if obj is not None and checkPermission('zope2.View', obj):
-                result.append(obj)
-        return result
+        if obj is not None and checkPermission('zope2.View', obj):
+            result.append(obj)
+    return result
 
 
 def get_contact_title(contact, format=None):
@@ -51,10 +51,10 @@ def get_contact_title(contact, format=None):
 
 
 def normalized_first_letter(text):
-        """Normalizes the first letter of the text
-        """
-        text = make_sortable(text)
-        return text[0].upper()
+    """Normalizes the first letter of the text
+    """
+    text = make_sortable(text)
+    return text[0].upper()
 
 
 def make_sortable(text):
@@ -70,7 +70,7 @@ def make_sortable(text):
 
 
 class AlphabeticLetters(object):
-    """
+    """Provides a function to generate letters with different attributes
     """
     def letters(self, current_letter, brains):
         """Returns a dict with all available letters and

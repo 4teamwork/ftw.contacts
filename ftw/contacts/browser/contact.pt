@@ -9,7 +9,6 @@
   <body>
     <div metal:fill-slot="content-core">
       <metal:main-macro define-macro="content-core">
-
         <div id="contact-view">
           <div class="contactInfos">
             <table class="contacInfo">
@@ -69,7 +68,6 @@
                 </td>
               </tr>
             </table>
-
             <tal:private condition="context/address_private">
               <h2 i18n:translate="label_private_address">Privateaddress</h2>
               <table class="contactPrivateInfo">

@@ -31,7 +31,6 @@
                    placeholder="Search Contacts"
                    i18n:attributes="title title_search_title;
                                     placeholder title_search_site"/>
-
           </form>
           </div>
           <!-- End Folder Search Slot -->

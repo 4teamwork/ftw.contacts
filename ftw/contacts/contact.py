@@ -8,7 +8,6 @@ from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from z3c.schema.email import RFC822MailAddress
 from zope import schema
-from zope.interface import implements
 from zope.interface import Invalid
 from zope.interface import invariant
 from zope.schema.vocabulary import SimpleTerm
@@ -40,7 +39,7 @@ class IContact(model.Schema):
     gender = schema.Choice(
         title=_(u'label_gender', default=u'Gender'),
         vocabulary=gender_choice_vocabulary,
-        required=False,
+        required=True,
         default="")
 
     dexteritytextindexer.searchable('lastname')
