@@ -27,6 +27,7 @@ class ContactsLayer(PloneSandboxLayer):
         applyProfile(portal, 'ftw.contacts:default')
         applyProfile(portal, 'ftw.contacts:simplelayout')
         applyProfile(portal, 'ftw.simplelayout:default')
+        applyProfile(portal, 'ftw.zipexport:default')
 
 
 FTW_CONTACTS_FIXTURE = ContactsLayer()

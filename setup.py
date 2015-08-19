@@ -8,11 +8,15 @@ tests_require = [
     'ftw.builder',
     'ftw.simplelayout [contenttypes]',
     'plone.app.testing',
-    'ftw.testbrowser'
+    'ftw.testbrowser',
+    'ftw.contacts [zipexport]',
     ]
-
+zip_export = [
+    'ftw.zipexport'
+    ]
 extras_require = {
-    'tests': tests_require
+    'tests': tests_require,
+    'zip_export': zip_export
     }
 
 setup(name='ftw.contacts',
@@ -54,6 +58,7 @@ setup(name='ftw.contacts',
           'plone.app.relationfield',
           'plone.api',
           'ftw.geo',
+          'ftw.zipexport',
           ],
 
       tests_require=tests_require,

@@ -2,6 +2,7 @@ from ftw.builder import Builder
 from ftw.builder import create
 from ftw.contacts.browser.vcard import DownloadVCardView
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
+from ftw.contacts.utils import generate_vcard
 from unittest2 import TestCase
 import os
 
@@ -46,11 +47,18 @@ class TextVCardExport(TestCase):
             city_private='Dubai')
             .with_image())
 
-        vcard_view = DownloadVCardView(contact, self.request)
-
-        self.assertMultiLineEqual(asset('fritz-meier.vcf'), vcard_view())
+        self.assertMultiLineEqual(
+            asset('fritz-meier.vcf'), generate_vcard(contact))
 
     def test_minimal_contact_works(self):
+        contact = create(Builder('contact').having(
+            lastname='Blau',
+            firstname='Minho'))
+
+        self.assertMultiLineEqual(
+            asset('blau-minho.vcf'), generate_vcard(contact))
+
+    def test_call_vcard_download_view(self):
         contact = create(Builder('contact').having(
             lastname='Blau',
             firstname='Minho'))

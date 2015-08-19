@@ -70,4 +70,10 @@
         />
     </configure>
     <!-- End ftw.simplelayout -->
+
+    <!-- ftw.zipexport -->
+    <configure zcml:condition="installed ftw.zipexport">
+        <adapter factory=".zipexport.ContactZipRepresentation" />
+    </configure>
+    <!-- End ftw.zipexport -->
 </configure>
