@@ -120,3 +120,13 @@ class IMember(model.Schema):
 class Member(Item):
     """A member
     """
+    def organization(self):
+        parent = self.aq_parent
+        while parent.portal_type not in ['OrgUnit',
+                                         'Plone Site',
+                                         'ftw.simplelayout.ContentPage']:
+            parent = parent.aq_parent
+        if parent.portal_type in [
+                'OrgUnit', 'ftw.simplelayout.ContentPage']:
+            return parent.Title()
+        return ""

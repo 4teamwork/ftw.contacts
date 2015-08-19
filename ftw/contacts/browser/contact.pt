@@ -94,6 +94,20 @@
           <div tal:condition="not:context/image" tal:attributes="class string:contactPortrait gender-${context/gender}"></div>
           <div class="visualClear"></div>
           <div class="contactText" tal:condition="context/text" tal:content="structure context/text/output">Text</div>
+          <tal:block tal:define="memberships view/get_memberships" tal:condition="memberships">
+            <div class="memberships">
+              <h3 i18n:translate="label_memberships">Memberships</h3>
+              <ul>
+                <tal:items tal:repeat="member memberships">
+                  <li>
+                    <a href="" tal:attributes="href string:${member/absolute_url}">
+                      <span tal:condition="member/organization" tal:replace="member/organization"/>
+                      <span tal:condition="member/function" tal:replace="string:(${member/function})"/></a>
+                  </li>
+                </tal:items>
+              </ul>
+            </div>
+          </tal:block>
         </div>
       </metal:main-macro>
     </div>
