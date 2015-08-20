@@ -3,6 +3,7 @@ from ftw.builder import create
 from ftw.contacts.member import IMember
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import get_backreferences
+from plone.app.testing import logout
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from unittest2 import TestCase
@@ -37,5 +38,24 @@ class TestBackReferences(TestCase):
         contact = create(Builder('contact')
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
+
+        self.assertEqual([], get_backreferences(contact, IMember))
+
+    def test_do_not_append_objs_with_no_permission(self):
+        contact = create(Builder('contact')
+                         .with_minimal_info(u'Ch\xf6ck', u'4orris')
+                         .within(self.contactfolder))
+
+        member = create(Builder('member')
+                        .within(self.contactfolder)
+                        .contact(contact)
+                        .having(
+                            firstname=u"J\xf6mes"))
+
+        self.assertEqual(
+            [member], get_backreferences(contact, IMember))
+
+
+        logout()
 
         self.assertEqual([], get_backreferences(contact, IMember))

@@ -9,8 +9,8 @@ from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
 from unittest2 import TestCase
 from zope.component import createObject
-from zope.component import getMultiAdapter
 from zope.component import queryUtility
+import transaction
 
 
 class TestDefaultView(TestCase):
@@ -25,7 +25,7 @@ class TestDefaultView(TestCase):
 
     @browsing
     def test_call_with_deleted_contact_returns_hint(self, browser):
-        # TODO: Refactoring
+
         contact = create(Builder('contact')
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
@@ -37,17 +37,16 @@ class TestDefaultView(TestCase):
                             firstname=u"J\xf6mes"))
 
         delete(contact)
+        transaction.commit()
 
-        # browser.login().visit(member)
-        view = getMultiAdapter((member, self.layer['request']), name="view")
-        browser.open_html(view())
+        browser.login().visit(member)
 
         self.assertEqual(1, len(browser.css('#member-no-contact-exist')))
 
     @browsing
     def test_call_returns_member_view(self, browser):
         contact = create(Builder('contact')
-                         .with_minimal_info(u'Ch\xf6ck', u'4orris')
+                         .with_maximal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
 
         member = create(Builder('member')
@@ -71,6 +70,9 @@ class TestDefaultView(TestCase):
                         .contact(contact)
                         .having(
                             firstname=u"J\xf6mes"))
+
+        delete(contact)
+        transaction.commit()
 
         browser.visit(member)
 

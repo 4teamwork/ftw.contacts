@@ -1,5 +1,6 @@
 from ftw.builder import builder_registry
 from ftw.builder.dexterity import DexterityBuilder
+from plone.app.textfield.value import RichTextValue
 from plone.namedfile import NamedImage
 from z3c.relationfield.relation import create_relation
 
@@ -48,7 +49,7 @@ class ContactBuilder(DexterityBuilder):
             function=u'Imk\xe9r',
             department=u'Cust\xf5mer Services',
             salutation='Sir',
-            text=u'He is \xb1 awesome!',
+            text=RichTextValue(u'He is \xb1 awesome!'),
             phone_private='+41 70 123 32 12',
             address_private='Chriesleweg 5',
             postal_code_private='9999',

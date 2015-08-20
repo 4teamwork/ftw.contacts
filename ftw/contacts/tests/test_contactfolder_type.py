@@ -1,7 +1,7 @@
 from ftw.builder import Builder
 from ftw.builder import create
 from ftw.contacts.contactfolder import IContactFolder
-from ftw.contacts.testing import FTW_CONTACTS_INTEGRATION_TESTING
+from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
@@ -12,7 +12,7 @@ from zope.component import queryUtility
 
 class TestContactFolderInstallation(TestCase):
 
-    layer = FTW_CONTACTS_INTEGRATION_TESTING
+    layer = FTW_CONTACTS_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']

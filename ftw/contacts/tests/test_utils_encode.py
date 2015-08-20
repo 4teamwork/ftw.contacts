@@ -1,11 +1,11 @@
-from ftw.contacts.testing import FTW_CONTACTS_INTEGRATION_TESTING
+from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import encode
 from unittest2 import TestCase
 
 
 class TestContactTitle(TestCase):
 
-    layer = FTW_CONTACTS_INTEGRATION_TESTING
+    layer = FTW_CONTACTS_FUNCTIONAL_TESTING
 
     def test_encode_unicode_to_utf8(self):
         self.assertEqual("\xc3\xbcber", encode(u"\xfcber"))

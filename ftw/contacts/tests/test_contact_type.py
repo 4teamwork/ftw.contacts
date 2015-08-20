@@ -19,12 +19,13 @@ class TestDefaultView(TestCase):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
 
+        self.contactfolder = create(
+            Builder('contact folder').titled(u'Contact folder'))
+
     @browsing
     def test_call_view_does_not_fail(self, browser):
-        contactfolder = create(
-            Builder('contact folder').titled(u'Contact folder'))
         browser.login().visit(
-            contactfolder, view="++add++ftw.contacts.Contact")
+            self.contactfolder, view="++add++ftw.contacts.Contact")
 
         browser.fill({
             'Organization': '',
@@ -32,6 +33,26 @@ class TestDefaultView(TestCase):
             'Lastname': 'N\xc3\xb6rris'}).submit()
 
         self.assertEqual(1, len(browser.css('#contact-view')))
+
+    @browsing
+    def test_show_memberships_of_contact(self, browser):
+        contact = create(Builder('contact')
+                         .with_minimal_info(u'Ch\xf6ck', u'4orris')
+                         .within(self.contactfolder))
+
+        create(Builder('member')
+               .within(self.contactfolder)
+               .contact(contact)
+               .titled(u"A Member"))
+
+        create(Builder('member')
+               .within(self.contactfolder)
+               .contact(contact)
+               .titled(u"A Member"))
+
+        browser.login().visit(contact)
+
+        self.assertEqual(2, len(browser.css('.memberships li')))
 
 
 class TestIdGeneration(TestCase):

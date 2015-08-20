@@ -2,6 +2,7 @@ from collective import dexteritytextindexer
 from ftw.contacts import _
 from ftw.contacts.utils import get_contact_title
 from plone.app.textfield import RichText
+from plone.app.textfield.value import RichTextValue
 from plone.autoform import directives as form
 from plone.dexterity.content import Item
 from plone.namedfile.field import NamedBlobImage
@@ -154,8 +155,6 @@ class IContact(model.Schema):
     dexteritytextindexer.searchable('text')
     text = RichText(
         title=_(u'label_text', default=u'Text'),
-        missing_value=u"",
-        default=u"",
         required=False,
         allowed_mime_types=('text/html',))
 

@@ -1,12 +1,14 @@
+from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Acquisition import aq_inner
+from Acquisition import aq_parent
 from base64 import b64encode
+from plone import api
 from plone.memoize import instance
 from plone.namedfile.utils import stream_data
 from StringIO import StringIO
 from zc.relation.interfaces import ICatalog
 from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
-from zope.security import checkPermission
 import unicodedata
 
 
@@ -22,20 +24,37 @@ def encode(text):
     return text
 
 
+def get_organization(context, portal_types=[]):
+    """Traverse up to search a parent-object matching a portal_type
+    If it reaches a portal_type, it returns its title.
+    If it reaches the plone siteroot it returns an empty string
+    """
+    context = aq_inner(context)
+    parent = aq_parent(context)
+    while parent.portal_type not in portal_types:
+        if IPloneSiteRoot.providedBy(parent):
+            return ''
+        parent = parent.aq_parent
+    return parent.Title()
+
+
 def get_backreferences(source_object, from_interface):
     """
     Return back references from source object on specified attribute_name
     """
     catalog = getUtility(ICatalog)
     intids = getUtility(IIntIds)
+    mtool = api.portal.get_tool('portal_membership')
+
     result = []
+
     for rel in catalog.findRelations({
             'to_id': intids.getId(aq_inner(source_object)),
             'from_interfaces_flattened': from_interface}):
 
         obj = intids.queryObject(rel.from_id)
 
-        if obj is not None and checkPermission('zope2.View', obj):
+        if obj is not None and mtool.checkPermission('zope2.View', obj):
             result.append(obj)
     return result
 
@@ -120,8 +139,9 @@ def generate_vcard(contact):
         }
 
         def addProp(name, value):
-            if value not in (None, '', u''):
-                io.write('{0}:{1}\n'.format(encode(name), encode(value)))
+            if not value:
+                return
+            io.write('{0}:{1}\n'.format(encode(name), encode(value)))
 
         addProp('BEGIN', 'VCARD')
         addProp('VERSION', '3.0')

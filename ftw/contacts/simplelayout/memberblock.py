@@ -13,7 +13,7 @@ class MemberBlockView(BaseBlock, MemberView):
     def image_caption(self):
         mtool = getToolByName(self, "portal_membership")
 
-        if mtool.checkPermission('View', self.context.contact):
+        if mtool.checkPermission('View', self.context.contact.to_object):
             return self.contact_title
         return ''
 

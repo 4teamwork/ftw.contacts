@@ -1,11 +1,11 @@
-from ftw.contacts.testing import FTW_CONTACTS_INTEGRATION_TESTING
+from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import make_sortable
 from unittest2 import TestCase
 
 
 class TestMakeSortable(TestCase):
 
-    layer = FTW_CONTACTS_INTEGRATION_TESTING
+    layer = FTW_CONTACTS_FUNCTIONAL_TESTING
 
     def test_text_is_lowercased(self):
         self.assertEquals('foo',

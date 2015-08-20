@@ -1,6 +1,7 @@
 from collective import dexteritytextindexer
 from ftw.contacts import _
 from ftw.contacts.contact import IContact
+from ftw.contacts.utils import get_organization
 from plone.dexterity.content import Item
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from plone.supermodel import model
@@ -121,12 +122,5 @@ class Member(Item):
     """A member
     """
     def organization(self):
-        parent = self.aq_parent
-        while parent.portal_type not in ['OrgUnit',
-                                         'Plone Site',
-                                         'ftw.simplelayout.ContentPage']:
-            parent = parent.aq_parent
-        if parent.portal_type in [
-                'OrgUnit', 'ftw.simplelayout.ContentPage']:
-            return parent.Title()
-        return ""
+        return get_organization(
+            self, ['OrgUnit', 'ftw.simplelayout.ContentPage'])

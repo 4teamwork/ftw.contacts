@@ -1,6 +1,6 @@
 from ftw.builder import Builder
 from ftw.builder import create
-from ftw.contacts.testing import FTW_CONTACTS_INTEGRATION_TESTING
+from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import get_contact_title
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -9,7 +9,7 @@ from unittest2 import TestCase
 
 class TestContactTitle(TestCase):
 
-    layer = FTW_CONTACTS_INTEGRATION_TESTING
+    layer = FTW_CONTACTS_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']

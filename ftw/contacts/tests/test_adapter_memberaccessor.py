@@ -1,14 +1,14 @@
 from ftw.builder import Builder
 from ftw.builder import create
 from ftw.contacts.interfaces import IMemberAccessor
-from ftw.contacts.testing import FTW_CONTACTS_INTEGRATION_TESTING
+from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from Products.CMFCore.utils import getToolByName
 from unittest2 import TestCase
 
 
 class TestMemberAccessor(TestCase):
 
-    layer = FTW_CONTACTS_INTEGRATION_TESTING
+    layer = FTW_CONTACTS_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']

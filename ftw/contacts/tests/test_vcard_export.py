@@ -22,46 +22,26 @@ class TextVCardExport(TestCase):
         self.request = self.layer['request']
 
     def test_detailed_contact_works(self):
-        contact = create(Builder('contact').having(
-            organization=u'Fant\xe0storg',
-            gender='f',
-            lastname=u'M\xe9ier',
+        contact = create(Builder('contact').with_maximal_info(
             firstname=u'Fr\xedtz',
-            address=u'Chrache zw\xf6i',
-            postal_code='1337',
-            city=u'G\xf4tham',
-            country='Schweiz',
-            email='fmeier@stirnimaa.ch',
-            phone_office='+41 33 456 78 01',
-            phone_mobile='+70 98 765 43 21',
-            fax='+41 33 456 78 02',
-            www='http://www.cheib.ch',
-            academic_title='Master of the Universe',
-            function=u'Imk\xe9r',
-            department=u'Cust\xf5mer Services',
-            salutation='Sir',
-            text=u'He is \xb1 awesome!',
-            phone_private='+41 70 123 32 12',
-            address_private='Chriesleweg 5',
-            postal_code_private='9999',
-            city_private='Dubai')
-            .with_image())
+            lastname=u'M\xe9ier'
+            ))
 
         self.assertMultiLineEqual(
-            asset('fritz-meier.vcf'), generate_vcard(contact))
+            asset('fritz-meier.vcf'), generate_vcard(contact).getvalue())
 
     def test_minimal_contact_works(self):
-        contact = create(Builder('contact').having(
-            lastname='Blau',
-            firstname='Minho'))
+        contact = create(Builder('contact').with_minimal_info(
+            firstname='Minho',
+            lastname='Blau'))
 
         self.assertMultiLineEqual(
-            asset('blau-minho.vcf'), generate_vcard(contact))
+            asset('blau-minho.vcf'), generate_vcard(contact).getvalue())
 
     def test_call_vcard_download_view(self):
-        contact = create(Builder('contact').having(
-            lastname='Blau',
-            firstname='Minho'))
+        contact = create(Builder('contact').with_minimal_info(
+            firstname='Minho',
+            lastname='Blau'))
 
         vcard_view = DownloadVCardView(contact, self.request)
 
