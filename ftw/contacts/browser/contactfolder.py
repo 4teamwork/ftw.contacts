@@ -43,6 +43,9 @@ class ContactFolderReload(BrowserView):
     current letter and letters with contacts.
     """
     def __call__(self):
+        self.request.response.setHeader('X-Theme-Disabled', 'True')
+        self.request.response.setHeader(
+            'Content-Type', 'application/json; charset=utf-8')
         index_from = int(self.request.form.get('index_from', 0))
         index_to = int(self.request.form.get('index_to', 50))
         searchable_text = self.request.form.get('searchable_text', '')
