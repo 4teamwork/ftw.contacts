@@ -48,7 +48,7 @@ class IMemberSchema(model.Schema):
 
     acquire_address = schema.Bool(
         title=_(u'label_acquire_address', default=u'Acquire address'),
-        required=False)
+        required=True)
 
     dexteritytextindexer.searchable('address')
     address = schema.Text(
