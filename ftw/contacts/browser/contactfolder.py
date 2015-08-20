@@ -1,4 +1,4 @@
-from ftw.contacts.contents.contact import IContact
+from ftw.contacts.interfaces import IContact
 from ftw.contacts.utils import ALPHABET
 from ftw.contacts.utils import AlphabeticLetters
 from ftw.contacts.utils import normalized_first_letter

@@ -1,6 +1,7 @@
 from ftw.builder import Builder
 from ftw.builder import create
-from ftw.contacts.contents.contact import IContact
+from ftw.contacts.contents.contact import IContactSchema
+from ftw.contacts.interfaces import IContact
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.testbrowser import browsing
 from plone.app.testing import setRoles
@@ -265,13 +266,13 @@ class TestContactInstallation(TestCase):
     def test_schema(self):
         fti = queryUtility(IDexterityFTI, name='ftw.contacts.Contact')
         schema = fti.lookupSchema()
-        self.assertEqual(IContact, schema)
+        self.assertEqual(IContactSchema, schema)
 
     def test_factory(self):
         fti = queryUtility(IDexterityFTI, name='ftw.contacts.Contact')
         factory = fti.factory
         new_object = createObject(factory)
-        self.assertTrue(IContact.providedBy(new_object))
+        self.assertTrue(IContactSchema.providedBy(new_object))
 
     def test_relation(self):
         contact = create(Builder('contact'))

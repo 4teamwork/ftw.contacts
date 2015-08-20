@@ -1,14 +1,15 @@
 from collective import dexteritytextindexer
 from ftw.contacts import _
+from ftw.contacts.interfaces import IContact
 from ftw.contacts.utils import get_contact_title
 from plone.app.textfield import RichText
-from plone.app.textfield.value import RichTextValue
 from plone.autoform import directives as form
 from plone.dexterity.content import Item
 from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from z3c.schema.email import RFC822MailAddress
 from zope import schema
+from zope.interface import implements
 from zope.interface import Invalid
 from zope.interface import invariant
 from zope.schema.vocabulary import SimpleTerm
@@ -27,7 +28,7 @@ gender_choice_vocabulary = SimpleVocabulary([
     ])
 
 
-class IContact(model.Schema):
+class IContactSchema(model.Schema):
     """A contact type schema interface
     """
     dexteritytextindexer.searchable('organization')
@@ -223,6 +224,8 @@ class IContact(model.Schema):
 class Contact(Item):
     """A contact
     """
+    implements(IContact)
+
     @property
     def title(self):
         """Getter function for the title

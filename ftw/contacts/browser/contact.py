@@ -1,4 +1,4 @@
-from ftw.contacts.contents.member import IMember
+from ftw.contacts.interfaces import IMember
 from ftw.contacts.utils import get_backreferences
 from ftw.contacts.utils import safe_html
 from plone import api

@@ -12,7 +12,7 @@
     <property name="allowed_content_types" />
 
   <!-- schema interface -->
-  <property name="schema">ftw.contacts.contents.member.IMember</property>
+  <property name="schema">ftw.contacts.contents.member.IMemberSchema</property>
 
   <property name="behaviors">
       <element value="plone.app.content.interfaces.INameFromTitle" />

@@ -1,4 +1,4 @@
-from ftw.contacts.contents.contact import IContact
+from ftw.contacts.interfaces import IContact
 from ftw.contacts.utils import generate_vcard
 from ftw.zipexport.interfaces import IZipRepresentation
 from ftw.zipexport.representations.general import NullZipRepresentation

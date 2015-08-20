@@ -1,6 +1,7 @@
 from ftw.builder import Builder
 from ftw.builder import create
-from ftw.contacts.contents.member import IMember
+from ftw.contacts.contents.member import IMemberSchema
+from ftw.contacts.interfaces import IMember
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.testbrowser import browsing
 from plone.api.content import delete
@@ -98,10 +99,10 @@ class TestMemberInstallation(TestCase):
     def test_schema(self):
         fti = queryUtility(IDexterityFTI, name='ftw.contacts.Member')
         schema = fti.lookupSchema()
-        self.assertEqual(IMember, schema)
+        self.assertEqual(IMemberSchema, schema)
 
     def test_factory(self):
         fti = queryUtility(IDexterityFTI, name='ftw.contacts.Member')
         factory = fti.factory
         new_object = createObject(factory)
-        self.assertTrue(IMember.providedBy(new_object))
+        self.assertTrue(IMemberSchema.providedBy(new_object))

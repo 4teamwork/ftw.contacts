@@ -1,6 +1,7 @@
 from ftw.builder import Builder
 from ftw.builder import create
-from ftw.contacts.contents.contactfolder import IContactFolder
+from ftw.contacts.contents.contactfolder import IContactFolderSchema
+from ftw.contacts.interfaces import IContactFolder
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -31,10 +32,10 @@ class TestContactFolderInstallation(TestCase):
     def test_schema(self):
         fti = queryUtility(IDexterityFTI, name='ftw.contacts.ContactFolder')
         schema = fti.lookupSchema()
-        self.assertEqual(IContactFolder, schema)
+        self.assertEqual(IContactFolderSchema, schema)
 
     def test_factory(self):
         fti = queryUtility(IDexterityFTI, name='ftw.contacts.ContactFolder')
         factory = fti.factory
         new_object = createObject(factory)
-        self.assertTrue(IContactFolder.providedBy(new_object))
+        self.assertTrue(IContactFolderSchema.providedBy(new_object))

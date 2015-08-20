@@ -1,6 +1,7 @@
 from collective import dexteritytextindexer
 from ftw.contacts import _
-from ftw.contacts.contents.contact import IContact
+from ftw.contacts.interfaces import IContact
+from ftw.contacts.interfaces import IMember
 from ftw.contacts.utils import get_organization
 from plone.dexterity.content import Item
 from plone.formwidget.contenttree import ObjPathSourceBinder
@@ -8,9 +9,10 @@ from plone.supermodel import model
 from z3c.relationfield.schema import RelationChoice
 from z3c.schema.email import RFC822MailAddress
 from zope import schema
+from zope.interface import implements
 
 
-class IMember(model.Schema):
+class IMemberSchema(model.Schema):
     """A member type schema interface
     """
     dexteritytextindexer.searchable('title')
@@ -121,6 +123,8 @@ class IMember(model.Schema):
 class Member(Item):
     """A member
     """
+    implements(IMember)
+
     def organization(self):
         return get_organization(
             self, ['OrgUnit', 'ftw.simplelayout.ContentPage'])

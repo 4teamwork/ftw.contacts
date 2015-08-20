@@ -12,7 +12,7 @@
     <property name="allowed_content_types" />
 
   <!-- schema interface -->
-  <property name="schema">ftw.contacts.contents.contact.IContact</property>
+  <property name="schema">ftw.contacts.contents.contact.IContactSchema</property>
 
   <property name="behaviors">
       <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>

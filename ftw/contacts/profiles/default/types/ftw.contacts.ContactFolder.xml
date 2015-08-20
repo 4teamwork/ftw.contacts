@@ -14,7 +14,7 @@
   </property>
 
   <!-- schema interface -->
-  <property name="schema">ftw.contacts.contents.contactfolder.IContactFolder</property>
+  <property name="schema">ftw.contacts.contents.contactfolder.IContactFolderSchema</property>
 
   <!-- enabled behaviors -->
   <property name="behaviors">

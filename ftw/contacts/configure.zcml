@@ -32,23 +32,23 @@
         />
     <adapter
         factory=".adapters.MemberAccessor"
-        for="ftw.contacts.contents.member.IMember"
+        for="ftw.contacts.interfaces.IMember"
         provides="ftw.contacts.interfaces.IMemberAccessor"
         />
     <!-- ftw.geo -->
     <adapter
-        for="ftw.contacts.contents.contact.IContact"
+        for="ftw.contacts.interfaces.IContact"
         provides="collective.geo.settings.interfaces.IGeoCustomFeatureStyle"
         factory="collective.geo.contentlocations.geostylemanager.GeoStyleManager"
     />
     <subscriber
-        for="ftw.contacts.contents.contact.IContact
+        for="ftw.contacts.interfaces.IContact
              zope.lifecycleevent.interfaces.IObjectModifiedEvent"
         handler=".handlers.initializeCustomFeatureStyles"
         />
     <adapter
         factory=".adapters.ContactLocationAdapter"
-        for="ftw.contacts.contents.contact.IContact"
+        for="ftw.contacts.interfaces.IContact"
         provides="ftw.geo.interfaces.IGeocodableLocation"
         />
     <class class="ftw.contacts.contents.contact.Contact">
