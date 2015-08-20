@@ -44,7 +44,7 @@
     <subscriber
         for="ftw.contacts.interfaces.IContact
              zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-        handler=".handlers.initializeCustomFeatureStyles"
+        handler=".subscribers.initializeCustomFeatureStyles"
         />
     <adapter
         factory=".adapters.ContactLocationAdapter"
