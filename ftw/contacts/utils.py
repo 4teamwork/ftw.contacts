@@ -38,6 +38,19 @@ def get_organization(context, portal_types=[]):
     return parent.Title()
 
 
+def safe_html(text):
+    if not text:
+        return ''
+
+    if isinstance(text, unicode):
+        text = text.encode('utf-8')
+
+    ttool = api.portal.get_tool('portal_transforms')
+    text = ttool.convertTo('text/x-html-safe', text).getData()
+    text = text.replace('\n', '<br />')
+    return text
+
+
 def get_backreferences(source_object, from_interface):
     """
     Return back references from source object on specified attribute_name

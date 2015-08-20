@@ -59,8 +59,7 @@ setup(name='ftw.contacts',
           'plone.api',
           'ftw.geo',
           'ftw.zipexport',
-          'ftw.profilehook',
-          'ftw.simplelayout [contenttypes]'
+          'ftw.profilehook'
           ],
 
       tests_require=tests_require,
