@@ -1,9 +1,0 @@
-#plone-contentmenu-factories .contenttype-ftw-contacts-member {
-    display: none !important;
-}
-.contenttreeWindowBlocker {
-    z-index: 10000 !important;
-}
-.contenttreeWindow {
-    z-index: 10001 !important;
-}

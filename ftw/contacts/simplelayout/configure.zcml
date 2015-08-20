@@ -12,8 +12,4 @@
         template="memberblock.pt"
         />
 
-    <browser:resourceDirectory
-        name="ftw.contacts.simplelayout.resources"
-        directory="resources"
-        />
 </configure>

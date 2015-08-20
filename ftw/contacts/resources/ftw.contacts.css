@@ -156,3 +156,17 @@
 .memberBlockPortrait.gender- {
     background-image: url("++resource++ftw.contacts.resources/factory.png");
 }
+
+/* ftw.simplelayout integration */
+#plone-contentmenu-factories .contenttype-ftw-contacts-member {
+    display: none !important;
+}
+/* TODO: Remove this after closing this issue: https://github.com/4teamwork/ftw.simplelayout/issues/226 */
+.contenttreeWindowBlocker {
+    z-index: 10000 !important;
+}
+.contenttreeWindow {
+    z-index: 10001 !important;
+}
+/* End TODO*/
+/* End ftw.simplelayout integration */
