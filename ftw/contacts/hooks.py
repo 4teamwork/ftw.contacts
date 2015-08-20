@@ -16,5 +16,5 @@ def georef_settings(context):
     """
     registry = getUtility(IRegistry)
     geo_content_types = registry.forInterface(IGeoSettings).geo_content_types
-    if 'ftw.contacts.Contcat' not in geo_content_types:
+    if 'ftw.contacts.Contact' not in geo_content_types:
         geo_content_types.append('ftw.contacts.Contact')
