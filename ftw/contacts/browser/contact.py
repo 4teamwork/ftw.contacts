@@ -1,4 +1,4 @@
-from ftw.contacts.member import IMember
+from ftw.contacts.contents.member import IMember
 from ftw.contacts.utils import get_backreferences
 from plone import api
 from Products.Five.browser import BrowserView

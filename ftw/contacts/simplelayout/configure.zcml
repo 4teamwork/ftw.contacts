@@ -5,7 +5,7 @@
     i18n_domain="ftw.contacts">
 
     <browser:page
-        for="ftw.contacts.member.IMember"
+        for="ftw.contacts.contents.member.IMember"
         name="block_view"
         class=".memberblock.MemberBlockView"
         permission="zope2.View"

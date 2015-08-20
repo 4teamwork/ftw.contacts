@@ -14,7 +14,7 @@
   </property>
 
   <!-- schema interface -->
-  <property name="schema">ftw.contacts.contactfolder.IContactFolder</property>
+  <property name="schema">ftw.contacts.contents.contactfolder.IContactFolder</property>
 
   <!-- enabled behaviors -->
   <property name="behaviors">
@@ -24,7 +24,7 @@
   </property>
 
   <!-- class used for content items -->
-  <property name="klass">ftw.contacts.contactfolder.ContactFolder</property>
+  <property name="klass">ftw.contacts.contents.contactfolder.ContactFolder</property>
 
   <!-- add permission -->
   <property name="add_permission">ftw.contacts.AddContactFolder</property>

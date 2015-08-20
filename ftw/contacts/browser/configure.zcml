@@ -5,47 +5,47 @@
     i18n_domain="ftw.contacts">
 
     <browser:page
-        for="ftw.contacts.contact.IContact"
+        for="ftw.contacts.contents.contact.IContact"
         name="view"
         class=".contact.ContactView"
         permission="zope2.View"
         template="contact.pt"
         />
     <browser:page
-        for="ftw.contacts.contact.IContact"
+        for="ftw.contacts.contents.contact.IContact"
         name="download"
         class=".vcard.DownloadVCardView"
         permission="zope2.View"
         />
     <browser:page
-        for="ftw.contacts.contact.IContact"
+        for="ftw.contacts.contents.contact.IContact"
         name="contact_summary"
         class=".contact.ContactSummary"
         template="contact_summary.pt"
         permission="zope2.View"
         />
     <browser:page
-        for="ftw.contacts.contactfolder.IContactFolder"
+        for="ftw.contacts.contents.contactfolder.IContactFolder"
         name="letters"
         class=".contactfolder.Letters"
         template="letters.pt"
         permission="zope2.View"
         />
     <browser:page
-        for="ftw.contacts.contactfolder.IContactFolder"
+        for="ftw.contacts.contents.contactfolder.IContactFolder"
         name="view"
         class=".contactfolder.ContactFolderView"
         permission="zope2.View"
         template="contactfolder.pt"
         />
     <browser:page
-        for="ftw.contacts.contactfolder.IContactFolder"
+        for="ftw.contacts.contents.contactfolder.IContactFolder"
         name="reload"
         class=".contactfolder.ContactFolderReload"
         permission="zope2.View"
         />
     <browser:page
-        for="ftw.contacts.member.IMember"
+        for="ftw.contacts.contents.member.IMember"
         name="view"
         class=".member.MemberView"
         permission="zope2.View"

@@ -1,6 +1,6 @@
 from collective import dexteritytextindexer
 from ftw.contacts import _
-from ftw.contacts.contact import IContact
+from ftw.contacts.contents.contact import IContact
 from ftw.contacts.utils import get_organization
 from plone.dexterity.content import Item
 from plone.formwidget.contenttree import ObjPathSourceBinder

@@ -1,6 +1,6 @@
 from ftw.builder import Builder
 from ftw.builder import create
-from ftw.contacts.contactfolder import IContactFolder
+from ftw.contacts.contents.contactfolder import IContactFolder
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID

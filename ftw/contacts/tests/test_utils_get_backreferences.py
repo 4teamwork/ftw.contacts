@@ -1,6 +1,6 @@
 from ftw.builder import Builder
 from ftw.builder import create
-from ftw.contacts.member import IMember
+from ftw.contacts.contents.member import IMember
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import get_backreferences
 from plone.app.testing import logout
