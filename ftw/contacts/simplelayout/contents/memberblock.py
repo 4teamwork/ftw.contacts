@@ -1,7 +1,7 @@
 from collective import dexteritytextindexer
 from ftw.contacts import _
 from ftw.contacts.interfaces import IContact
-from ftw.contacts.interfaces import IMember
+from ftw.contacts.interfaces import IMemberBlock
 from ftw.contacts.utils import get_organization
 from plone.dexterity.content import Item
 from plone.formwidget.contenttree import ObjPathSourceBinder
@@ -12,7 +12,7 @@ from zope import schema
 from zope.interface import implements
 
 
-class IMemberSchema(model.Schema):
+class IMemberBlockSchema(model.Schema):
     """A member type schema interface
     """
     dexteritytextindexer.searchable('title')
@@ -120,10 +120,10 @@ class IMemberSchema(model.Schema):
     )
 
 
-class Member(Item):
+class MemberBlock(Item):
     """A member
     """
-    implements(IMember)
+    implements(IMemberBlock)
 
     def organization(self):
         return get_organization(

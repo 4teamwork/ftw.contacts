@@ -17,6 +17,6 @@ class IContact(Interface):
     """
 
 
-class IMember(Interface):
+class IMemberBlock(Interface):
     """
     """

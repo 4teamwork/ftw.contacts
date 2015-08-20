@@ -13,11 +13,6 @@
         title="ftw.contacts: Add Contact"
         />
 
-    <permission
-        id="ftw.contacts.AddMember"
-        title="ftw.contacts: Add Member"
-        />
-
     <!-- ftw.simplelayout -->
     <configure zcml:condition="installed ftw.simplelayout">
         <permission

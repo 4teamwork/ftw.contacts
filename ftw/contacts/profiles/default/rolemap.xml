@@ -11,10 +11,5 @@
       <role name="Site Administrator"/>
       <role name="Contributor" />
     </permission>
-    <permission name="ftw.contacts: Add Member" acquire="False">
-      <role name="Manager" />
-      <role name="Site Administrator"/>
-      <role name="Contributor" />
-    </permission>
   </permissions>
 </rolemap>

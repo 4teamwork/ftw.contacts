@@ -62,20 +62,13 @@ class ContactBuilder(DexterityBuilder):
 builder_registry.register('contact', ContactBuilder)
 
 
-class MemberBuilder(DexterityBuilder):
-    portal_type = 'ftw.contacts.Member'
+class MemberBlockBuilder(DexterityBuilder):
+    portal_type = 'ftw.contacts.MemberBlock'
 
     def contact(self, contact):
         self.arguments.update(
             contact=create_relation(contact.getPhysicalPath()))
 
         return self
-
-builder_registry.register('member', MemberBuilder)
-
-
-class MemberBlockBuilder(DexterityBuilder):
-    portal_type = 'ftw.contacts.MemberBlock'
-
 
 builder_registry.register('member block', MemberBlockBuilder)

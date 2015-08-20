@@ -21,50 +21,50 @@ class TestMemberAccessor(TestCase):
                          .with_minimal_info(u'Chuck', u'4\xf6rris')
                          .within(self.contactfolder))
 
-        member = create(Builder('member')
-                        .within(self.contactfolder)
-                        .contact(contact)
-                        .having(
-                            firstname=u"J\xf6mes"))
+        member_block = create(Builder('member block')
+                              .within(self.contactfolder)
+                              .contact(contact)
+                              .having(
+                                  firstname=u"J\xf6mes"))
 
-        self.assertEqual(u'J\xf6mes', IMemberAccessor(member).firstname)
+        self.assertEqual(u'J\xf6mes', IMemberAccessor(member_block).firstname)
 
     def test_get_attr_on_contact_if_aquire_address(self):
         contact = create(Builder('contact')
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
 
-        member = create(Builder('member')
-                        .within(self.contactfolder)
-                        .contact(contact)
-                        .having(
-                            firstname=u"J\xf6mes",
-                            acquire_address=True))
+        member_block = create(Builder('member block')
+                              .within(self.contactfolder)
+                              .contact(contact)
+                              .having(
+                                  firstname=u"J\xf6mes",
+                                  acquire_address=True))
 
-        self.assertEqual(u'Ch\xf6ck', IMemberAccessor(member).firstname)
+        self.assertEqual(u'Ch\xf6ck', IMemberAccessor(member_block).firstname)
 
     def test_get_attr_on_member_if_aquire_address_but_attr_not_exist(self):
         contact = create(Builder('contact')
                          .with_minimal_info(u'Chuck', u'4\xf6rris')
                          .within(self.contactfolder))
 
-        member = create(Builder('member')
-                        .within(self.contactfolder)
-                        .contact(contact)
-                        .having(
-                            acquire_address=True,
-                            show_title=True))
+        member_block = create(Builder('member block')
+                              .within(self.contactfolder)
+                              .contact(contact)
+                              .having(
+                                  acquire_address=True,
+                                  show_title=True))
 
         self.assertEqual(False, hasattr(contact, 'show_title'))
-        self.assertEqual(True, IMemberAccessor(member).show_title)
+        self.assertEqual(True, IMemberAccessor(member_block).show_title)
 
     def test_get_not_existing_attr_returns_none(self):
         contact = create(Builder('contact')
                          .with_minimal_info(u'Chuck', u'4\xf6rris')
                          .within(self.contactfolder))
 
-        member = create(Builder('member')
-                        .within(self.contactfolder)
-                        .contact(contact))
+        member_block = create(Builder('member block')
+                              .within(self.contactfolder)
+                              .contact(contact))
 
-        self.assertEqual(None, IMemberAccessor(member).not_existing_attr)
+        self.assertEqual(None, IMemberAccessor(member_block).not_existing_attr)

@@ -9,8 +9,7 @@
     <lawgiver:map_permissions
         action_group="add"
         permissions="ftw.contacts: Add ContactFolder,
-                     ftw.contacts: Add Contact,
-                     ftw.contacts: Add Member"
+                     ftw.contacts: Add Contact"
         />
 
     <configure zcml:condition="installed ftw.simplelayout">

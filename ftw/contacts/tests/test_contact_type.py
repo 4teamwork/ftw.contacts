@@ -41,15 +41,15 @@ class TestDefaultView(TestCase):
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
 
-        create(Builder('member')
+        create(Builder('member block')
                .within(self.contactfolder)
                .contact(contact)
-               .titled(u"A Member"))
+               .titled(u"A MemberBlock"))
 
-        create(Builder('member')
+        create(Builder('member block')
                .within(self.contactfolder)
                .contact(contact)
-               .titled(u"A Member"))
+               .titled(u"A MemberBlock"))
 
         browser.login().visit(contact)
 

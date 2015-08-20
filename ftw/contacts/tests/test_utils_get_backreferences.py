@@ -1,6 +1,6 @@
 from ftw.builder import Builder
 from ftw.builder import create
-from ftw.contacts.interfaces import IMember
+from ftw.contacts.interfaces import IMemberBlock
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import get_backreferences
 from plone.app.testing import logout
@@ -25,37 +25,36 @@ class TestBackReferences(TestCase):
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
 
-        member = create(Builder('member')
-                        .within(self.contactfolder)
-                        .contact(contact)
-                        .having(
-                            firstname=u"J\xf6mes"))
+        member_block = create(Builder('member block')
+                              .within(self.contactfolder)
+                              .contact(contact)
+                              .having(
+                                  firstname=u"J\xf6mes"))
 
         self.assertEqual(
-            [member], get_backreferences(contact, IMember))
+            [member_block], get_backreferences(contact, IMemberBlock))
 
     def test_empty_list_if_no_references_found(self):
         contact = create(Builder('contact')
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
 
-        self.assertEqual([], get_backreferences(contact, IMember))
+        self.assertEqual([], get_backreferences(contact, IMemberBlock))
 
     def test_do_not_append_objs_with_no_permission(self):
         contact = create(Builder('contact')
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
 
-        member = create(Builder('member')
-                        .within(self.contactfolder)
-                        .contact(contact)
-                        .having(
-                            firstname=u"J\xf6mes"))
+        member_block = create(Builder('member block')
+                              .within(self.contactfolder)
+                              .contact(contact)
+                              .having(
+                                  firstname=u"J\xf6mes"))
 
         self.assertEqual(
-            [member], get_backreferences(contact, IMember))
-
+            [member_block], get_backreferences(contact, IMemberBlock))
 
         logout()
 
-        self.assertEqual([], get_backreferences(contact, IMember))
+        self.assertEqual([], get_backreferences(contact, IMemberBlock))

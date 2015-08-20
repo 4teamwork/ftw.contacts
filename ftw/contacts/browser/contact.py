@@ -1,4 +1,4 @@
-from ftw.contacts.interfaces import IMember
+from ftw.contacts.interfaces import IMemberBlock
 from ftw.contacts.utils import get_backreferences
 from ftw.contacts.utils import safe_html
 from plone import api
@@ -9,7 +9,7 @@ class ContactView(BrowserView):
     """Contact view
     """
     def get_memberships(self):
-        return get_backreferences(self.context, IMember)
+        return get_backreferences(self.context, IMemberBlock)
 
     def safe_html(self, text):
         return safe_html(text)

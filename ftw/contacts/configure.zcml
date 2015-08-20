@@ -32,7 +32,7 @@
         />
     <adapter
         factory=".adapters.MemberAccessor"
-        for="ftw.contacts.interfaces.IMember"
+        for="ftw.contacts.interfaces.IMemberBlock"
         provides="ftw.contacts.interfaces.IMemberAccessor"
         />
     <!-- ftw.geo -->
