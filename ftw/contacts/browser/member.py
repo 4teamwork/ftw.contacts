@@ -1,4 +1,5 @@
 from ftw.contacts.interfaces import IMemberAccessor
+from ftw.contacts.utils import safe_html
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 
@@ -18,3 +19,6 @@ class MemberView(BrowserView):
     @property
     def has_related_contact(self):
         return bool(self.context.contact.to_object)
+
+    def safe_html(self, text):
+        return safe_html(text)

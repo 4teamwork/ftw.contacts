@@ -47,7 +47,13 @@ def safe_html(text):
 
     ttool = api.portal.get_tool('portal_transforms')
     text = ttool.convertTo('text/x-html-safe', text).getData()
-    text = text.replace('\n', '<br />')
+
+    # we need html br
+    text = text.replace('\r\n', '<br />').replace('\n', '<br />')
+
+    # we dont want p tags
+    text = text.replace('<p>', '').replace('</p>', '')
+
     return text
 
 

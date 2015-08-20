@@ -25,7 +25,7 @@
     <p>
        <tal:fn tal:condition="context/function" tal:content="context/function" /><br/>
        <tal:addr tal:condition="context/show_address">
-            <tal:block><span tal:replace="structure python: member.address and member.address.replace('\n', '<br />') or ''" /><br /></tal:block>
+            <tal:block><span tal:replace="structure python:view.safe_html(member.address)" /><br /></tal:block>
             <span tal:content="member/postal_code"/>
             <span tal:content="member/city"/><br />
        </tal:addr>
