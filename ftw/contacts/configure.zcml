@@ -63,9 +63,9 @@
 
         <genericsetup:registerProfile
             name="simplelayout"
-            title="ftw.contact: memberblock for ftw.simplelayout"
+            title="ftw.contacts: memberblock for ftw.simplelayout"
             directory="profiles/simplelayout"
-            description="Installs a memberblock for the ftw.contenpage"
+            description="Installs a memberblock for the ftw.simplelayout"
             provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
