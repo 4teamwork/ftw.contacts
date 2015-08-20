@@ -1,4 +1,4 @@
-from ftw.contacts.testing import FTW_CONTACTS_INTEGRATION_TESTING
+from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import safe_html
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -7,7 +7,7 @@ from unittest2 import TestCase
 
 class TestSafeHtml(TestCase):
 
-    layer = FTW_CONTACTS_INTEGRATION_TESTING
+    layer = FTW_CONTACTS_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']

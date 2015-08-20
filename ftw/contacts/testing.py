@@ -31,9 +31,6 @@ class ContactsLayer(PloneSandboxLayer):
 
 
 FTW_CONTACTS_FIXTURE = ContactsLayer()
-FTW_CONTACTS_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(FTW_CONTACTS_FIXTURE,),
-    name="ftw.contacts:integration")
 FTW_CONTACTS_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(FTW_CONTACTS_FIXTURE,
            set_builder_session_factory(functional_session_factory)),
