@@ -3,8 +3,12 @@
 
   <object name="navtree_properties" meta_type="Plone Property Sheet">
     <property name="metaTypesNotToList" type="lines" purge="False">
-      <element value="ftw.contacts.Contact"/>
+      <element value="ftw.contacts.MemberBlock"/>
     </property>
   </object>
-
+  <object name="site_properties" meta_type="Plone Property Sheet">
+    <property name="types_not_searched" type="lines" purge="False">
+      <element value="ftw.simplelayout.MemberBlock"/>
+    </property>
+  </object>
 </object>
