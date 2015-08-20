@@ -6,17 +6,21 @@ maintainer = 'Mathias Leimgruber'
 
 tests_require = [
     'ftw.builder',
-    'ftw.simplelayout [contenttypes]',
     'plone.app.testing',
     'ftw.testbrowser',
     'ftw.contacts [zip_export]',
+    'ftw.contacts [simplelayout]'
     ]
 zip_export = [
     'ftw.zipexport'
     ]
+simplelayout = [
+    'ftw.simplelayout [contenttypes]'
+    ]
 extras_require = {
     'tests': tests_require,
-    'zip_export': zip_export
+    'zip_export': zip_export,
+    'simplelayout': simplelayout
     }
 
 setup(name='ftw.contacts',
