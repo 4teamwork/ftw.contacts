@@ -34,13 +34,20 @@ var ContactFolderListing = (function($) {
 
         reloadView();
     };
-    var reloadView = function() {
+    var reloadView = function(reset) {
+        reset = typeof reset !== 'undefined' ? reset : false;
+        if (reset) {
+            index = 0;
+        }
         $.getJSON('@@reload', {
                 index_from: index,
                 index_to: index + step,
                 letter: letter,
                 searchable_text: searchableText}, function(data) {
 
+            if (reset) {
+                $contactsContainer.empty();
+            }
             // contacts
             $contactsContainer.append($(data.contacts));
 
@@ -59,15 +66,12 @@ var ContactFolderListing = (function($) {
         if (!$this.hasClass('withContent') && !$this.hasClass('current')) {
             return;
         }
-        index = 0;
-        $contactsContainer.empty();
-
         // Reset the letter-filter if click on the current selected letter
         letter = '';
         if (!$this.hasClass('current')) {
             letter = $this.data('key');
         }
-        reloadView();
+        reloadView(true);
     };
     var setMoreButtonVisible = function(setVisible) {
         if (setVisible) {
@@ -77,11 +81,8 @@ var ContactFolderListing = (function($) {
         }
     };
     var updateSearch = function(text) {
-        index = 0;
-        $contactsContainer.empty();
-
         searchableText = text;
-        reloadView();
+        reloadView(true);
     };
     self.init = init;
     return self;
