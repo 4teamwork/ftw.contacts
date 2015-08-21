@@ -50,12 +50,4 @@
         permission="zope2.View"
         />
 
-    <browser:page
-        for="ftw.contacts.interfaces.IMemberBlock"
-        name="view"
-        class=".member.MemberView"
-        permission="zope2.View"
-        template="member.pt"
-        />
-
 </configure>

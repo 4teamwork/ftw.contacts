@@ -1,4 +1,4 @@
-from ftw.contacts.browser.member import MemberView
+from ftw.contacts.simplelayout.member import MemberView
 from ftw.contacts.utils import get_contact_title
 from ftw.simplelayout.browser.blocks.base import BaseBlock
 from Products.CMFCore.utils import getToolByName

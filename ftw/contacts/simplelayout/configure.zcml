@@ -6,6 +6,14 @@
 
     <browser:page
         for="ftw.contacts.interfaces.IMemberBlock"
+        name="view"
+        class=".member.MemberView"
+        permission="zope2.View"
+        template="member.pt"
+        />
+
+    <browser:page
+        for="ftw.contacts.interfaces.IMemberBlock"
         name="block_view"
         class=".memberblock.MemberBlockView"
         permission="zope2.View"
