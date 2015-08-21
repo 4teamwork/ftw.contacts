@@ -39,7 +39,7 @@
       </table>
     </div>
     <div tal:condition="context/image" class='contactImage'>
-      <img i18n:attributes="alt" tal:replace="structure context/@@images/image/mini" alt="context/title"/>
+      <img tal:replace="structure context/@@images/image/mini"/>
     </div>
     <div tal:condition="not:context/image" tal:attributes="class string:contactImage gender-${context/gender}"></div>
     <div class="visualClear"></div>

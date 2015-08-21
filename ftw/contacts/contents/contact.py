@@ -123,7 +123,7 @@ class IContactSchema(model.Schema):
 
     image = NamedBlobImage(
         title=_(u'label_image', default=u'Image'),
-        missing_value=u"",
+        missing_value=None,
         required=False)
 
     academic_title = schema.TextLine(
