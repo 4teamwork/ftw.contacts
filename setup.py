@@ -1,4 +1,6 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
+
 import os
 
 version = '1.0a1'
@@ -27,7 +29,7 @@ setup(name='ftw.contacts',
       version=version,
       description='Provides a contact-contenttype',
       long_description=open(
-          'README.md').read() + '\n' + open(
+          'README.rst').read() + '\n' + open(
           os.path.join('docs', 'HISTORY.txt')).read(),
 
       # Get more strings from
