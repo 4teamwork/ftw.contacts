@@ -51,7 +51,7 @@
             </div>
             <tal:image tal:condition="context/show_image">
               <div class="memberPortrait">
-                <img tal:condition="contact/image" tal:replace="structure contact/@@images/image/mini" alt="contact/title"/>
+                <img i18n:attributes="alt" tal:condition="contact/image" tal:replace="structure contact/@@images/image/mini" alt="contact/title"/>
               </div>
               <div tal:condition="not:contact/image" tal:attributes="class string:memberPortrait gender-${contact/gender}"></div>
             </tal:image>

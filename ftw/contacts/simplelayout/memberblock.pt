@@ -10,7 +10,7 @@
 
   <tal:image tal:condition="context/show_image">
     <div tal:condition="contact/image" class="memberBlockPortrait sl-image right">
-      <img tal:replace="structure contact/@@images/image/mini" alt="contact/title"/>
+      <img i18n:attributes="alt" tal:replace="structure contact/@@images/image/mini" alt="contact/title"/>
     </div>
     <div tal:condition="not:contact/image" tal:attributes="class string:memberBlockPortraitEmpty sl-image right gender-${contact/gender}"></div>
     <p class="imageCaption" tal:define="description view/image_caption"

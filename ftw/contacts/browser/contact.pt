@@ -87,7 +87,7 @@
             </tal:private>
           </div>
           <div class="contactPortrait" tal:condition="context/image">
-            <img tal:replace="structure context/@@images/image/mini" alt="context/title"/>
+            <img i18n:attributes="alt" tal:replace="structure context/@@images/image/mini" alt="context/title"/>
           </div>
           <div tal:condition="not:context/image" tal:attributes="class string:contactPortrait gender-${context/gender}"></div>
           <div class="visualClear"></div>
