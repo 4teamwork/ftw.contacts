@@ -6,10 +6,9 @@ var ContactFolderListing = (function($) {
     'use strict';
 
     var self = {};
-    var $contactsContainer;
-    var $loadMoreButton;
-    var $alphabeticalContainer;
-    var $searchInput;
+    var contactsContainer;
+    var loadMoreButton;
+    var searchInput;
     var index = 0;
     var step = 20;
     var letter = '';
@@ -17,18 +16,18 @@ var ContactFolderListing = (function($) {
     var searchableText = '';
 
     var init = function() {
-        $contactsContainer = $(
+        contactsContainer = $(
             '#contact-folder-view .contactFolderContactsListig');
-        $loadMoreButton = $(
+        loadMoreButton = $(
             '#contact-folder-view .contactFolderLoadMoreContacts');
-        $searchInput = $(
+        searchInput = $(
             '#contact-folder-view input#contactFolderSearchGadget');
 
-        $loadMoreButton.on('click', function(e) {reloadView();});
+        loadMoreButton.on('click', function(e) {reloadView();});
         $('.contactFolderAlphabeticalSearch div.letter').on('click', function(e) {
             letterClick($(this));
         });
-        $searchInput.on('keyup', function() {
+        searchInput.on('keyup', function() {
             updateSearch($(this).val());
         });
 
@@ -47,10 +46,10 @@ var ContactFolderListing = (function($) {
                 searchable_text: searchableText}, function(data) {
 
             if (reset) {
-                $contactsContainer.empty();
+                contactsContainer.empty();
             }
             // contacts
-            $contactsContainer.append($(data.contacts));
+            contactsContainer.append($(data.contacts));
 
             index = index + step;
             setMoreButtonVisible(index < data.max_contacts);
@@ -64,23 +63,23 @@ var ContactFolderListing = (function($) {
     };
 
     var letterClick = function(button) {
-        var $this = $(button);
-        if (!$this.hasClass('withContent') && !$this.hasClass('current')) {
+        var self = $(button);
+        if (!self.hasClass('withContent') && !self.hasClass('current')) {
             return;
         }
         // Reset the letter-filter if click on the current selected letter
         letter = '';
-        if (!$this.hasClass('current')) {
-            letter = $this.data('key');
+        if (!self.hasClass('current')) {
+            letter = self.data('key');
         }
         reloadView(true);
     };
 
     var setMoreButtonVisible = function(setVisible) {
         if (setVisible) {
-            $loadMoreButton.show();
+            loadMoreButton.show();
         }else {
-            $loadMoreButton.hide();
+            loadMoreButton.hide();
         }
     };
 
