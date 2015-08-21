@@ -34,6 +34,7 @@ var ContactFolderListing = (function($) {
 
         reloadView();
     };
+
     var reloadView = function(reset) {
         reset = typeof reset !== 'undefined' ? reset : false;
         if (reset) {
@@ -61,6 +62,7 @@ var ContactFolderListing = (function($) {
             });
         });
     };
+
     var letterClick = function(button) {
         var $this = $(button);
         if (!$this.hasClass('withContent') && !$this.hasClass('current')) {
@@ -73,6 +75,7 @@ var ContactFolderListing = (function($) {
         }
         reloadView(true);
     };
+
     var setMoreButtonVisible = function(setVisible) {
         if (setVisible) {
             $loadMoreButton.show();
@@ -80,10 +83,13 @@ var ContactFolderListing = (function($) {
             $loadMoreButton.hide();
         }
     };
+
     var updateSearch = function(text) {
         searchableText = text;
         reloadView(true);
     };
+
     self.init = init;
     return self;
+
 }(jQuery));
