@@ -5,6 +5,7 @@ from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.testbrowser import browsing
 from Products.CMFCore.utils import getToolByName
 from unittest2 import TestCase
+
 import json
 
 

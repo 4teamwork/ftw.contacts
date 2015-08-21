@@ -1,14 +1,15 @@
-from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Acquisition import aq_inner
 from Acquisition import aq_parent
 from base64 import b64encode
 from plone import api
 from plone.memoize import instance
 from plone.namedfile.utils import stream_data
+from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from StringIO import StringIO
 from zc.relation.interfaces import ICatalog
 from zope.component import getUtility
 from zope.intid.interfaces import IIntIds
+
 import unicodedata
 
 

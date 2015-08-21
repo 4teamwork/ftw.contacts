@@ -1,8 +1,8 @@
+from ftw.contacts.browser.member import MemberView
+from ftw.contacts.utils import get_contact_title
 from ftw.simplelayout.browser.blocks.base import BaseBlock
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from ftw.contacts.utils import get_contact_title
-from ftw.contacts.browser.member import MemberView
 
 
 class MemberBlockView(BaseBlock, MemberView):

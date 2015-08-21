@@ -5,6 +5,7 @@ from ftw.testbrowser import browsing
 from StringIO import StringIO
 from unittest2 import TestCase
 from zipfile import ZipFile
+
 import os
 
 

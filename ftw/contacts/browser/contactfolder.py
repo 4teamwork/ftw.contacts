@@ -4,6 +4,7 @@ from ftw.contacts.utils import AlphabeticLetters
 from ftw.contacts.utils import normalized_first_letter
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
+
 import json
 import re
 

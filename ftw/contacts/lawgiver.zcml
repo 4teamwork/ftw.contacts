@@ -12,11 +12,13 @@
                      ftw.contacts: Add Contact"
         />
 
+    <!-- ftw.simplelayout -->
     <configure zcml:condition="installed ftw.simplelayout">
         <lawgiver:map_permissions
             action_group="edit"
             permissions="ftw.contacts: Add MemberBlock"
         />
     </configure>
+    <!-- End ftw.simplelayout -->
 
 </configure>

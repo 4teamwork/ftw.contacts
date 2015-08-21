@@ -11,12 +11,14 @@
         permission="zope2.View"
         template="contact.pt"
         />
+
     <browser:page
         for="ftw.contacts.interfaces.IContact"
         name="download"
         class=".vcard.DownloadVCardView"
         permission="zope2.View"
         />
+
     <browser:page
         for="ftw.contacts.interfaces.IContact"
         name="contact_summary"
@@ -24,6 +26,7 @@
         template="contact_summary.pt"
         permission="zope2.View"
         />
+
     <browser:page
         for="ftw.contacts.interfaces.IContactFolder"
         name="letters"
@@ -31,6 +34,7 @@
         template="letters.pt"
         permission="zope2.View"
         />
+
     <browser:page
         for="ftw.contacts.interfaces.IContactFolder"
         name="view"
@@ -38,12 +42,14 @@
         permission="zope2.View"
         template="contactfolder.pt"
         />
+
     <browser:page
         for="ftw.contacts.interfaces.IContactFolder"
         name="reload"
         class=".contactfolder.ContactFolderReload"
         permission="zope2.View"
         />
+
     <browser:page
         for="ftw.contacts.interfaces.IMemberBlock"
         name="view"
@@ -51,4 +57,5 @@
         permission="zope2.View"
         template="member.pt"
         />
+
 </configure>

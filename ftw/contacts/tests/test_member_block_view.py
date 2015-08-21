@@ -6,6 +6,7 @@ from plone.api.content import delete
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from unittest2 import TestCase
+
 import transaction
 
 

@@ -1,5 +1,5 @@
 from collective.geo.settings.interfaces import IGeoSettings
-from plone.registry.interfaces import IRegistry
+from Plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 
 
