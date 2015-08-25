@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="ftw.contacts.Contact" meta_type="Dexterity FTI"
+        i18n:domain="ftw.contacts" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+  <property name="behaviors" purge="False">
+      <element value="collective.geo.behaviour.interfaces.ICoordinates" />
+  </property>
+
+</object>

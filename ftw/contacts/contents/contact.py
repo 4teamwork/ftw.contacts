@@ -79,10 +79,6 @@ class IContactSchema(model.Schema):
         default=u"",
         required=False)
 
-    show_placemark = schema.Bool(
-        title=_(u'label_showplacemark', default=u'Show on map'),
-        required=False)
-
     form.mode(country='hidden')
     country = schema.TextLine(
         title=_(u'label_country', default=u'Country'),

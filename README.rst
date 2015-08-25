@@ -104,6 +104,23 @@ You just have do define the Contact attributes once an you can reuse them trough
 the memberblock
 
 
+ftw.geo integration
+-------------------
+
+Add the geo extra to your egg:
+
+.. code:: ini
+
+  [instance]
+  eggs += ftw.contacts [geo]
+
+Run buildout and install the ``ftw.contacts:geo`` profile
+
+After installing the geo-extra, you'll see a maplayer on each contact-type
+if you entered a valid address.
+
+If you don't know `ftw.geo`_, please read https://github.com/4teamwork/ftw.geo
+
 Compatibility
 -------------
 
@@ -131,3 +148,4 @@ This package is copyright by `4teamwork <http://www.4teamwork.ch/>`_.
 
 .. _ftw.zipexport: https://github.com/4teamwork/ftw.zipexport
 .. _ftw.simplelayout: https://github.com/4teamwork/ftw.simplelayout
+.. _ftw.geo: https://github.com/4teamwork/ftw.geo

@@ -11,18 +11,25 @@ tests_require = [
     'plone.app.testing',
     'ftw.testbrowser',
     'ftw.contacts [zip_export]',
-    'ftw.contacts [simplelayout]'
+    'ftw.contacts [simplelayout]',
+    'ftw.contacts [geo]',
     ]
 zip_export = [
-    'ftw.zipexport'
+    'ftw.zipexport',
     ]
 simplelayout = [
-    'ftw.simplelayout [contenttypes]'
+    'ftw.simplelayout [contenttypes]',
+    ]
+geo = [
+    'ftw.geo',
+    'collective.geo.behaviour',
+    'ftw.profilehook',
     ]
 extras_require = {
     'tests': tests_require,
     'zip_export': zip_export,
-    'simplelayout': simplelayout
+    'simplelayout': simplelayout,
+    'geo': geo,
     }
 
 setup(name='ftw.contacts',
@@ -64,9 +71,7 @@ setup(name='ftw.contacts',
           'plone.app.relationfield',
           'plone.app.referenceablebehavior',
           'plone.api >= 1.3.3',
-          'ftw.geo',
           'ftw.zipexport',
-          'ftw.profilehook'
           ],
 
       tests_require=tests_require,

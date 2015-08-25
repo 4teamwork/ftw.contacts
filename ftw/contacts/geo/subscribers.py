@@ -1,5 +1,5 @@
-from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
 from collective.geo.geographer.interfaces import IGeoreferenceable
+from collective.geo.settings.interfaces import IGeoCustomFeatureStyle
 from zope.component import queryAdapter
 
 

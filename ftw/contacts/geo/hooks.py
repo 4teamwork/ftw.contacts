@@ -3,7 +3,7 @@ from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 
 
-def default_profile_installed(site):
+def geo_profile_installed(site):
     georef_settings(site)
 
 
