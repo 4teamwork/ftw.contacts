@@ -1,0 +1,80 @@
+<html lang="en"
+  metal:use-macro="here/main_template/macros/master"
+  xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  i18n:domain="ftw.contacts">
+
+  <body>
+    <div metal:fill-slot="content-core">
+      <metal:main-macro define-macro="content-core">
+        <tal:main condition="view/has_related_contact">
+          <div id="member-view" tal:define="
+            member view/memberaccessor;
+            contact nocall:context/contact/to_object">
+            <div class="memberInfos">
+              <h2 tal:condition="python: contact.firstname and contact.lastname">
+                <tal:title condition="contact/academic_title" tal:replace="contact/academic_title">Dr.</tal:title>
+                <tal:name tal:replace="string:${contact/lastname} ${contact/firstname}">Boss Hugo</tal:name>
+              </h2>
+              <div class="memberInfo">
+                <span tal:condition="context/function" tal:content="contact/function" />
+                <tal:address condition="context/show_address">
+                  <span tal:condition="member/address" tal:content="structure python:view.safe_html(member.address)" />
+                  <span tal:condition="python: member.postal_code and member.city" tal:content="string:${member/postal_code} ${member/city}" />
+                </tal:address>
+                <table>
+                  <tr tal:condition="member/phone_office">
+                    <th><span i18n:translate="label_member_phone_office">Office</span></th>
+                    <td><a tal:attributes="href string:tel:${member/phone_office}" tal:content="member/phone_office" /></td>
+                  </tr>
+                  <tr tal:condition="member/phone_mobile">
+                    <th><span i18n:translate="label_member_phone_mobile">Mobile</span></th>
+                    <td><a tal:attributes="href string:tel:${member/phone_mobile}" tal:content="member/phone_mobile" /></td>
+                  </tr>
+                  <tr tal:condition="member/email">
+                    <th><span i18n:translate="label_member_email">Email</span></th>
+                    <td><span tal:content="structure python:context.spamProtect(mailaddress=member.email)" /></td>
+                  </tr>
+                  <tr tal:condition="member/www">
+                    <th><span i18n:translate="label_member_www">www</span></th>
+                    <td>
+                      <a tal:condition="member/www"
+                      tal:content="python: member.www.replace('https://', '').replace('https://', '')"
+                      tal:attributes="href member/www"
+                      target="_blank" />
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <tal:image tal:condition="context/show_image">
+              <div class="memberPortrait">
+                <img tal:condition="contact/image" tal:replace="structure contact/@@images/image/mini" />
+              </div>
+              <div tal:condition="not:contact/image" tal:attributes="class string:memberPortrait gender-${contact/gender}"></div>
+            </tal:image>
+            <div class="visualClear"></div>
+
+            <div class="memberText" tal:condition="contact/text" tal:content="structure contact/text/output" />
+
+            <div class="memberContact">
+              <h3 i18n:translate="label_contact_more">Contact</h3>
+              <a tal:content="contact/Title" tal:attributes="href contact/absolute_url" />
+            </div>
+          </div>
+        </tal:main>
+        <tal:nocontact condition="python:not view.has_related_contact and view.has_permission">
+          <div id="member-no-contact-exist">
+            <h3 i18n:translate="label_contact_does_no_longer_exists">The related contact does no longer exists.</h3>
+            <p i18n:translate="label_contact_does_no_longer_exists_hint">Delete this content or edit it to replace the deleted with an existing contact</p>
+          </div>
+        </tal:nocontact>
+        <tal:nocontactandanonymous condition="python:not view.has_related_contact and not view.has_permission">
+          <div id="member-empty"></div>
+        </tal:nocontactandanonymous>
+      </metal:main-macro>
+    </div>
+  </body>
+</html>

@@ -1,4 +1,6 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
+
 import os
 
 version = '1.0a1'
@@ -7,11 +9,20 @@ maintainer = 'Mathias Leimgruber'
 tests_require = [
     'ftw.builder',
     'plone.app.testing',
-    'ftw.testbrowser'
+    'ftw.testbrowser',
+    'ftw.contacts [zip_export]',
+    'ftw.contacts [simplelayout]'
     ]
-
+zip_export = [
+    'ftw.zipexport'
+    ]
+simplelayout = [
+    'ftw.simplelayout [contenttypes]'
+    ]
 extras_require = {
-    'tests': tests_require
+    'tests': tests_require,
+    'zip_export': zip_export,
+    'simplelayout': simplelayout
     }
 
 setup(name='ftw.contacts',
@@ -45,7 +56,16 @@ setup(name='ftw.contacts',
       zip_safe=False,
 
       install_requires=[
+          'Plone',
+          'z3c.schema',
           'setuptools',
+          'collective.dexteritytextindexer',
+          'collective.js.jqueryui',
+          'plone.app.relationfield',
+          'plone.api',
+          'ftw.geo',
+          'ftw.zipexport',
+          'ftw.profilehook'
           ],
 
       tests_require=tests_require,

@@ -1,0 +1,143 @@
+/* Contactfolder listing */
+#contact-folder-view .contactFolderAlphabeticalSearch {
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border-top: 1px solid #ddd;
+    padding-top: 1em;
+}
+#contact-folder-view .contactFolderAlphabeticalSearch div.letter{
+    float: left;
+    display: block;
+    cursor: default;
+    padding: 0.8em;
+    border: 1px solid #ddd;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius: 6px;
+    margin-right: 0.4em;
+    margin-bottom: 0.4em;
+    background-color: #f1f1f1;
+}
+#contact-folder-view .contactFolderAlphabeticalSearch div.letter.withContent {
+    background-color: #fff;
+    cursor: pointer;
+}
+#contact-folder-view .contactFolderAlphabeticalSearch div.letter.withContent:hover {
+    background-color: #c4d9ea;
+}
+#contact-folder-view .contactFolderAlphabeticalSearch div.letter.current {
+    background-color: #205c90;
+    color: #fff;
+    cursor: pointer;
+}
+#contact-folder-view .contactFolderContactsListig {
+    min-height: 400px;
+}
+#contact-folder-view .contactSummary {
+    display: block;
+    border-bottom: 1px solid #ddd;
+    margin-top: 2em;
+    padding-left: 2em;
+    padding-bottom: 1em;
+}
+#contact-folder-view .contactSummary:last-child {
+    border-bottom: none;
+}
+#contact-folder-view .contactFolderLoadMoreContacts {
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    padding: 2em;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius: 6px;
+}
+#contact-folder-view .contactFolderLoadMoreContacts:hover {
+    background-color: #fafafa;
+}
+#contact-folder-view .contactInfo {
+    float: left;
+    width: 50%;
+}
+#contact-folder-view .contactInfo table {
+    margin-top: 1em;
+    width: 100%;
+}
+#contact-folder-view .contactInfo th {
+    width: 150px;
+    font-weight: inherit;
+}
+#contact-folder-view .contactImage {
+    float: left;
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+}
+#contact-folder-view input#contactFolderSearchGadget {
+    width: 100%;
+    height: 1.5em;
+    font-size: 2em;
+}
+/* End Contactfolder listing */
+
+/* Contact view */
+#contact-view {
+    margin-bottom: 2em;
+}
+#contact-view .contactInfos {
+    float: left;
+    margin-right: 1em;
+}
+#contact-view .contactInfos th {
+    padding-right: 1em;
+}
+#contact-view .contactPortrait {
+    float: right;
+    margin-right: 1em;
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+}
+
+/* End Contact view*/
+
+/* Memberblock view */
+.memberBlockPortraitEmpty {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+}
+
+/* End Memberblock view */
+#contact-view .contactPortrait.gender-f,
+#contact-folder-view .contactImage.gender-f,
+#member-view .memberPortrait.gender-f,
+.memberBlockPortraitEmpty.gender-f {
+    background-image: url("++resource++ftw.contacts.resources/female.png");
+}
+#contact-view .contactPortrait.gender-m,
+#contact-folder-view .contactImage.gender-m,
+#member-view .memberPortrait.gender-m,
+.memberBlockPortraitEmpty.gender-m {
+    background-image: url("++resource++ftw.contacts.resources/male.png");
+}
+#contact-view .contactPortrait.gender-,
+#contact-folder-view .contactImage.gender-,
+#member-view .memberPortrait.gender-,
+.memberBlockPortrait.gender- {
+    background-image: url("++resource++ftw.contacts.resources/factory.png");
+}
+
+/* ftw.simplelayout integration */
+#plone-contentmenu-factories .contenttype-ftw-contacts-memberblock {
+    display: none !important;
+}
+/* TODO: Remove this after closing this issue: https://github.com/4teamwork/ftw.simplelayout/issues/226 */
+.contenttreeWindowBlocker {
+    z-index: 10000 !important;
+}
+.contenttreeWindow {
+    z-index: 10001 !important;
+}
+/* End TODO*/
+/* End ftw.simplelayout integration */

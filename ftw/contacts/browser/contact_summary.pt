@@ -1,0 +1,46 @@
+<div class="contactSummary" i18n:domain="ftw.contacts">
+    <div class="contactInfo">
+      <h3 tal:attributes="class string:state-${view/get_review_state}">
+        <a tal:attributes="href context/absolute_url; title context/title" tal:content="context/title">Item Title</a>
+        <a tal:attributes="href string:${context/absolute_url}/download" i18n:attributes="title" title="vCard Download">
+          <img i18n:attributes="alt" alt="vCard Download" src="++resource++ftw.contacts.resources/vcard.png" />
+        </a>
+      </h3>
+      <div tal:condition="context/function"><span tal:content="context/function" /></div>
+      <div tal:condition="context/organization"><span tal:content="context/organization" /></div>
+
+      <div><span tal:content="context/title" /></div>
+      <div tal:condition="context/address"><span tal:replace="structure python:view.safe_html(context.address)" /></div>
+      <div tal:condition="python: context.postal_code and context.city">
+        <span tal:content="string:${context/postal_code} ${context/city}" />
+      </div>
+      <table>
+        <tr tal:condition="context/phone_office">
+          <th><span i18n:translate="label_short_phone_office">Phone O</span></th>
+          <td><a tal:attributes="href string:tel:${context/phone_office}" tal:content="context/phone_office" /></td>
+        </tr>
+        <tr tal:condition="context/phone_mobile">
+          <th><span i18n:translate="label_short_phone_mobile">Phone M</span></th>
+          <td><a tal:attributes="href string:tel:${context/phone_mobile}" tal:content="context/phone_mobile" /></td>
+        </tr>
+        <tr tal:condition="context/email">
+          <th><span i18n:translate="label_short_email">Email</span></th>
+          <td><a tal:attributes="href string:mailto:${context/email}" tal:content="context/email" /></td>
+        </tr>
+        <tr tal:condition="context/www">
+          <th><span i18n:translate="label_showrt_www">Website</span></th>
+          <td>
+            <a tal:condition="context/www"
+               tal:content="python: context.www.replace('https://', '').replace('https://', '')"
+               tal:attributes="href context/www"
+               target="_blank" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div tal:condition="context/image" class='contactImage'>
+      <img tal:replace="structure context/@@images/image/mini"/>
+    </div>
+    <div tal:condition="not:context/image" tal:attributes="class string:contactImage gender-${context/gender}"></div>
+    <div class="visualClear"></div>
+</div>

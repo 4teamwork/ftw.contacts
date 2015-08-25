@@ -1,0 +1,49 @@
+<html lang="en"
+  metal:use-macro="here/main_template/macros/master"
+  xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  i18n:domain="ftw.contacts">
+  <head>
+    <metal:js fill-slot="javascript_head_slot">
+      <script src="++resource++ftw.contacts.resources/contactfolder_listing.js"></script>
+    </metal:js>
+  </head>
+  <body>
+    <div metal:fill-slot="content-core">
+      <metal:main-macro define-macro="content-core">
+
+        <div id="contact-folder-view">
+
+          <!-- Alphabetical Search -->
+          <div class="contactFolderAlphabeticalSearch"></div>
+          <!-- End Alphabetical Search -->
+
+          <!-- Folder Search Slot -->
+          <div class="contactFolderSearchSlot">
+          <form>
+            <input name="SearchableContactsText"
+                   id="contactFolderSearchGadget"
+                   type="text"
+                   size="15"
+                   title="Search Contacts"
+                   placeholder="Search Contacts"
+                   i18n:attributes="title title_search_title;
+                                    placeholder title_search_site"/>
+          </form>
+          </div>
+          <!-- End Folder Search Slot -->
+
+          <!-- Contactlisting -->
+          <div class="contactFolderContactsListig"></div>
+          <!-- End Contact Listing -->
+
+          <div class="contactFolderLoadMoreContacts">
+            <span i18n:translate="label_load_next_contacts">Load more contacts</span>
+          </div>
+        </div>
+      </metal:main-macro>
+    </div>
+  </body>
+</html>
