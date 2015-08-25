@@ -45,11 +45,11 @@ How it looks
 
 The ``ftw.contacts`` package provides a nice contactdirectory.
 
-.. image:: https://raw.github.com/4teamwork/ftw.contacts/master/docs/contactdirectory.png
+.. image:: https://raw.github.com/4teamwork/ftw.contacts/master/docs/images/contactdirectory.png
 
 with a contact-view.
 
-.. image:: https://raw.github.com/4teamwork/ftw.contacts/master/docs/contact.png
+.. image:: https://raw.github.com/4teamwork/ftw.contacts/master/docs/images/contact.png
 
 How it works
 ------------
