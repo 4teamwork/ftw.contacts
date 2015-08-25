@@ -63,7 +63,7 @@ setup(name='ftw.contacts',
           'collective.js.jqueryui',
           'plone.app.relationfield',
           'plone.app.referenceablebehavior',
-          'plone.api',
+          'plone.api >= 1.3.3',
           'ftw.geo',
           'ftw.zipexport',
           'ftw.profilehook'
