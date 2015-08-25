@@ -18,6 +18,8 @@
       <element value="plone.app.content.interfaces.INameFromTitle" />
       <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
       <element value="plone.app.referenceablebehavior.referenceable.IReferenceable"/>
+      <element value="collective.geo.behaviour.interfaces.ICoordinates" />
+      <element value="collective.geo.geographer.interfaces.IGeoreferenceable" />
   </property>
 
   <!-- class used for content items -->

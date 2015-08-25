@@ -58,10 +58,6 @@
         for="ftw.contacts.interfaces.IContact"
         provides="ftw.geo.interfaces.IGeocodableLocation"
         />
-
-    <class class="ftw.contacts.contents.contact.Contact">
-        <implements interface="collective.geo.geographer.interfaces.IGeoreferenceable" />
-    </class>
     <!-- End ftw.geo -->
 
     <!-- ftw.simplelayout -->
