@@ -132,12 +132,4 @@
 #plone-contentmenu-factories .contenttype-ftw-contacts-memberblock {
     display: none !important;
 }
-/* TODO: Remove this after closing this issue: https://github.com/4teamwork/ftw.simplelayout/issues/226 */
-.contenttreeWindowBlocker {
-    z-index: 10000 !important;
-}
-.contenttreeWindow {
-    z-index: 10001 !important;
-}
-/* End TODO*/
 /* End ftw.simplelayout integration */
