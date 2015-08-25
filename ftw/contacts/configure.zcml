@@ -12,6 +12,7 @@
     <include file="permissions.zcml" />
     <include package=".browser" />
     <include file="lawgiver.zcml" zcml:condition="installed ftw.lawgiver" />
+    <include file="resources.zcml" zcml:condition="installed ftw.theming" />
 
     <i18n:registerTranslations directory="locales" />
 
