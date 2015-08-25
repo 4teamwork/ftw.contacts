@@ -94,7 +94,7 @@ Run buildout and install the ``ftw.contacts: simplelayout`` profile
 
 You'll get a new contenttype ``MemberBlock`` which is available in a contentpage.
 
-If you don't know `ftw.simplelayout_, please read https://github.com/4teamwork/ftw.simplelayout
+If you don't know `ftw.simplelayout`_, please read https://github.com/4teamwork/ftw.simplelayout
 
 MemberBlock
 ~~~~~~~~~~~
