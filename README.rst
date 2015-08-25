@@ -90,7 +90,7 @@ Add the simplelayout extra to your egg:
   [instance]
   eggs += ftw.contacts [simplelayout]
 
-Run buildout and install the ``ftw.contacts: simplelayout`` profile
+Run buildout and install the ``ftw.contacts:simplelayout`` profile
 
 You'll get a new contenttype ``MemberBlock`` which is available in a contentpage.
 
