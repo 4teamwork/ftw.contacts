@@ -90,7 +90,7 @@ Add the simplelayout extra to your egg:
   [instance]
   eggs += ftw.contacts [simplelayout]
 
-Run buildout and install the ``ftw.contacts:simplelayout`` profile
+Run buildout and install the ``ftw.contacts.simplelayout:default`` profile
 
 You'll get a new contenttype ``MemberBlock`` which is available in a contentpage.
 
@@ -114,7 +114,7 @@ Add the geo extra to your egg:
   [instance]
   eggs += ftw.contacts [geo]
 
-Run buildout and install the ``ftw.contacts:geo`` profile
+Run buildout and install the ``ftw.contacts.geo:default`` profile
 
 After installing the geo-extra, you'll see a maplayer on each contact-type
 if you entered a valid address.
