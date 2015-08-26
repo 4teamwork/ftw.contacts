@@ -1,0 +1,10 @@
+    <configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="ftw.contacts">
+
+    <permission
+        id="ftw.contacts.AddMemberBlock"
+        title="ftw.contacts: Add MemberBlock"
+        />
+
+</configure>

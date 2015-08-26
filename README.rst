@@ -90,7 +90,7 @@ Add the simplelayout extra to your egg:
   [instance]
   eggs += ftw.contacts [simplelayout]
 
-Run buildout and install the ``ftw.contacts:simplelayout`` profile
+Run buildout and install the ``ftw.contacts.simplelayout:default`` profile
 
 You'll get a new contenttype ``MemberBlock`` which is available in a contentpage.
 
@@ -103,6 +103,23 @@ The memberblock connects the a Contact with a simplelayout page.
 You just have do define the Contact attributes once an you can reuse them trough
 the memberblock
 
+
+ftw.geo integration
+-------------------
+
+Add the geo extra to your egg:
+
+.. code:: ini
+
+  [instance]
+  eggs += ftw.contacts [geo]
+
+Run buildout and install the ``ftw.contacts.geo:default`` profile
+
+After installing the geo-extra, you'll see a maplayer on each contact-type
+if you entered a valid address.
+
+If you don't know `ftw.geo`_, please read https://github.com/4teamwork/ftw.geo
 
 Compatibility
 -------------
@@ -131,3 +148,4 @@ This package is copyright by `4teamwork <http://www.4teamwork.ch/>`_.
 
 .. _ftw.zipexport: https://github.com/4teamwork/ftw.zipexport
 .. _ftw.simplelayout: https://github.com/4teamwork/ftw.simplelayout
+.. _ftw.geo: https://github.com/4teamwork/ftw.geo

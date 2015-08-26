@@ -1,8 +1,20 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="ftw.contacts">
+
+    <include file="permissions.zcml" />
+    <include file="lawgiver.zcml" zcml:condition="installed ftw.lawgiver" />
+
+    <genericsetup:registerProfile
+        name="default"
+        title="ftw.contacts.simplelayout: default"
+        directory="profiles/default"
+        description="Installs ftw.simplelayout and adds a special memberblock."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
 
     <browser:page
         for="ftw.contacts.interfaces.IMemberBlock"

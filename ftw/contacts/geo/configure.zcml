@@ -1,0 +1,38 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:profilehook="http://namespaces.zope.org/profilehook"
+    i18n_domain="ftw.contacts">
+
+    <genericsetup:registerProfile
+        name="default"
+        title="ftw.contacts.geo: default"
+        directory="profiles/default"
+        description="Installs ftw.geo and adds a location-map to each contact."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <profilehook:hook
+        profile="ftw.contacts:geo"
+        handler=".hooks.geo_profile_installed"
+        />
+
+    <adapter
+        for="ftw.contacts.interfaces.IContact"
+        provides="collective.geo.settings.interfaces.IGeoCustomFeatureStyle"
+        factory="collective.geo.contentlocations.geostylemanager.GeoStyleManager"
+        />
+
+    <subscriber
+        for="ftw.contacts.interfaces.IContact
+             zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+        handler=".subscribers.initializeCustomFeatureStyles"
+        />
+
+    <adapter
+        factory=".adapters.ContactLocationAdapter"
+        for="ftw.contacts.interfaces.IContact"
+        provides="ftw.geo.interfaces.IGeocodableLocation"
+        />
+</configure>

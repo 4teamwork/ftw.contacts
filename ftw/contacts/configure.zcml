@@ -6,8 +6,11 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    xmlns:profilehook="http://namespaces.zope.org/profilehook"
+    xmlns:autofeature="http://namespaces.zope.org/autofeature"
     i18n_domain="ftw.contacts">
+
+    <include package="ftw.autofeature" file="meta.zcml" />
+    <autofeature:extras />
 
     <include file="permissions.zcml" />
     <include package=".browser" />
@@ -16,17 +19,15 @@
 
     <i18n:registerTranslations directory="locales" />
 
+    <include package=".geo" zcml:condition="have ftw.contacts:geo" />
+    <include package=".simplelayout" zcml:condition="have ftw.contacts:simplelayout" />
+
     <genericsetup:registerProfile
         name="default"
         title="ftw.contacts"
         directory="profiles/default"
         description="Installs the ftw.contacts package"
         provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
-
-    <profilehook:hook
-        profile="ftw.contacts:default"
-        handler=".hooks.default_profile_installed"
         />
 
     <browser:resourceDirectory
@@ -40,44 +41,8 @@
         provides="ftw.contacts.interfaces.IMemberAccessor"
         />
 
-    <!-- ftw.geo -->
-    <adapter
-        for="ftw.contacts.interfaces.IContact"
-        provides="collective.geo.settings.interfaces.IGeoCustomFeatureStyle"
-        factory="collective.geo.contentlocations.geostylemanager.GeoStyleManager"
-        />
-
-    <subscriber
-        for="ftw.contacts.interfaces.IContact
-             zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-        handler=".subscribers.initializeCustomFeatureStyles"
-        />
-
-    <adapter
-        factory=".adapters.ContactLocationAdapter"
-        for="ftw.contacts.interfaces.IContact"
-        provides="ftw.geo.interfaces.IGeocodableLocation"
-        />
-    <!-- End ftw.geo -->
-
-    <!-- ftw.simplelayout -->
-    <configure zcml:condition="installed ftw.simplelayout">
-
-        <include package=".simplelayout" />
-
-        <genericsetup:registerProfile
-            name="simplelayout"
-            title="ftw.contacts: with ftw.simplelayout"
-            directory="profiles/simplelayout"
-            description="Installs ftw.simplelayout and adds a special memberblock."
-            provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
-
-    </configure>
-    <!-- End ftw.simplelayout -->
-
     <!-- ftw.zipexport -->
-    <configure zcml:condition="installed ftw.zipexport">
+    <configure zcml:condition="have ftw.contacts:zip_export">
         <adapter factory=".zipexport.ContactZipRepresentation" />
     </configure>
     <!-- End ftw.zipexport -->

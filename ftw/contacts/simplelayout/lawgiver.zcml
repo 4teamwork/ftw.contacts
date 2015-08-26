@@ -1,14 +1,14 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:lawgiver="http://namespaces.zope.org/lawgiver"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="ftw.contacts">
 
     <include package="ftw.lawgiver" file="meta.zcml" />
 
     <lawgiver:map_permissions
-        action_group="add"
-        permissions="ftw.contacts: Add ContactFolder,
-                     ftw.contacts: Add Contact"
+        action_group="edit"
+        permissions="ftw.contacts: Add MemberBlock"
         />
 
 </configure>
