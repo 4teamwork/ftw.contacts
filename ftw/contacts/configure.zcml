@@ -6,7 +6,11 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:autofeature="http://namespaces.zope.org/autofeature"
     i18n_domain="ftw.contacts">
+
+    <include package="ftw.autofeature" file="meta.zcml" />
+    <autofeature:extras />
 
     <include file="permissions.zcml" />
     <include package=".browser" />
@@ -14,6 +18,9 @@
     <include file="resources.zcml" zcml:condition="installed ftw.theming" />
 
     <i18n:registerTranslations directory="locales" />
+
+    <include package=".geo" zcml:condition="have ftw.contacts:geo" />
+    <include package=".simplelayout" zcml:condition="have ftw.contacts:simplelayout" />
 
     <genericsetup:registerProfile
         name="default"
@@ -34,40 +41,8 @@
         provides="ftw.contacts.interfaces.IMemberAccessor"
         />
 
-    <!-- ftw.geo -->
-    <configure zcml:condition="installed ftw.geo">
-
-        <include package=".geo" />
-
-        <genericsetup:registerProfile
-            name="geo"
-            title="ftw.contacts: with ftw.geo"
-            directory="profiles/geo"
-            description="Installs ftw.geo and adds a location-map to each contact."
-            provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
-
-    </configure>
-    <!-- End ftw.geo -->
-
-    <!-- ftw.simplelayout -->
-    <configure zcml:condition="installed ftw.simplelayout">
-
-        <include package=".simplelayout" />
-
-        <genericsetup:registerProfile
-            name="simplelayout"
-            title="ftw.contacts: with ftw.simplelayout"
-            directory="profiles/simplelayout"
-            description="Installs ftw.simplelayout and adds a special memberblock."
-            provides="Products.GenericSetup.interfaces.EXTENSION"
-        />
-
-    </configure>
-    <!-- End ftw.simplelayout -->
-
     <!-- ftw.zipexport -->
-    <configure zcml:condition="installed ftw.zipexport">
+    <configure zcml:condition="have ftw.contacts:zip_export">
         <adapter factory=".zipexport.ContactZipRepresentation" />
     </configure>
     <!-- End ftw.zipexport -->

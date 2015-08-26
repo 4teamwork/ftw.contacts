@@ -4,6 +4,14 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="ftw.contacts">
 
+    <genericsetup:registerProfile
+        name="default"
+        title="ftw.contacts.simplelayout: default"
+        directory="profiles/default"
+        description="Installs ftw.simplelayout and adds a special memberblock."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
     <browser:page
         for="ftw.contacts.interfaces.IMemberBlock"
         name="view"

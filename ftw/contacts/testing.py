@@ -24,8 +24,8 @@ class ContactsLayer(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'ftw.contacts:default')
-        applyProfile(portal, 'ftw.contacts:simplelayout')
-        applyProfile(portal, 'ftw.contacts:geo')
+        applyProfile(portal, 'ftw.contacts.geo:default')
+        applyProfile(portal, 'ftw.contacts.simplelayout:default')
         applyProfile(portal, 'ftw.zipexport:default')
 
 

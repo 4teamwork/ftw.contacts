@@ -72,6 +72,7 @@ setup(name='ftw.contacts',
           'plone.app.referenceablebehavior',
           'plone.api >= 1.3.3',
           'ftw.zipexport',
+          'ftw.autofeature',
           ],
 
       tests_require=tests_require,

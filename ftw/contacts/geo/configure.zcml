@@ -5,6 +5,14 @@
     xmlns:profilehook="http://namespaces.zope.org/profilehook"
     i18n_domain="ftw.contacts">
 
+    <genericsetup:registerProfile
+        name="default"
+        title="ftw.contacts.geo: default"
+        directory="profiles/default"
+        description="Installs ftw.geo and adds a location-map to each contact."
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
     <profilehook:hook
         profile="ftw.contacts:geo"
         handler=".hooks.geo_profile_installed"
