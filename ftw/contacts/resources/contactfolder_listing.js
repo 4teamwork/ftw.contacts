@@ -28,7 +28,10 @@ var ContactFolderListing = (function($) {
             letterClick($(this));
         });
         searchInput.on('keyup', function() {
-            updateSearch($(this).val());
+            var value = $(this).val();
+            delay(function() {
+                updateSearch(value);
+            }, 200);
         });
 
         reloadView();
@@ -87,6 +90,14 @@ var ContactFolderListing = (function($) {
         searchableText = text;
         reloadView(true);
     };
+
+    var delay = (function() {
+        var timer = 0;
+        return function(callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
 
     self.init = init;
     return self;
