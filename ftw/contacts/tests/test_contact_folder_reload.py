@@ -199,3 +199,32 @@ class TestContactFolderReloadView(TestCase):
         browser.open_html(data.get('letters'))
 
         self.assertEqual(1, len(browser.css('.letter.withContent')))
+
+    @browsing
+    def test_restrict_contacts_with_letters(self, browser):
+        create(Builder('contact')
+               .with_minimal_info(u'Chuck', u'Borris')
+               .within(self.contactfolder))
+
+        create(Builder('contact')
+               .with_minimal_info(u'J\xe4mes', u'B\xf6nd')
+               .within(self.contactfolder))
+
+        create(Builder('contact')
+               .with_minimal_info(u'Max', u'Muster')
+               .within(self.contactfolder))
+
+        self.request.form['letter'] = "B"
+
+        view = ContactFolderReload(self.contactfolder, self.request)
+        data = json.loads(view())
+
+        self.assertEqual(2, data.get('max_contacts'))
+
+        browser.open_html(data.get('contacts'))
+
+        self.assertEqual(2, len(browser.css('.contactSummary')))
+
+        browser.open_html(data.get('letters'))
+
+        self.assertEqual(1, len(browser.css('.letter.withContent')))
