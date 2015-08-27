@@ -130,7 +130,7 @@ class AlphabeticLetters(object):
         for letter in LETTERS:
             has_contents = letter in letters_with_content and \
                 "withContent" or ''
-            current = letter == current_letter and 'current' or ''
+            current = letter == current_letter and 'active' or ''
             yield {'label': letter,
                    'has_contents': has_contents,
                    'current': current}
