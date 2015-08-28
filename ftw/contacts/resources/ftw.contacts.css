@@ -5,7 +5,7 @@
     border-top: 1px solid #ddd;
     padding-top: 1em;
 }
-#contact-folder-view .contactFolderAlphabeticalSearch div.letter{
+#contact-folder-view .contactFolderAlphabeticalSearch .letter{
     float: left;
     display: block;
     cursor: default;
@@ -13,17 +13,17 @@
     margin-bottom: 0.4em;
     background-color: #f1f1f1;
 }
-#contact-folder-view .contactFolderAlphabeticalSearch div.letter.withContent {
+#contact-folder-view .contactFolderAlphabeticalSearch .letter.withContent {
     background-color: #fff;
     cursor: pointer;
 }
-#contact-folder-view .contactFolderAlphabeticalSearch div.letter.withContent:hover {
+#contact-folder-view .contactFolderAlphabeticalSearch .letter.withContent:hover {
     background-color: #c4d9ea;
     -moz-border-radius:3px;
     -webkit-border-radius:3px;
     border-radius: 3px;
 }
-#contact-folder-view .contactFolderAlphabeticalSearch div.letter.current {
+#contact-folder-view .contactFolderAlphabeticalSearch .letter.active {
     background-color: #205c90;
     color: #fff;
     cursor: pointer;

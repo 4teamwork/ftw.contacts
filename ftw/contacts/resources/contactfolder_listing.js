@@ -24,11 +24,14 @@ var ContactFolderListing = (function($) {
             '#contact-folder-view input#contactFolderSearchGadget');
 
         loadMoreButton.on('click', function(e) {reloadView();});
-        $('.contactFolderAlphabeticalSearch div.letter').on('click', function(e) {
+        $('.contactFolderAlphabeticalSearch .letter').on('click', function(e) {
             letterClick($(this));
         });
         searchInput.on('keyup', function() {
-            updateSearch($(this).val());
+            var value = $(this).val();
+            delay(function() {
+                updateSearch(value);
+            }, 200);
         });
 
         reloadView();
@@ -56,7 +59,7 @@ var ContactFolderListing = (function($) {
 
             // letters
             $('.contactFolderAlphabeticalSearch').html(data.letters);
-            $('.contactFolderAlphabeticalSearch div.letter').on('click', function(e) {
+            $('.contactFolderAlphabeticalSearch .letter').on('click', function(e) {
                 letterClick($(this));
             });
         });
@@ -64,12 +67,12 @@ var ContactFolderListing = (function($) {
 
     var letterClick = function(button) {
         var self = $(button);
-        if (!self.hasClass('withContent') && !self.hasClass('current')) {
+        if (!self.hasClass('withContent') && !self.hasClass('active')) {
             return;
         }
-        // Reset the letter-filter if click on the current selected letter
+        // Reset the letter-filter if click on the active letter
         letter = '';
-        if (!self.hasClass('current')) {
+        if (!self.hasClass('active')) {
             letter = self.data('key');
         }
         reloadView(true);
@@ -87,6 +90,14 @@ var ContactFolderListing = (function($) {
         searchableText = text;
         reloadView(true);
     };
+
+    var delay = (function() {
+        var timer = 0;
+        return function(callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
 
     self.init = init;
     return self;

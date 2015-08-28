@@ -1,3 +1,161 @@
+$contact-letter-standalone-color: $button-standalone-color !default;
+$contact-border-color: $gray-light !default;
+
+@include declare-variables(
+  contact-letter-standalone-color,
+  contact-border-color);
+
 @include portal-type-font-awesome-icon(ftw-contacts-contactfolder, users);
 @include portal-type-font-awesome-icon(ftw-contacts-contact, user);
 @include portal-type-font-awesome-icon(ftw-contacts-memberblock, user);
+
+$resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
+
+@mixin letter($disabled) {
+    @include button($contact-letter-standalone-color, $disabled);
+    margin: 0px;
+    padding: 0px;
+    display: inline;
+    border: none;
+    border-radius: 0;
+    position: relative;
+    width: 1 / 27 * 100%;
+    float: left;
+    padding: 1em 0px;
+    text-align: center;
+    &:hover, &:focus, &:active, &.active {
+        border: none;
+    }
+
+    &:first-child {
+        @include borderradius-top-left();
+        @include borderradius-bottom-left();
+    }
+
+    &:last-child {
+        @include borderradius-top-right();
+        @include borderradius-bottom-right();
+    }
+}
+
+@mixin contact-portrait() {
+    &.gender-f { background-image: url("#{$resource-path}/female.png"); }
+    &.gender-m { background-image: url("#{$resource-path}/male.png"); }
+    &.gender- { background-image: url("#{$resource-path}/factory.png"); }
+}
+
+#contact-view .contactPortrait,
+#contact-folder-view .contactImage,
+#member-view .memberPortrait,
+.memberBlockPortraitEmpty {
+    @include contact-portrait();
+}
+
+#contact-view {
+    margin-bottom: 2em;
+    .contactInfos {
+        float: left;
+        margin-right: 1em;
+        th {
+            padding-right: 1em;
+            text-align: left;
+        }
+    }
+    .contactPortrait {
+        float: right;
+        margin-right: 1em;
+        width: 200px;
+        height: 200px;
+        background-size: contain;
+    }
+}
+
+#contact-folder-view  {
+    .contactFolderAlphabeticalSearch {
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 1em;
+    }
+
+    .letters {
+        display: inline-block;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .letter.withContent {
+        @include letter(false);
+    }
+
+    .letter:not(.withContent):not(.active) {
+        @include letter(true);
+    }
+
+    .letter.active:not(.withContent) {
+        @include letter(false);
+    }
+
+    .contactFolderSearchSlot {
+        margin-bottom: 1em;
+    }
+
+    input#contactFolderSearchGadget {
+        width: 100%;
+        font-size: 1.5em;
+        height: 2em;
+
+    }
+
+    .contactFolderContactsListig {
+        min-height: 400px;
+    }
+
+    .contactSummary {
+        display: block;
+        border-bottom: 1px solid $contact-border-color;
+        margin-top: 2em;
+        padding-left: 2em;
+        padding-bottom: 1em;
+    }
+
+    .contactSummary:last-child {
+        border-bottom: none;
+    }
+
+    .contactInfo {
+        float: left;
+        width: 50%;
+
+        table {
+            margin-top: 1em;
+            width: 100%;
+        }
+        th {
+            width: 150px;
+            font-weight: inherit;
+            text-align: left;
+        }
+    }
+
+    .contactImage {
+        float: left;
+        width: 200px;
+        height: 200px;
+        background-size: contain;
+    }
+
+    .contactFolderLoadMoreContacts {
+        @include button($contact-letter-standalone-color);
+        margin-left: 30%;
+        margin-right: 30%;
+        width: 40%;
+        text-align: center;
+    }
+}
+
+.memberBlockPortraitEmpty {
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+}

@@ -9,5 +9,5 @@
               compression="safe"
               cookable="True"
               enabled="1"
-              expression=""/>
+              expression="not:request/HTTP_X_FTW_THEMING|nothing"/>
 </object>
