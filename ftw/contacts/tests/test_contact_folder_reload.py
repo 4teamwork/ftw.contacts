@@ -36,7 +36,7 @@ class TestContactFolderReloadLetter(TestCase):
         browser.open_html(self.view.rendered_letters(brains, 'B'))
 
         self.assertEqual(2, len(browser.css('.letter.withContent')))
-        self.assertEqual(1, len(browser.css('.letter.current')))
+        self.assertEqual(1, len(browser.css('.letter.active')))
 
 
 class TestContactFolderReloadContact(TestCase):
