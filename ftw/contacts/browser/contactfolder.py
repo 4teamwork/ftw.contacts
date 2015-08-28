@@ -53,21 +53,28 @@ class ContactFolderReload(BrowserView):
         current_letter = self.request.form.get('letter', None)
 
         brains = self._contact_brains(SearchableText=searchable_text)
+        filtered_brains = self._filter_letter(brains, current_letter)
 
+        # max_contacts: is the length of brains after filtered by
+        #               the searchable text and filtered by the letters
+        # contacts: are the rendered contacts, sliced with the
+        #           index_from and index_to parameter
+        # letters: are the rendered letters only filterd by the
+        #          searchable_text to get all the possible letters
         return json.dumps({
-            'max_contacts': len(brains),
-            'contacts': self.contacts(
-                brains, current_letter, index_from, index_to),
-            'letters': self.letters(brains, current_letter)})
+            'max_contacts': len(filtered_brains),
+            'contacts': self.rendered_contacts(
+                filtered_brains, index_from, index_to),
+            'letters': self.rendered_letters(brains, current_letter)})
 
-    def contacts(self, brains, current_letter, index_from, index_to):
-        brains = self._filter_letter(brains, current_letter)
-        brains = brains[index_from:index_to]
+    def rendered_contacts(
+            self, filtered_brains, index_from, index_to):
+        brains = filtered_brains[index_from:index_to]
 
         return ''.join([brain.getObject().restrictedTraverse(
             '@@contact_summary')() for brain in brains])
 
-    def letters(self, brains, current_letter):
+    def rendered_letters(self, brains, current_letter):
         view = self.context.restrictedTraverse('@@letters')
         return view(brains, current_letter)
 

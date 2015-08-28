@@ -5,7 +5,6 @@ from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.testbrowser import browsing
 from Products.CMFCore.utils import getToolByName
 from unittest2 import TestCase
-
 import json
 
 
@@ -34,7 +33,7 @@ class TestContactFolderReloadLetter(TestCase):
 
         brains = self.catalog(portal_type="ftw.contacts.Contact")
 
-        browser.open_html(self.view.letters(brains, 'B'))
+        browser.open_html(self.view.rendered_letters(brains, 'B'))
 
         self.assertEqual(2, len(browser.css('.letter.withContent')))
         self.assertEqual(1, len(browser.css('.letter.current')))
@@ -65,8 +64,8 @@ class TestContactFolderReloadContact(TestCase):
 
         brains = self.catalog(portal_type="ftw.contacts.Contact")
 
-        browser.open_html(self.view.contacts(
-            brains, '', 0, 10))
+        browser.open_html(self.view.rendered_contacts(
+            brains, 0, 10))
 
         self.assertEqual(2, len(browser.css('.contactSummary')))
 
@@ -86,49 +85,17 @@ class TestContactFolderReloadContact(TestCase):
 
         brains = self.catalog(portal_type="ftw.contacts.Contact")
 
-        browser.open_html(self.view.contacts(brains, '', 1, 3))
+        browser.open_html(self.view.rendered_contacts(brains, 1, 3))
 
         self.assertEqual(
             2, len(browser.css('.contactSummary')),
             "Should return only the second and third contact")
 
-        browser.open_html(self.view.contacts(brains, '', 0, 1))
+        browser.open_html(self.view.rendered_contacts(brains, 0, 1))
 
         self.assertEqual(
             1, len(browser.css('.contactSummary')),
             "Should return only the first contact")
-
-    @browsing
-    def test_filter_letter(self, browser):
-        create(Builder('contact')
-               .with_minimal_info(u'Chuck', u'4orris')
-               .within(self.contactfolder))
-
-        create(Builder('contact')
-               .with_minimal_info(u'J\xe4mes', u'B\xf6nd')
-               .within(self.contactfolder))
-
-        create(Builder('contact')
-               .with_minimal_info(u'Max', u'Muster')
-               .within(self.contactfolder))
-
-        brains = self.catalog(portal_type="ftw.contacts.Contact")
-
-        browser.open_html(self.view.contacts(
-            brains, 'B', 0, 5))
-
-        self.assertEqual(
-            1, len(browser.css('.contactSummary')),
-            """Should return only display the James Bond contact because the
-            letter filter""")
-
-        browser.open_html(self.view.contacts(
-            brains, '#', 0, 5))
-
-        self.assertEqual(
-            1, len(browser.css('.contactSummary')),
-            """Should return only display the Chuck 4orris contact because the
-            letter filter""")
 
 
 class TestContactFolderReloadView(TestCase):
@@ -199,3 +166,86 @@ class TestContactFolderReloadView(TestCase):
         browser.open_html(data.get('letters'))
 
         self.assertEqual(1, len(browser.css('.letter.withContent')))
+
+    @browsing
+    def test_max_contacts_with_letters_filter(self, browser):
+        create(Builder('contact')
+               .with_minimal_info(u'Chuck', u'Borris')
+               .within(self.contactfolder))
+
+        create(Builder('contact')
+               .with_minimal_info(u'J\xe4mes', u'B\xf6nd')
+               .within(self.contactfolder))
+
+        create(Builder('contact')
+               .with_minimal_info(u'Max', u'Muster')
+               .within(self.contactfolder))
+
+        create(Builder('contact')
+               .with_minimal_info(u'Max', u'4uster')
+               .within(self.contactfolder))
+
+        self.request.form['letter'] = "B"
+
+        view = ContactFolderReload(self.contactfolder, self.request)
+        data = json.loads(view())
+
+        self.assertEqual(
+            2, data.get('max_contacts'),
+            """Becauswe the letter B is active, the max_contacts should
+            be only contain the Chuck and James contact, means '2'"""
+            )
+
+        browser.open_html(data.get('contacts'))
+
+        self.assertEqual(
+            2, len(browser.css('.contactSummary')),
+            """Should return the Chuck and james contact because the
+            letter filter""")
+
+        browser.open_html(data.get('letters'))
+
+        self.assertEqual(
+            3, len(browser.css('.letter.withContent')),
+            """Should show all available letters, means the #, M and B""")
+
+    @browsing
+    def test_max_contacts_with_special_letters_filter(self, browser):
+        create(Builder('contact')
+               .with_minimal_info(u'Chuck', u'Borris')
+               .within(self.contactfolder))
+
+        create(Builder('contact')
+               .with_minimal_info(u'J\xe4mes', u'B\xf6nd')
+               .within(self.contactfolder))
+
+        create(Builder('contact')
+               .with_minimal_info(u'Bud', u'Muster')
+               .within(self.contactfolder))
+
+        create(Builder('contact')
+               .with_minimal_info(u'Max', u'4uster')
+               .within(self.contactfolder))
+
+        self.request.form['letter'] = "#"
+
+        view = ContactFolderReload(self.contactfolder, self.request)
+        data = json.loads(view())
+
+        self.assertEqual(
+            1, data.get('max_contacts'),
+            """Becauswe the letter # is active, only the contacts
+            with a special char should be shown. Means, the Max 4uster"""
+            )
+
+        browser.open_html(data.get('contacts'))
+
+        self.assertEqual(
+            1, len(browser.css('.contactSummary')),
+            """Should return the Max contact because the letter filter""")
+
+        browser.open_html(data.get('letters'))
+
+        self.assertEqual(
+            3, len(browser.css('.letter.withContent')),
+            """Should show all available letters, means the #, M and B""")
