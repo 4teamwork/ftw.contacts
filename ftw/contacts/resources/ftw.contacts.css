@@ -9,12 +9,7 @@
     float: left;
     display: block;
     cursor: default;
-    padding: 0.8em;
-    border: 1px solid #ddd;
-    -moz-border-radius:6px;
-    -webkit-border-radius:6px;
-    border-radius: 6px;
-    margin-right: 0.4em;
+    padding: 1.1em;
     margin-bottom: 0.4em;
     background-color: #f1f1f1;
 }
@@ -24,11 +19,17 @@
 }
 #contact-folder-view .contactFolderAlphabeticalSearch div.letter.withContent:hover {
     background-color: #c4d9ea;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius: 3px;
 }
 #contact-folder-view .contactFolderAlphabeticalSearch div.letter.current {
     background-color: #205c90;
     color: #fff;
     cursor: pointer;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius: 3px;
 }
 #contact-folder-view .contactFolderContactsListig {
     min-height: 400px;
