@@ -13,9 +13,6 @@
       <img tal:replace="structure contact/@@images/image/mini" />
     </div>
     <div tal:condition="not:contact/image" tal:attributes="class string:memberBlockPortraitEmpty sl-image right gender-${contact/gender}"></div>
-    <p class="imageCaption" tal:define="description view/image_caption"
-    tal:condition="description"
-    tal:content="description" />
   </tal:image>
   <div class="memberContactInfo">
     <strong>

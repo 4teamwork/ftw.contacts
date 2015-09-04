@@ -37,24 +37,6 @@ class TestMemberBlockView(TestCase):
         self.assertEqual(u'A MemberBlock', browser.css('h3').first.text)
 
     @browsing
-    def test_image_caption_is_contact_title_if_has_permission(self, browser):
-        contact = create(Builder('contact')
-                         .with_minimal_info(u'Ch\xf6ck', u'4orris')
-                         .within(self.contactfolder))
-
-        member_block = create(Builder('member block')
-                              .within(self.contactfolder)
-                              .contact(contact)
-                              .titled(u"A MemberBlock")
-                              .having(show_image=True))
-
-        browser.login().visit(member_block, view="block_view")
-
-        self.assertEqual(
-            u'Ch\xf6ck 4orris',
-            browser.css('.imageCaption').first.text)
-
-    @browsing
     def test_call_with_deleted_contact_returns_hint(self, browser):
 
         contact = create(Builder('contact')
