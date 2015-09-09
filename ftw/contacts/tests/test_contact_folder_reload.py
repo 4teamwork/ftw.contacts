@@ -168,6 +168,52 @@ class TestContactFolderReloadView(TestCase):
         self.assertEqual(1, len(browser.css('.letter.withContent')))
 
     @browsing
+    def test_search_with_special_chars(self, browser):
+        create(Builder('contact')
+               .with_minimal_info(u'Chuck', u'4orris')
+               .within(self.contactfolder))
+
+        self.request.form['searchable_text'] = "Ch/*+uck 4or"
+
+        view = ContactFolderReload(self.contactfolder, self.request)
+        data = json.loads(view())
+
+        self.assertEqual(
+            1, data.get('max_contacts'),
+            "There should be one contact, the 'Chuck 4orris'. " +
+            "The special chars are replaced with an empty string.")
+
+    @browsing
+    def test_search_only_special_chars(self, browser):
+        create(Builder('contact')
+               .with_minimal_info(u'Chuck', u'4orris')
+               .within(self.contactfolder))
+
+        self.request.form['searchable_text'] = "  /*+  "
+
+        view = ContactFolderReload(self.contactfolder, self.request)
+        data = json.loads(view())
+
+        self.assertEqual(
+            1, data.get('max_contacts'),
+            "There should be all contacts." +
+            "The special chars are replaced with an empty string.")
+
+    @browsing
+    def test_search_with_empty_string(self, browser):
+        create(Builder('contact')
+               .with_minimal_info(u'Chuck', u'4orris')
+               .within(self.contactfolder))
+
+        self.request.form['searchable_text'] = ""
+
+        view = ContactFolderReload(self.contactfolder, self.request)
+        data = json.loads(view())
+
+        self.assertEqual(
+            1, data.get('max_contacts'), "There should be all contacts")
+
+    @browsing
     def test_max_contacts_with_letters_filter(self, browser):
         create(Builder('contact')
                .with_minimal_info(u'Chuck', u'Borris')

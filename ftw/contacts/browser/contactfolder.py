@@ -110,20 +110,24 @@ class ContactFolderReload(BrowserView):
             SearchableText='')
 
         basequery.update(query)
-        self._cleanup_query(basequery)
-        return basequery
+        return self._cleanup_query(basequery)
 
     def _cleanup_query(self, query):
         text = query.get('SearchableText')
 
         # Remove unsupported words
         text = re.sub(re.compile(
-            r'\W', re.UNICODE), r' ', text.decode('utf-8')).encode('utf-8')
+            r'[^\w\s]', re.UNICODE), r'', text.decode('utf-8')).encode('utf-8')
+
+        text = text.strip()
 
         if not text:
+            query.pop('SearchableText')
             return query
 
         # Add wildcard
         text = "{0}*".format(text)
 
         query.update({'SearchableText': text})
+
+        return query
