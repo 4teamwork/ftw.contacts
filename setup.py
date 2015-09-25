@@ -73,6 +73,7 @@ setup(name='ftw.contacts',
           'plone.api >= 1.3.3',
           'ftw.zipexport',
           'ftw.autofeature',
+          'ftw.upgrade',
           ],
 
       tests_require=tests_require,

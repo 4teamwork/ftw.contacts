@@ -3,10 +3,13 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:upgrade-step="http://namespaces.zope.org/ftw.upgrade"
     i18n_domain="ftw.contacts">
 
     <include file="permissions.zcml" />
     <include file="lawgiver.zcml" zcml:condition="installed ftw.lawgiver" />
+
+    <include package="ftw.upgrade" file="meta.zcml" />
 
     <genericsetup:registerProfile
         name="default"
@@ -14,6 +17,11 @@
         directory="profiles/default"
         description="Installs ftw.simplelayout and adds a special memberblock."
         provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <upgrade-step:directory
+        profile="ftw.contacts.simplelayout:default"
+        directory="upgrades"
         />
 
     <browser:page

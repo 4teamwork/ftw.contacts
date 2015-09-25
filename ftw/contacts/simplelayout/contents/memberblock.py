@@ -2,14 +2,37 @@ from collective import dexteritytextindexer
 from ftw.contacts import _
 from ftw.contacts.interfaces import IContact
 from ftw.contacts.interfaces import IMemberBlock
+from ftw.contacts.simplelayout.interfaces import IMemberRegistry
 from ftw.contacts.utils import get_organization
+from plone import api
 from plone.dexterity.content import Item
 from plone.formwidget.contenttree import ObjPathSourceBinder
+from plone.registry.interfaces import IRegistry
 from plone.supermodel import model
 from z3c.relationfield.schema import RelationChoice
 from z3c.schema.email import RFC822MailAddress
 from zope import schema
+from zope.component import getUtility
 from zope.interface import implements
+
+
+class AddressObjPathSourceBinder(ObjPathSourceBinder):
+    def __init__(self):
+        super(AddressObjPathSourceBinder, self).__init__(
+            navigation_tree_query={},
+            object_provides=IContact.__identifier__)
+
+    def __call__(self, context):
+        portal = api.portal.get()
+        portal_path = '/'.join(portal.getPhysicalPath())
+
+        registry = getUtility(IRegistry).forInterface(IMemberRegistry)
+        path = registry.member_nav_tree_query_path or ''
+
+        self.navigation_tree_query['path'] = {
+            'query': portal_path + path}
+
+        return super(AddressObjPathSourceBinder, self).__call__(context)
 
 
 class IMemberBlockSchema(model.Schema):
@@ -28,7 +51,7 @@ class IMemberBlockSchema(model.Schema):
 
     contact = RelationChoice(
         title=_(u'label_contact_reference', default=u'Contact reference'),
-        source=ObjPathSourceBinder(object_provides=IContact.__identifier__),
+        source=AddressObjPathSourceBinder(),
         required=True)
 
     dexteritytextindexer.searchable('function')
