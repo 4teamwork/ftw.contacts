@@ -13,6 +13,7 @@ tests_require = [
     'ftw.contacts [zip_export]',
     'ftw.contacts [simplelayout]',
     'ftw.contacts [geo]',
+    'unittest2',
     ]
 zip_export = [
     'ftw.zipexport',
