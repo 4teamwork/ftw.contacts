@@ -19,29 +19,29 @@ class TestMemberAccessor(TestCase):
     def test_get_attr_on_member_if_not_aquire_address(self):
         contact = create(Builder('contact')
                          .with_minimal_info(u'Chuck', u'4\xf6rris')
+                         .having(address='Bundesplatz 1')
                          .within(self.contactfolder))
 
         member_block = create(Builder('member block')
                               .within(self.contactfolder)
                               .contact(contact)
-                              .having(
-                                  firstname=u"J\xf6mes"))
+                              .having(address='Frankenstrasse 53'))
 
-        self.assertEqual(u'J\xf6mes', IMemberAccessor(member_block).firstname)
+        self.assertEqual(u'Frankenstrasse 53', IMemberAccessor(member_block).address)
 
     def test_get_attr_on_contact_if_aquire_address(self):
         contact = create(Builder('contact')
-                         .with_minimal_info(u'Ch\xf6ck', u'4orris')
+                         .with_minimal_info(u'Chuck', u'4\xf6rris')
+                         .having(address='Bundesplatz 1')
                          .within(self.contactfolder))
 
         member_block = create(Builder('member block')
                               .within(self.contactfolder)
                               .contact(contact)
-                              .having(
-                                  firstname=u"J\xf6mes",
-                                  acquire_address=True))
+                              .having(address='Frankenstrasse 53',
+                                      acquire_address=True))
 
-        self.assertEqual(u'Ch\xf6ck', IMemberAccessor(member_block).firstname)
+        self.assertEqual(u'Bundesplatz 1', IMemberAccessor(member_block).address)
 
     def test_get_attr_on_member_if_aquire_address_but_attr_not_exist(self):
         contact = create(Builder('contact')
