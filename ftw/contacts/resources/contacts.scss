@@ -115,7 +115,6 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
         display: block;
         border-bottom: 1px solid $contact-border-color;
         margin-top: 2em;
-        padding-left: 2em;
         padding-bottom: 1em;
     }
 
@@ -125,21 +124,20 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 
     .contactInfo {
         float: left;
-        width: 50%;
 
         table {
             margin-top: 1em;
             width: 100%;
         }
         th {
-            width: 150px;
             font-weight: inherit;
             text-align: left;
+            padding-right: 10px;
         }
     }
 
     .contactImage {
-        float: left;
+        float: right;
         width: 200px;
         height: 200px;
         background-size: contain;

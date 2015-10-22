@@ -38,7 +38,6 @@
     display: block;
     border-bottom: 1px solid #ddd;
     margin-top: 2em;
-    padding-left: 2em;
     padding-bottom: 1em;
 }
 #contact-folder-view .contactSummary:last-child {
@@ -58,18 +57,18 @@
 }
 #contact-folder-view .contactInfo {
     float: left;
-    width: 50%;
 }
 #contact-folder-view .contactInfo table {
     margin-top: 1em;
     width: 100%;
 }
 #contact-folder-view .contactInfo th {
-    width: 150px;
     font-weight: inherit;
+    text-align: left;
+    padding-right: 10px;
 }
 #contact-folder-view .contactImage {
-    float: left;
+    float: right;
     width: 200px;
     height: 200px;
     background-size: contain;
