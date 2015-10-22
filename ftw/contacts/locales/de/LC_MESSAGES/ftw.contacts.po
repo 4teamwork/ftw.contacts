@@ -222,20 +222,20 @@ msgstr "Organisation"
 #: ./ftw/contacts/contents/contact.py:107
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:89
 msgid "label_phone_mobile"
-msgstr "Telefon Mobil"
+msgstr "Telefon mobil"
 
 #. Default: "Office phone number"
 #: ./ftw/contacts/browser/contact.pt:43
 #: ./ftw/contacts/contents/contact.py:100
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:82
 msgid "label_phone_office"
-msgstr "Telefon Geschäftlich"
+msgstr "Telefon geschäftlich"
 
 #. Default: "Private phone number"
 #: ./ftw/contacts/browser/contact.pt:83
 #: ./ftw/contacts/contents/contact.py:164
 msgid "label_phone_private"
-msgstr "Telefon Privat"
+msgstr "Telefon privat"
 
 #. Default: "Postal code"
 #: ./ftw/contacts/contents/contact.py:70
@@ -276,12 +276,12 @@ msgstr "Geschäft"
 #. Default: "Phone M"
 #: ./ftw/contacts/browser/contact_summary.pt:23
 msgid "label_short_phone_mobile"
-msgstr "Telefon Mobile:"
+msgstr "Telefon mobile:"
 
 #. Default: "Phone O"
 #: ./ftw/contacts/browser/contact_summary.pt:19
 msgid "label_short_phone_office"
-msgstr "Telefon Geschäftlich:"
+msgstr "Telefon geschäftlich:"
 
 #. Default: "Show address"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:42
