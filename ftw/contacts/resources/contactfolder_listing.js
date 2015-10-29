@@ -1,11 +1,7 @@
-$(function() {
-    ContactFolderListing.init();
-});
 var ContactFolderListing = (function($) {
 
     'use strict';
 
-    var self = {};
     var contactsContainer;
     var loadMoreButton;
     var searchInput;
@@ -14,19 +10,18 @@ var ContactFolderListing = (function($) {
     var letter = '';
     var maxContacts = 0;
     var searchableText = '';
+    var self = this;
 
     var init = function() {
-        contactsContainer = $(
-            '#contact-folder-view .contactFolderContactsListig');
-        loadMoreButton = $(
-            '#contact-folder-view .contactFolderLoadMoreContacts');
-        searchInput = $(
-            '#contact-folder-view input#contactFolderSearchGadget');
+
+        contactsContainer = $('#contact-folder-view .contactFolderContactsListig');
+        loadMoreButton = $('#contact-folder-view .contactFolderLoadMoreContacts');
+        searchInput = $('#contact-folder-view input#contactFolderSearchGadget');
 
         loadMoreButton.on('click', function(e) {reloadView();});
-        $('.contactFolderAlphabeticalSearch .letter').on('click', function(e) {
-            letterClick($(this));
-        });
+
+        $(document).on('click', '.contactFolderAlphabeticalSearch .letter', letterClick);
+
         searchInput.on('keyup', function() {
             var value = $(this).val();
             delay(function() {
@@ -34,7 +29,18 @@ var ContactFolderListing = (function($) {
             }, 200);
         });
 
+        $('input[name=SearchableContactsText]').keypress(disableEnter);
+
         reloadView();
+    };
+
+    var isEnter = function(event) { return event.which === 13; };
+
+    var disableEnter = function(e) {
+        if (isEnter(e)) {
+            e.preventDefault();
+            return false;
+        }
     };
 
     var reloadView = function(reset) {
@@ -59,21 +65,18 @@ var ContactFolderListing = (function($) {
 
             // letters
             $('.contactFolderAlphabeticalSearch').html(data.letters);
-            $('.contactFolderAlphabeticalSearch .letter').on('click', function(e) {
-                letterClick($(this));
-            });
         });
     };
 
-    var letterClick = function(button) {
-        var self = $(button);
-        if (!self.hasClass('withContent') && !self.hasClass('active')) {
+    var letterClick = function(e) {
+        var letterButton = $(e.currentTarget);
+        if (!letterButton.hasClass('withContent') && !letterButton.hasClass('active')) {
             return;
         }
         // Reset the letter-filter if click on the active letter
         letter = '';
-        if (!self.hasClass('active')) {
-            letter = self.data('key');
+        if (!letterButton.hasClass('active')) {
+            letter = letterButton.data('key');
         }
         reloadView(true);
     };
@@ -99,7 +102,8 @@ var ContactFolderListing = (function($) {
         };
     })();
 
-    self.init = init;
-    return self;
+    return { init: init };
 
 }(jQuery));
+
+$(ContactFolderListing.init);
