@@ -5,7 +5,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix css styles for plonetheme.onegovbear
+  [elioschmutz]
 
 
 1.0.0 (2015-12-04)

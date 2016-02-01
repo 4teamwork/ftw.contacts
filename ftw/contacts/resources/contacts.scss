@@ -1,9 +1,8 @@
 $contact-letter-standalone-color: $button-standalone-color !default;
-$contact-border-color: $gray-light !default;
 
 @include declare-variables(
-  contact-letter-standalone-color,
-  contact-border-color);
+  contact-letter-standalone-color
+  );
 
 @include portal-type-font-awesome-icon(ftw-contacts-contactfolder, users);
 @include portal-type-font-awesome-icon(ftw-contacts-contact, user);
@@ -105,6 +104,7 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
         font-size: 1.5em;
         height: 2em;
         line-height: 48px;
+        box-sizing: border-box;
     }
 
     .contactFolderContactsListig {
@@ -113,7 +113,7 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 
     .contactSummary {
         display: block;
-        border-bottom: 1px solid $contact-border-color;
+        border-bottom: 1px solid  $color-gray-light;
         margin-top: 2em;
         padding-bottom: 1em;
     }

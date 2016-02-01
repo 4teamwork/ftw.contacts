@@ -77,6 +77,7 @@
     width: 100%;
     height: 1.5em;
     font-size: 2em;
+    box-sizing: border-box;
 }
 /* End Contactfolder listing */
 
