@@ -2,9 +2,16 @@
 @include portal-type-font-awesome-icon(ftw-contacts-contact, user);
 @include portal-type-font-awesome-icon(ftw-contacts-memberblock, user);
 
+$portrait-width: 200px;
+$portrait-height: 200px;
+
+@include declare-variables(
+    $portrait-width,
+    $portrait-height);
+
 $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 
-@mixin letter($disabled) {
+@mixin letter($disabled: false) {
     @include button-default($disabled: $disabled);
     margin: 0px;
     padding: 0px;
@@ -48,20 +55,20 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 }
 
 #contact-view {
-    margin-bottom: 2em;
+    margin-bottom: $margin-vertical;
     .contactInfos {
         float: left;
-        margin-right: 1em;
+        margin-right: $margin-horizontal;
         th {
-            padding-right: 1em;
+            padding-right: $margin-horizontal;
             text-align: left;
         }
     }
     .contactPortrait {
         float: right;
-        margin-right: 1em;
-        width: 200px;
-        height: 200px;
+        margin-right: $margin-horizontal;
+        width: $portrait-width;
+        height: $portrait-height;
         background-size: contain;
     }
 }
@@ -70,7 +77,7 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
     .contactFolderAlphabeticalSearch {
         display: inline-block;
         width: 100%;
-        margin-bottom: 1em;
+        margin-bottom: $margin-vertical;
     }
 
     .letters {
@@ -81,26 +88,24 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
     }
 
     .letter.withContent {
-        @include letter(false);
+        @include letter();
     }
 
     .letter:not(.withContent):not(.active) {
-        @include letter(true);
+        @include letter($disabled: true);
     }
 
     .letter.active:not(.withContent) {
-        @include letter(false);
+        @include letter();
     }
 
     .contactFolderSearchSlot {
-        margin-bottom: 1em;
+        margin-bottom: $margin-vertical;
     }
 
     input#contactFolderSearchGadget {
         width: 100%;
-        font-size: 1.5em;
-        height: 2em;
-        line-height: 48px;
+        font-size: $font-size-large;
         box-sizing: border-box;
     }
 
@@ -111,8 +116,8 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
     .contactSummary {
         display: block;
         border-bottom: 1px solid  $color-gray-light;
-        margin-top: 2em;
-        padding-bottom: 1em;
+        margin-top: $margin-vertical;
+        padding-bottom: $padding-vertical;
     }
 
     .contactSummary:last-child {
@@ -123,20 +128,20 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
         float: left;
 
         table {
-            margin-top: 1em;
+            margin-top: $margin-vertical;
             width: 100%;
         }
         th {
             font-weight: inherit;
             text-align: left;
-            padding-right: 10px;
+            padding-right: $padding-horizontal;
         }
     }
 
     .contactImage {
         float: right;
-        width: 200px;
-        height: 200px;
+        width: $portrait-width;
+        height: $portrait-height;
         background-size: contain;
     }
 
@@ -150,7 +155,7 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 }
 
 .memberBlockPortraitEmpty {
-    width: 200px;
-    height: 200px;
+    width: $portrait-width;
+    height: $portrait-height;
     background-size: contain;
 }
