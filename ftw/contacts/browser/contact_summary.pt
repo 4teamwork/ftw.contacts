@@ -9,7 +9,7 @@
       <div tal:condition="context/function"><span tal:content="context/function" /></div>
       <div tal:condition="context/organization"><span tal:content="context/organization" /></div>
 
-      <div><span tal:content="context/title" /></div>
+      <div><span tal:content="context/title" tal:condition="python:context.title != context.organization"/></div>
       <div tal:condition="context/address"><span tal:replace="structure python:view.safe_html(context.address)" /></div>
       <div tal:condition="python: context.postal_code and context.city">
         <span tal:content="string:${context/postal_code} ${context/city}" />

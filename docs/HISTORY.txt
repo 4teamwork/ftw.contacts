@@ -5,6 +5,12 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Adjust contact_summary template to display the title in the details
+  only if it is different than the organization name.
+  This happens if you fill only an organization name without a first and last
+  name.
+  [elioschmutz]
+
 - Fix css styles for plonetheme.onegovbear
   [elioschmutz]
 
