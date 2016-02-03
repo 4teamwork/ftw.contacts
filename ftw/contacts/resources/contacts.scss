@@ -13,15 +13,15 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 
 @mixin letter($disabled: false) {
     @include button-default($disabled: $disabled);
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     display: inline;
     border: none;
     border-radius: 0;
     position: relative;
     width: 1 / 27 * 100%;
     float: left;
-    padding: 1em 0px;
+    padding: $padding-vertical 0;
     text-align: center;
     &:hover, &:focus, &:active, &.active {
         $hover-color: lighten($color-default, 15%);
@@ -147,10 +147,12 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 
     .contactFolderLoadMoreContacts {
         @include button($color-button-default);
-        margin-left: 30%;
-        margin-right: 30%;
-        width: 40%;
         text-align: center;
+        margin: 0 auto;
+        display: block;
+        @include screen-small() {
+            max-width: 30%;
+        }
     }
 }
 
