@@ -13,9 +13,9 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 
 @mixin letter($disabled: false) {
   @include button-default($disabled: $disabled);
+  display: inline;
   margin: 0;
   padding: 0;
-  display: inline;
   border: none;
   border-radius: 0;
   position: relative;
@@ -75,7 +75,10 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 
 #contact-folder-view  {
   .contactFolderAlphabeticalSearch {
-    display: inline-block;
+    @include screen-small() {
+      display: inline-block;
+    }
+    display: none;
     width: 100%;
     margin-bottom: $margin-vertical;
   }
