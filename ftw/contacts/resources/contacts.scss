@@ -6,158 +6,158 @@ $portrait-width: 200px;
 $portrait-height: 200px;
 
 @include declare-variables(
-    $portrait-width,
-    $portrait-height);
+  $portrait-width,
+  $portrait-height);
 
 $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
 
 @mixin letter($disabled: false) {
-    @include button-default($disabled: $disabled);
-    margin: 0;
-    padding: 0;
-    display: inline;
+  @include button-default($disabled: $disabled);
+  margin: 0;
+  padding: 0;
+  display: inline;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  width: 1 / 27 * 100%;
+  float: left;
+  padding: $padding-vertical 0;
+  text-align: center;
+  &:hover, &:focus, &:active, &.active {
+    $hover-color: lighten($color-default, 15%);
+    @include auto-text-color($hover-color);
+    background-color: $hover-color;
     border: none;
-    border-radius: 0;
-    position: relative;
-    width: 1 / 27 * 100%;
-    float: left;
-    padding: $padding-vertical 0;
-    text-align: center;
-    &:hover, &:focus, &:active, &.active {
-        $hover-color: lighten($color-default, 15%);
-        @include auto-text-color($hover-color);
-        background-color: $hover-color;
-        border: none;
-    }
+  }
 
-    &:first-child {
-        @include borderradius-top-left();
-        @include borderradius-bottom-left();
-    }
+  &:first-child {
+    @include borderradius-top-left();
+    @include borderradius-bottom-left();
+  }
 
-    &:last-child {
-        @include borderradius-top-right();
-        @include borderradius-bottom-right();
-    }
+  &:last-child {
+    @include borderradius-top-right();
+    @include borderradius-bottom-right();
+  }
 }
 
 @mixin contact-portrait() {
-    &.gender-f { background-image: url("#{$resource-path}/female.png"); }
-    &.gender-m { background-image: url("#{$resource-path}/male.png"); }
-    &.gender- { background-image: url("#{$resource-path}/factory.png"); }
+  &.gender-f { background-image: url("#{$resource-path}/female.png"); }
+  &.gender-m { background-image: url("#{$resource-path}/male.png"); }
+  &.gender- { background-image: url("#{$resource-path}/factory.png"); }
 }
 
 #contact-view .contactPortrait,
 #contact-folder-view .contactImage,
 #member-view .memberPortrait,
 .memberBlockPortraitEmpty {
-    @include contact-portrait();
+  @include contact-portrait();
 }
 
 #contact-view {
-    margin-bottom: $margin-vertical;
-    .contactInfos {
-        float: left;
-        margin-right: $margin-horizontal;
-        th {
-            padding-right: $margin-horizontal;
-            text-align: left;
-        }
+  margin-bottom: $margin-vertical;
+  .contactInfos {
+    float: left;
+    margin-right: $margin-horizontal;
+    th {
+      padding-right: $margin-horizontal;
+      text-align: left;
     }
-    .contactPortrait {
-        float: right;
-        margin-right: $margin-horizontal;
-        width: $portrait-width;
-        height: $portrait-height;
-        background-size: contain;
-    }
-}
-
-#contact-folder-view  {
-    .contactFolderAlphabeticalSearch {
-        display: inline-block;
-        width: 100%;
-        margin-bottom: $margin-vertical;
-    }
-
-    .letters {
-        display: inline-block;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .letter.withContent {
-        @include letter();
-    }
-
-    .letter:not(.withContent):not(.active) {
-        @include letter($disabled: true);
-    }
-
-    .letter.active:not(.withContent) {
-        @include letter();
-    }
-
-    .contactFolderSearchSlot {
-        margin-bottom: $margin-vertical;
-    }
-
-    input#contactFolderSearchGadget {
-        width: 100%;
-        font-size: $font-size-large;
-        box-sizing: border-box;
-    }
-
-    .contactFolderContactsListig {
-        min-height: 400px;
-    }
-
-    .contactSummary {
-        display: block;
-        border-bottom: 1px solid  $color-gray-light;
-        margin-top: $margin-vertical;
-        padding-bottom: $padding-vertical;
-    }
-
-    .contactSummary:last-child {
-        border-bottom: none;
-    }
-
-    .contactInfo {
-        float: left;
-
-        table {
-            margin-top: $margin-vertical;
-            width: 100%;
-        }
-        th {
-            font-weight: inherit;
-            text-align: left;
-            padding-right: $padding-horizontal;
-        }
-    }
-
-    .contactImage {
-        float: right;
-        width: $portrait-width;
-        height: $portrait-height;
-        background-size: contain;
-    }
-
-    .contactFolderLoadMoreContacts {
-        @include button($color-button-default);
-        text-align: center;
-        margin: 0 auto;
-        display: block;
-        @include screen-small() {
-            max-width: 30%;
-        }
-    }
-}
-
-.memberBlockPortraitEmpty {
+  }
+  .contactPortrait {
+    float: right;
+    margin-right: $margin-horizontal;
     width: $portrait-width;
     height: $portrait-height;
     background-size: contain;
+  }
+}
+
+#contact-folder-view  {
+  .contactFolderAlphabeticalSearch {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: $margin-vertical;
+  }
+
+  .letters {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .letter.withContent {
+    @include letter();
+  }
+
+  .letter:not(.withContent):not(.active) {
+    @include letter($disabled: true);
+  }
+
+  .letter.active:not(.withContent) {
+    @include letter();
+  }
+
+  .contactFolderSearchSlot {
+    margin-bottom: $margin-vertical;
+  }
+
+  input#contactFolderSearchGadget {
+    width: 100%;
+    font-size: $font-size-large;
+    box-sizing: border-box;
+  }
+
+  .contactFolderContactsListig {
+    min-height: 400px;
+  }
+
+  .contactSummary {
+    display: block;
+    border-bottom: 1px solid  $color-gray-light;
+    margin-top: $margin-vertical;
+    padding-bottom: $padding-vertical;
+  }
+
+  .contactSummary:last-child {
+    border-bottom: none;
+  }
+
+  .contactInfo {
+    float: left;
+
+    table {
+      margin-top: $margin-vertical;
+      width: 100%;
+    }
+    th {
+      font-weight: inherit;
+      text-align: left;
+      padding-right: $padding-horizontal;
+    }
+  }
+
+  .contactImage {
+    float: right;
+    width: $portrait-width;
+    height: $portrait-height;
+    background-size: contain;
+  }
+
+  .contactFolderLoadMoreContacts {
+    @include button($color-button-default);
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    @include screen-small() {
+      max-width: 30%;
+    }
+  }
+}
+
+.memberBlockPortraitEmpty {
+  width: $portrait-width;
+  height: $portrait-height;
+  background-size: contain;
 }
