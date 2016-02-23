@@ -7,7 +7,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 class MemberBlockView(BaseBlock, MemberView):
 
-    template = ViewPageTemplateFile('memberblock.pt')
+    template = ViewPageTemplateFile('templates/memberblock.pt')
 
     @property
     def image_caption(self):
