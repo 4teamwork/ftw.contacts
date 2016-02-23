@@ -6,8 +6,7 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    xmlns:autofeature="http://namespaces.zope.org/autofeature"
-    i18n_domain="ftw.contacts">
+    xmlns:autofeature="http://namespaces.zope.org/autofeature">
 
     <include package="ftw.autofeature" file="meta.zcml" />
     <autofeature:extras />

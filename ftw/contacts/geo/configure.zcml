@@ -2,8 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    xmlns:profilehook="http://namespaces.zope.org/profilehook"
-    i18n_domain="ftw.contacts">
+    xmlns:profilehook="http://namespaces.zope.org/profilehook">
 
     <genericsetup:registerProfile
         name="default"
