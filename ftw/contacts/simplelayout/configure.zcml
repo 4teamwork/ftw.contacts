@@ -29,7 +29,7 @@
         name="view"
         class=".member.MemberView"
         permission="zope2.View"
-        template="member.pt"
+        template="templates/member.pt"
         />
 
     <browser:page
@@ -37,7 +37,7 @@
         name="block_view"
         class=".memberblock.MemberBlockView"
         permission="zope2.View"
-        template="memberblock.pt"
+        template="templates/memberblock.pt"
         />
 
 </configure>

@@ -9,7 +9,7 @@
         name="view"
         class=".contact.ContactView"
         permission="zope2.View"
-        template="contact.pt"
+        template="templates/contact.pt"
         />
 
     <browser:page
@@ -23,7 +23,7 @@
         for="ftw.contacts.interfaces.IContact"
         name="contact_summary"
         class=".contact.ContactSummary"
-        template="contact_summary.pt"
+        template="templates/contact_summary.pt"
         permission="zope2.View"
         />
 
@@ -31,7 +31,7 @@
         for="ftw.contacts.interfaces.IContactFolder"
         name="letters"
         class=".contactfolder.Letters"
-        template="letters.pt"
+        template="templates/letters.pt"
         permission="zope2.View"
         />
 
@@ -40,7 +40,7 @@
         name="view"
         class=".contactfolder.ContactFolderView"
         permission="zope2.View"
-        template="contactfolder.pt"
+        template="templates/contactfolder.pt"
         />
 
     <browser:page
