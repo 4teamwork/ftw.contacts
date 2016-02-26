@@ -65,6 +65,7 @@ var ContactFolderListing = (function($) {
 
             // letters
             $('.contactFolderAlphabeticalSearch').html(data.letters);
+            $(document).trigger("contactsReloaded");
         });
     };
 

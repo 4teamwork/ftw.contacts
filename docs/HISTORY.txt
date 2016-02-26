@@ -8,6 +8,9 @@ Changelog
 - Change ``reload`` view name to more specific name ``reload_contacts``.
   [elioschmutz]
 
+- Trigger event if contacts are reloaded.
+  [elioschmutz]
+
 - Adjust contact_summary template to display the title in the details
   only if it is different than the organization name.
   This happens if you fill only an organization name without a first and last
