@@ -45,7 +45,7 @@
 
     <browser:page
         for="ftw.contacts.interfaces.IContactFolder"
-        name="reload"
+        name="reload_contacts"
         class=".contactfolder.ContactFolderReload"
         permission="zope2.View"
         />

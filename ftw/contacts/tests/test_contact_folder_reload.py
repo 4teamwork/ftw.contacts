@@ -19,7 +19,7 @@ class TestContactFolderReloadLetter(TestCase):
         self.contactfolder = create(
             Builder('contact folder').titled(u'Contact folder'))
 
-        self.view = self.contactfolder.unrestrictedTraverse('reload')
+        self.view = self.contactfolder.unrestrictedTraverse('reload_contacts')
 
     @browsing
     def test_returns_html_letters(self, browser):
@@ -50,7 +50,7 @@ class TestContactFolderReloadContact(TestCase):
         self.contactfolder = create(
             Builder('contact folder').titled(u'Contact folder'))
 
-        self.view = self.contactfolder.unrestrictedTraverse('reload')
+        self.view = self.contactfolder.unrestrictedTraverse('reload_contacts')
 
     @browsing
     def test_returns_html_contacts(self, browser):
@@ -110,7 +110,7 @@ class TestContactFolderReloadView(TestCase):
         self.contactfolder = create(
             Builder('contact folder').titled(u'Contact folder'))
 
-        self.view = self.contactfolder.unrestrictedTraverse('reload')
+        self.view = self.contactfolder.unrestrictedTraverse('reload_contacts')
 
     @browsing
     def test_json_string_on_call(self, browser):

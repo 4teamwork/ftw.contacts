@@ -48,7 +48,7 @@ var ContactFolderListing = (function($) {
         if (reset) {
             index = 0;
         }
-        $.getJSON('@@reload', {
+        $.getJSON('@@reload_contacts', {
                 index_from: index,
                 index_to: index + step,
                 letter: letter,
