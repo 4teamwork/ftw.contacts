@@ -7,106 +7,145 @@
   i18n:domain="ftw.contacts">
 
   <body>
-    <div metal:fill-slot="content-core">
-      <metal:main-macro define-macro="content-core">
-        <div id="contact-view">
-          <div class="contactInfos">
-            <table class="contacInfo">
-              <tr tal:condition="python: context.firstname and context.lastname">
-                <th i18n:translate="label_name">Name</th>
-                <td>
-                  <tal:title tal:condition="context/academic_title" tal:replace="context/academic_title" />
-                  <tal:name tal:replace="string:${context/lastname} ${context/firstname}" />
-                </td>
-              </tr>
-              <tr tal:condition="context/function">
-                <th i18n:translate="label_function">Function</th>
-                <td tal:content="context/function" />
-              </tr>
-              <tr tal:condition="context/organization">
-                <th i18n:translate="label_organization">Organization</th>
-                <td tal:content="context/organization" />
-              </tr>
-              <tr tal:condition="context/department">
-                <th i18n:translate="label_department">Department</th>
-                <td tal:content="context/department" />
-              </tr>
-              <tr tal:condition="python: context.postal_code and context.city and context.address">
-                <th i18n:translate="label_address">Address</th>
-                <td>
-                  <span tal:replace="structure python:view.safe_html(context.address)" />
-                  <span tal:replace="context/postal_code" />
-                  <span tal:replace="context/city" />
-                </td>
-              </tr>
-              <tr tal:condition="context/phone_office">
-                <th i18n:translate="label_phone_office">Office phone number</th>
-                <td tal:content="context/phone_office" />
-              </tr>
-              <tr tal:condition="context/phone_mobile">
-                <th i18n:translate="label_phone_mobile">Mobile phone number</th>
-                <td tal:content="context/phone_mobile" />
-              </tr>
-              <tr tal:condition="context/fax">
-                <th i18n:translate="label_fax">Fax number</th>
-                <td tal:content="context/fax" />
-              </tr>
-              <tr tal:condition="context/email">
-                <th i18n:translate="label_email">E-Mail</th>
-                <td>
-                  <a tal:attributes="href string:mailto:${context/email}"
-                  tal:content="context/email" />
-                </td>
-              </tr>
-              <tr tal:condition="context/www">
-                <th i18n:translate="label_www">www</th>
-                <td>
-                <a tal:condition="context/www"
-                   tal:content="python: context.www.replace('https://', '').replace('https://', '')"
-                   tal:attributes="href context/www"
-                   target="_blank" />
-                </td>
-              </tr>
-            </table>
-            <tal:private condition="context/address_private">
-              <h2 i18n:translate="label_home_address">Home address</h2>
-              <table class="contactPrivateInfo">
-                <tr>
-                  <th i18n:translate="label_address">Address</th>
+    <!--
+    The default collective.geo.kml package includes the map either into
+    the abovecontentbody or belowcontentbody viewlet manager. This will produce
+    several issues:
+
+    1. It's not easy to customize the layout with the map. I.e. if you want to
+       move the map to the right site instead the contact image you will ran into
+       problems.
+
+    2. The viewlets will be disabled through ajax requests (ajax_load). So if you want
+       to display the contact with the map in an ajax-generated overlay, the map will
+       not be displayed.
+
+    It's possible to render the map with the provided macros (openlayer and map-widget).
+    The problem here is, that the viewlets will be still present and it's not possible
+    to deactivate a specific viewlet only for one type.
+
+    Overriding the viewlet is not an option because we would have to override it
+    in an overrides.zcml. This makes it impossible to re-override in a policy package.
+
+    The solution is to fill the 'main'-slot instead the 'content-core'-slot of the
+    maintemplate. Now we can choose which viewletmanger should be rendered or not.
+
+    We do not render the abovecontentbody or belowcontentbody viewlet manager
+    in this template. With this solution we can be sure, that the maps will not
+    be rendered through the viewlet and we can inject the rendermacros where we want.
+    -->
+    <div metal:fill-slot="main">
+      <metal:main-macro define-macro="main">
+
+       <div id="viewlet-above-content-title" tal:content="structure provider:plone.abovecontenttitle" tal:condition="not:ajax_load" />
+       <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view" />
+       <div id="viewlet-below-content-title" tal:content="structure provider:plone.belowcontenttitle" tal:condition="not:ajax_load" />
+       <div metal:use-macro="context/kss_generic_macros/macros/generic_description_view" />
+
+       <div id="content-core">
+          <div id="contact-view">
+            <div class="contactInfos">
+              <table class="contacInfo">
+                <tr tal:condition="python: context.firstname and context.lastname">
+                  <th i18n:translate="label_name">Name</th>
                   <td>
-                    <span tal:replace="structure python:view.safe_html(context.address_private)" /><br />
-                    <span tal:replace="context/postal_code_private" />
-                    <span tal:replace="context/city_private" />
+                    <tal:title tal:condition="context/academic_title" tal:replace="context/academic_title" />
+                    <tal:name tal:replace="string:${context/lastname} ${context/firstname}" />
                   </td>
                 </tr>
-                <tr tal:condition="context/phone_private">
-                  <th i18n:translate="label_phone_private">Private phone number</th>
-                  <td tal:content="context/phone_private" />
+                <tr tal:condition="context/function">
+                  <th i18n:translate="label_function">Function</th>
+                  <td tal:content="context/function" />
+                </tr>
+                <tr tal:condition="context/organization">
+                  <th i18n:translate="label_organization">Organization</th>
+                  <td tal:content="context/organization" />
+                </tr>
+                <tr tal:condition="context/department">
+                  <th i18n:translate="label_department">Department</th>
+                  <td tal:content="context/department" />
+                </tr>
+                <tr tal:condition="python: context.postal_code and context.city and context.address">
+                  <th i18n:translate="label_address">Address</th>
+                  <td>
+                    <span tal:replace="structure python:view.safe_html(context.address)" />
+                    <span tal:replace="context/postal_code" />
+                    <span tal:replace="context/city" />
+                  </td>
+                </tr>
+                <tr tal:condition="context/phone_office">
+                  <th i18n:translate="label_phone_office">Office phone number</th>
+                  <td tal:content="context/phone_office" />
+                </tr>
+                <tr tal:condition="context/phone_mobile">
+                  <th i18n:translate="label_phone_mobile">Mobile phone number</th>
+                  <td tal:content="context/phone_mobile" />
+                </tr>
+                <tr tal:condition="context/fax">
+                  <th i18n:translate="label_fax">Fax number</th>
+                  <td tal:content="context/fax" />
+                </tr>
+                <tr tal:condition="context/email">
+                  <th i18n:translate="label_email">E-Mail</th>
+                  <td>
+                    <a tal:attributes="href string:mailto:${context/email}"
+                    tal:content="context/email" />
+                  </td>
+                </tr>
+                <tr tal:condition="context/www">
+                  <th i18n:translate="label_www">www</th>
+                  <td>
+                  <a tal:condition="context/www"
+                     tal:content="python: context.www.replace('https://', '').replace('https://', '')"
+                     tal:attributes="href context/www"
+                     target="_blank" />
+                  </td>
                 </tr>
               </table>
-            </tal:private>
-          </div>
-          <div class="contactPortrait" tal:condition="context/image">
-            <img tal:replace="structure context/@@images/image/mini" />
-          </div>
-          <div tal:condition="not:context/image" tal:attributes="class string:contactPortrait gender-${context/gender}"></div>
-          <div class="visualClear"></div>
-          <div class="contactText" tal:condition="context/text" tal:content="structure context/text/output" />
-          <tal:block tal:define="memberships view/get_memberships" tal:condition="memberships">
-            <div class="memberships">
-              <h3 i18n:translate="label_memberships">Memberships</h3>
-              <ul>
-                <tal:items tal:repeat="member memberships">
-                  <li>
-                    <a href="" tal:attributes="href string:${member/absolute_url}">
-                      <span tal:condition="member/organization" tal:replace="member/organization"/>
-                      <span tal:condition="member/function" tal:replace="string:(${member/function})"/></a>
-                  </li>
-                </tal:items>
-              </ul>
+              <tal:private condition="context/address_private">
+                <h2 i18n:translate="label_home_address">Home address</h2>
+                <table class="contactPrivateInfo">
+                  <tr>
+                    <th i18n:translate="label_address">Address</th>
+                    <td>
+                      <span tal:replace="structure python:view.safe_html(context.address_private)" /><br />
+                      <span tal:replace="context/postal_code_private" />
+                      <span tal:replace="context/city_private" />
+                    </td>
+                  </tr>
+                  <tr tal:condition="context/phone_private">
+                    <th i18n:translate="label_phone_private">Private phone number</th>
+                    <td tal:content="context/phone_private" />
+                  </tr>
+                </table>
+              </tal:private>
             </div>
-          </tal:block>
-        </div>
+            <div class="contactPortrait" tal:condition="context/image">
+              <img tal:replace="structure context/@@images/image/mini" />
+            </div>
+            <div tal:condition="not:context/image" tal:attributes="class string:contactPortrait gender-${context/gender}"></div>
+            <div class="visualClear"></div>
+            <div class="contactText" tal:condition="context/text" tal:content="structure context/text/output" />
+            <tal:block tal:define="memberships view/get_memberships" tal:condition="memberships">
+              <div class="memberships">
+                <h3 i18n:translate="label_memberships">Memberships</h3>
+                <ul>
+                  <tal:items tal:repeat="member memberships">
+                    <li>
+                      <a href="" tal:attributes="href string:${member/absolute_url}">
+                        <span tal:condition="member/organization" tal:replace="member/organization"/>
+                        <span tal:condition="member/function" tal:replace="string:(${member/function})"/></a>
+                    </li>
+                  </tal:items>
+                </ul>
+              </div>
+            </tal:block>
+            <div id="kml-content-viewlet" tal:condition="view/show_map">
+              <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
+              <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
+            </div>
+          </div>
+       </div>
       </metal:main-macro>
     </div>
   </body>

@@ -5,6 +5,10 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Disable rendering map widget through the viewlet.
+  The map will be rendered directly in the contact.pt now.
+  [elioschmutz]
+
 - Change ``reload`` view name to more specific name ``reload_contacts``.
   [elioschmutz]
 

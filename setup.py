@@ -23,6 +23,7 @@ simplelayout = [
     ]
 geo = [
     'ftw.geo',
+    'ftw.openlayerhotfix',
     'collective.geo.behaviour',
     'ftw.profilehook',
     ]
