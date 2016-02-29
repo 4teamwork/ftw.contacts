@@ -34,4 +34,13 @@
         for="ftw.contacts.interfaces.IContact"
         provides="ftw.geo.interfaces.IGeocodableLocation"
         />
+
+    <adapter
+        for="ftw.contacts.interfaces.IContact
+             zope.interface.Interface
+             zope.interface.Interface
+             zope.interface.Interface"
+        factory="collective.geo.kml.browser.viewlets.KMLMapViewletLayers"
+    />
+
 </configure>
