@@ -13,7 +13,7 @@
         />
 
     <profilehook:hook
-        profile="ftw.contacts:geo"
+        profile="ftw.contacts.geo:default"
         handler=".hooks.geo_profile_installed"
         />
 
