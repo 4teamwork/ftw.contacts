@@ -16,326 +16,326 @@ msgstr ""
 
 #: ./ftw/contacts/profiles/default/types/ftw.contacts.Contact.xml
 msgid "Contact"
-msgstr ""
+msgstr "Contatto"
 
 #: ./ftw/contacts/profiles/default/types/ftw.contacts.ContactFolder.xml
 msgid "ContactFolder"
-msgstr ""
+msgstr "Cartella contatto"
 
 #: ./ftw/contacts/profiles/default/actions.xml
 msgid "Download a Contact as a vCard."
-msgstr ""
+msgstr "Scarica un contatto come vCard."
 
 #: ./ftw/contacts/profiles/default/actions.xml
 msgid "Download vCard"
-msgstr ""
+msgstr "Scarica vCard"
 
 #: ./ftw/contacts/simplelayout/profiles/default/types/ftw.contacts.MemberBlock.xml
 msgid "MemberBlock"
-msgstr ""
+msgstr "Blocco membro"
 
 #. Default: "Academic title"
 #: ./ftw/contacts/contents/contact.py:126
 msgid "label_academic_title"
-msgstr ""
+msgstr "Titolo accademico"
 
 #. Default: "Acquire address"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:73
 msgid "label_acquire_address"
-msgstr ""
+msgstr "Acquisire indirizzo"
 
 #. Default: "Address"
 #: ./ftw/contacts/browser/templates/contact.pt:69
 #: ./ftw/contacts/contents/contact.py:63
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:78
 msgid "label_address"
-msgstr ""
+msgstr "Indirizzo"
 
 #. Default: "Address"
 #: ./ftw/contacts/contents/contact.py:167
 msgid "label_address_private"
-msgstr ""
+msgstr "Indirizzo"
 
 #. Default: "City"
 #: ./ftw/contacts/contents/contact.py:77
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:92
 msgid "label_city"
-msgstr ""
+msgstr "Città"
 
 #. Default: "City"
 #: ./ftw/contacts/contents/contact.py:181
 msgid "label_city_private"
-msgstr ""
+msgstr "Città"
 
 #. Default: "The related contact does no longer exists."
 #: ./ftw/contacts/simplelayout/templates/member.pt:70
 #: ./ftw/contacts/simplelayout/templates/memberblock.pt:50
 msgid "label_contact_does_no_longer_exists"
-msgstr ""
+msgstr "Il contatto non è più correlato non esiste."
 
 #. Default: "Delete this content or edit it to replace the deleted with an existing contact"
 #: ./ftw/contacts/simplelayout/templates/member.pt:71
 #: ./ftw/contacts/simplelayout/templates/memberblock.pt:51
 msgid "label_contact_does_no_longer_exists_hint"
-msgstr ""
+msgstr "Eliminare questo contenuto o modificarlo per sostituire la cancellata con un contatto esistente"
 
 #. Default: "Contact"
 #: ./ftw/contacts/simplelayout/templates/member.pt:63
 msgid "label_contact_more"
-msgstr ""
+msgstr "Contatto"
 
 #. Default: "Contact reference"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:53
 msgid "label_contact_reference"
-msgstr ""
+msgstr "Contatto di riferimento"
 
 #. Default: "Country"
 #: ./ftw/contacts/contents/contact.py:84
 msgid "label_country"
-msgstr ""
+msgstr "Nazione"
 
 #. Default: "Department"
 #: ./ftw/contacts/browser/templates/contact.pt:65
 #: ./ftw/contacts/contents/contact.py:140
 msgid "label_department"
-msgstr ""
+msgstr "Dipartimento"
 
 #. Default: "E-Mail"
 #: ./ftw/contacts/browser/templates/contact.pt:89
 #: ./ftw/contacts/contents/contact.py:90
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:99
 msgid "label_email"
-msgstr ""
+msgstr "E-Mail"
 
 #. Default: "Fax number"
 #: ./ftw/contacts/browser/templates/contact.pt:85
 #: ./ftw/contacts/contents/contact.py:110
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:119
 msgid "label_fax"
-msgstr ""
+msgstr "Numero di fax"
 
 #. Default: "Female"
 #: ./ftw/contacts/contents/contact.py:26
 msgid "label_female"
-msgstr ""
+msgstr "Femmina"
 
 #. Default: "Contact"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:131
 msgid "label_fieldset_contact"
-msgstr ""
+msgstr "Contatto"
 
 #. Default: "Extended"
 #: ./ftw/contacts/contents/contact.py:188
 msgid "label_fieldset_extended"
-msgstr ""
+msgstr "Estesa"
 
 #. Default: "Home address"
 #: ./ftw/contacts/contents/contact.py:200
 msgid "label_fieldset_homeaddress"
-msgstr ""
+msgstr "Indirizzo di casa"
 
 #. Default: "Firstname"
 #: ./ftw/contacts/contents/contact.py:56
 msgid "label_firstname"
-msgstr ""
+msgstr "Nome"
 
 #. Default: "Function"
 #: ./ftw/contacts/browser/templates/contact.pt:57
 #: ./ftw/contacts/contents/contact.py:133
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:59
 msgid "label_function"
-msgstr ""
+msgstr "Funzione"
 
 #. Default: "Gender"
 #: ./ftw/contacts/contents/contact.py:42
 msgid "label_gender"
-msgstr ""
+msgstr "Genere"
 
 #. Default: "-"
 #: ./ftw/contacts/contents/contact.py:27
 msgid "label_gender_neutral"
-msgstr ""
+msgstr "-"
 
 #. Default: "Home address"
 #: ./ftw/contacts/browser/templates/contact.pt:106
 msgid "label_home_address"
-msgstr ""
+msgstr "Indirizzo di casa"
 
 #. Default: "Image"
 #: ./ftw/contacts/contents/contact.py:121
 msgid "label_image"
-msgstr ""
+msgstr "Immagine"
 
 #. Default: "Lastname"
 #: ./ftw/contacts/contents/contact.py:49
 msgid "label_lastname"
-msgstr ""
+msgstr "Cognome"
 
 #. Default: "Load more contacts"
 #: ./ftw/contacts/browser/templates/contactfolder.pt:43
 msgid "label_load_next_contacts"
-msgstr ""
+msgstr "Caricare più contatti"
 
 #. Default: "Male"
 #: ./ftw/contacts/contents/contact.py:25
 msgid "label_male"
-msgstr ""
+msgstr "Maschio"
 
 #. Default: "Email"
 #: ./ftw/contacts/simplelayout/templates/member.pt:37
 msgid "label_member_email"
-msgstr ""
+msgstr "E-Mail"
 
 #. Default: "Mobile"
 #: ./ftw/contacts/simplelayout/templates/member.pt:33
 msgid "label_member_phone_mobile"
-msgstr ""
+msgstr "Cellulare"
 
 #. Default: "Office"
 #: ./ftw/contacts/simplelayout/templates/member.pt:29
 msgid "label_member_phone_office"
-msgstr ""
+msgstr "Ufficio"
 
 #. Default: "www"
 #: ./ftw/contacts/simplelayout/templates/member.pt:41
 msgid "label_member_www"
-msgstr ""
+msgstr "www"
 
 #. Default: "Memberships"
 #: ./ftw/contacts/browser/templates/contact.pt:131
 msgid "label_memberships"
-msgstr ""
+msgstr "Membri"
 
 #. Default: "Name"
 #: ./ftw/contacts/browser/templates/contact.pt:50
 msgid "label_name"
-msgstr ""
+msgstr "Nome"
 
 #. Default: "Organization"
 #: ./ftw/contacts/browser/templates/contact.pt:61
 #: ./ftw/contacts/contents/contact.py:36
 msgid "label_organization"
-msgstr ""
+msgstr "Organizzazione"
 
 #. Default: "Mobile phone number"
 #: ./ftw/contacts/browser/templates/contact.pt:81
 #: ./ftw/contacts/contents/contact.py:103
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:112
 msgid "label_phone_mobile"
-msgstr ""
+msgstr "Numero di cellulare"
 
 #. Default: "Office phone number"
 #: ./ftw/contacts/browser/templates/contact.pt:77
 #: ./ftw/contacts/contents/contact.py:96
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:105
 msgid "label_phone_office"
-msgstr ""
+msgstr "Numero di telefono dell'ufficio"
 
 #. Default: "Private phone number"
 #: ./ftw/contacts/browser/templates/contact.pt:117
 #: ./ftw/contacts/contents/contact.py:160
 msgid "label_phone_private"
-msgstr ""
+msgstr "Numero di telefono privato"
 
 #. Default: "Postal code"
 #: ./ftw/contacts/contents/contact.py:70
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:85
 msgid "label_postal_code"
-msgstr ""
+msgstr "Codice postale"
 
 #. Default: "Postal code"
 #: ./ftw/contacts/contents/contact.py:174
 msgid "label_postal_code_private"
-msgstr ""
+msgstr "Codice postale"
 
 #. Default: "Salutation"
 #: ./ftw/contacts/contents/contact.py:147
 msgid "label_salutation"
-msgstr ""
+msgstr "Saluto"
 
 #. Default: "Email"
 #: ./ftw/contacts/browser/templates/contact_summary.pt:27
 msgid "label_short_email"
-msgstr ""
+msgstr "E-mail"
 
 #. Default: "Fax"
 #: ./ftw/contacts/simplelayout/templates/memberblock.pt:38
 msgid "label_short_fax"
-msgstr ""
+msgstr "Fax"
 
 #. Default: "Mobile"
 #: ./ftw/contacts/simplelayout/templates/memberblock.pt:34
 msgid "label_short_mobile"
-msgstr ""
+msgstr "Cellulare"
 
 #. Default: "Office"
 #: ./ftw/contacts/simplelayout/templates/memberblock.pt:30
 msgid "label_short_office"
-msgstr ""
+msgstr "Ufficio"
 
 #. Default: "Phone M"
 #: ./ftw/contacts/browser/templates/contact_summary.pt:23
 msgid "label_short_phone_mobile"
-msgstr ""
+msgstr "Cellulare"
 
 #. Default: "Phone O"
 #: ./ftw/contacts/browser/templates/contact_summary.pt:19
 msgid "label_short_phone_office"
-msgstr ""
+msgstr "Telefono ufficio"
 
 #. Default: "Show address"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:65
 msgid "label_show_address"
-msgstr ""
+msgstr "Mostra indirizzo"
 
 #. Default: "Show image"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:69
 msgid "label_show_image"
-msgstr ""
+msgstr "Mostra immagine"
 
 #. Default: "Show title"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:49
 msgid "label_show_title"
-msgstr ""
+msgstr "Mostra titolo"
 
 #. Default: "Website"
 #: ./ftw/contacts/browser/templates/contact_summary.pt:31
 msgid "label_showrt_www"
-msgstr ""
+msgstr "Sito web"
 
 #. Default: "Text"
 #: ./ftw/contacts/contents/contact.py:154
 msgid "label_text"
-msgstr ""
+msgstr "Testo"
 
 #. Default: "Title"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:43
 msgid "label_title"
-msgstr ""
+msgstr "Titolo"
 
 #. Default: "www"
 #: ./ftw/contacts/browser/templates/contact.pt:96
 #: ./ftw/contacts/contents/contact.py:116
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:125
 msgid "label_www"
-msgstr ""
+msgstr "www"
 
 #. Default: "Search Contacts"
 #: ./ftw/contacts/browser/templates/contactfolder.pt:26
 msgid "title_search_site"
-msgstr ""
+msgstr "Contatti ricerca"
 
 #. Default: "Search Contacts"
 #: ./ftw/contacts/browser/templates/contactfolder.pt:26
 msgid "title_search_title"
-msgstr ""
+msgstr "Contatti ricerca"
 
 #: ./ftw/contacts/browser/templates/contact_summary.pt:5
 msgid "vCard Download"
-msgstr ""
+msgstr "Scaricare vCard"
 
 #. Default: "Either the name of the organization or first- and lastname of the person is required."
 #: ./ftw/contacts/contents/contact.py:213
 msgid "validation_error_organization_or_name_required"
-msgstr ""
+msgstr "In entrambi i casi è necessario il nome dell'organizzazione o il nome di primo e ultimo della persona."
 
