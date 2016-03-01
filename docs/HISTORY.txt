@@ -5,6 +5,9 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Fix broken profilehook name for ftw.geo integraton.
+  [elioschmutz]
+
 - Disable rendering map widget through the viewlet.
   The map will be rendered directly in the contact.pt now.
   [elioschmutz]
