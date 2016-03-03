@@ -25,7 +25,6 @@ geo = [
     'ftw.geo',
     'ftw.openlayerhotfix',
     'collective.geo.bundle [dexterity]',
-    'ftw.profilehook',
     ]
 extras_require = {
     'tests': tests_require,
