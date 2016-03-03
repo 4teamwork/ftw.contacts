@@ -155,6 +155,11 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
       max-width: 30%;
     }
   }
+
+  .mapWidget {
+    margin-top: $margin-horizontal;
+  }
+
 }
 
 .memberBlockPortraitEmpty {

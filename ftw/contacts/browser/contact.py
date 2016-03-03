@@ -6,16 +6,17 @@ from Products.Five.browser import BrowserView
 
 # Check for ftw.geo
 try:
-    from ftw.geo import interfaces
+    from collective.geo.geographer.interfaces import IGeoreferenceable
 except ImportError:
-    HAS_FTW_GEO = False
+    HAS_GEO_EXTRA = False
 else:
-    HAS_FTW_GEO = True
+    HAS_GEO_EXTRA = True
 
 
 class ContactView(BrowserView):
     """Contact view
     """
+
     def get_memberships(self):
         return get_backreferences(self.context, IMemberBlock)
 
@@ -25,7 +26,7 @@ class ContactView(BrowserView):
     def show_map(self):
         """
         """
-        return HAS_FTW_GEO
+        return HAS_GEO_EXTRA and IGeoreferenceable.providedBy(self.context)
 
 
 class ContactSummary(BrowserView):

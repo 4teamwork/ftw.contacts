@@ -3,7 +3,7 @@
   <version>1000</version>
   <dependencies>
     <dependency>profile-ftw.geo:default</dependency>
-    <dependency>profile-collective.geo.behaviour:default</dependency>
+    <dependency>profile-collective.geo.bundle:default</dependency>
     <dependency>profile-ftw.contacts:default</dependency>
   </dependencies>
 </metadata>

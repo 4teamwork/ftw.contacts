@@ -24,7 +24,7 @@ simplelayout = [
 geo = [
     'ftw.geo',
     'ftw.openlayerhotfix',
-    'collective.geo.behaviour',
+    'collective.geo.bundle [dexterity]',
     'ftw.profilehook',
     ]
 extras_require = {

@@ -43,4 +43,8 @@
         factory="collective.geo.kml.browser.viewlets.KMLMapViewletLayers"
     />
 
+    <class class="ftw.contacts.browser.contact.ContactView">
+      <implements interface="collective.geo.kml.interfaces.IKMLOpenLayersView" />
+    </class>
+
 </configure>
