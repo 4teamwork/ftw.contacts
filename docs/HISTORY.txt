@@ -5,6 +5,9 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Add missing behavior for geo referenced contact.
+  [elioschmutz]
+
 - Fix broken profilehook name for ftw.geo integraton.
   [elioschmutz]
 
