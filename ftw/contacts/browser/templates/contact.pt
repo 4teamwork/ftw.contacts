@@ -140,9 +140,11 @@
                 </ul>
               </div>
             </tal:block>
-            <div class="mapWidget" id="kml-content-viewlet" tal:condition="view/show_map">
-              <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
-              <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
+            <div class="mapWidget" tal:condition="view/show_map">
+              <tal:omit tal:define="cgmap view/get_address_map" tal:omit-tag="">
+                <metal:use use-macro="context/@@collectivegeo-macros/openlayers" />
+                <metal:use use-macro="context/@@collectivegeo-macros/map-widget" />
+              </tal:omit>
             </div>
           </div>
        </div>
