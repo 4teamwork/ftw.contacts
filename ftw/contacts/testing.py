@@ -24,7 +24,6 @@ class ContactsLayer(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'ftw.contacts:default')
-        applyProfile(portal, 'ftw.contacts.geo:default')
         applyProfile(portal, 'ftw.contacts.simplelayout:default')
         applyProfile(portal, 'ftw.zipexport:default')
 
@@ -34,3 +33,16 @@ FTW_CONTACTS_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(FTW_CONTACTS_FIXTURE,
            set_builder_session_factory(functional_session_factory)),
     name="ftw.contacts:functional")
+
+
+class ContactsGeoLayer(ContactsLayer):
+
+    def setUpPloneSite(self, portal):
+        applyProfile(portal, 'ftw.contacts.geo:default')
+
+
+FTW_CONTACTS_GEO_FIXTURE = ContactsGeoLayer()
+FTW_CONTACTS_GEO_FUNCTIONAL_TESTING = FunctionalTesting(
+    bases=(FTW_CONTACTS_GEO_FIXTURE,
+           set_builder_session_factory(functional_session_factory)),
+    name="ftw.contacts.geo:functional")

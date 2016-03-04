@@ -64,12 +64,17 @@ $resource-path: "#{$portal-url}/++resource++ftw.contacts.resources";
       text-align: left;
     }
   }
+
   .contactPortrait {
     float: right;
     margin-right: $margin-horizontal;
     width: $portrait-width;
     height: $portrait-height;
     background-size: contain;
+  }
+
+  .mapWidget {
+    margin-top: $margin-vertical;
   }
 }
 

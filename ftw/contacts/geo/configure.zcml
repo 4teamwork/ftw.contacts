@@ -12,23 +12,6 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
-    <profilehook:hook
-        profile="ftw.contacts.geo:default"
-        handler=".hooks.geo_profile_installed"
-        />
-
-    <adapter
-        for="ftw.contacts.interfaces.IContact"
-        provides="collective.geo.settings.interfaces.IGeoCustomFeatureStyle"
-        factory="collective.geo.contentlocations.geostylemanager.GeoStyleManager"
-        />
-
-    <subscriber
-        for="ftw.contacts.interfaces.IContact
-             zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-        handler=".subscribers.initializeCustomFeatureStyles"
-        />
-
     <adapter
         factory=".adapters.ContactLocationAdapter"
         for="ftw.contacts.interfaces.IContact"
@@ -42,5 +25,9 @@
              zope.interface.Interface"
         factory="collective.geo.kml.browser.viewlets.KMLMapViewletLayers"
     />
+
+    <class class="ftw.contacts.browser.contact.ContactView">
+      <implements interface="collective.geo.kml.interfaces.IKMLOpenLayersView" />
+    </class>
 
 </configure>

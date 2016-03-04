@@ -5,6 +5,14 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
+- Remove unused geo configurations due to a changed map implementation
+  [elioschmutz]
+
+- Fix geolocation lookup for georeferenced contacts.
+  The map will no longer be rendered through the viewlet. It is implemented
+  directly into the contact.pt for better control.
+  [elioschmutz]
+
 - Add missing behavior for geo referenced contact.
   [elioschmutz]
 

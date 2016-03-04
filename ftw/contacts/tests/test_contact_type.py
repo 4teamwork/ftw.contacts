@@ -3,6 +3,7 @@ from ftw.builder import create
 from ftw.contacts.contents.contact import IContactSchema
 from ftw.contacts.interfaces import IContact
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
+from ftw.contacts.testing import FTW_CONTACTS_GEO_FUNCTIONAL_TESTING
 from ftw.testbrowser import browsing
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -34,6 +35,17 @@ class TestDefaultView(TestCase):
             'Lastname': 'N\xc3\xb6rris'}).submit()
 
         self.assertEqual(1, len(browser.css('#contact-view')))
+
+    @browsing
+    def test_do_not_show_map_widget(self, browser):
+        browser.login().visit(
+            self.contactfolder, view="++add++ftw.contacts.Contact")
+
+        browser.fill({
+            'Firstname': 'Chuck',
+            'Lastname': 'N\xc3\xb6rris'}).submit()
+
+        self.assertEqual(0, len(browser.css('.mapWidget')))
 
     @browsing
     def test_show_memberships_of_contact(self, browser):
@@ -277,3 +289,25 @@ class TestContactInstallation(TestCase):
     def test_relation(self):
         contact = create(Builder('contact'))
         self.assertTrue(IHasIncomingRelations.providedBy(contact))
+
+
+class TestDefaultGeoView(TestCase):
+    layer = FTW_CONTACTS_GEO_FUNCTIONAL_TESTING
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+
+        self.contactfolder = create(
+            Builder('contact folder').titled(u'Contact folder'))
+
+    @browsing
+    def test_show_map_widget(self, browser):
+        browser.login().visit(
+            self.contactfolder, view="++add++ftw.contacts.Contact")
+
+        browser.fill({
+            'Firstname': 'Chuck',
+            'Lastname': 'N\xc3\xb6rris'}).submit()
+
+        self.assertEqual(1, len(browser.css('.mapWidget')))
