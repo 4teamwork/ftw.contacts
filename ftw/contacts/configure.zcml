@@ -7,6 +7,7 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:autofeature="http://namespaces.zope.org/autofeature"
+    xmlns:upgrade-step="http://namespaces.zope.org/ftw.upgrade"
     i18n_domain="ftw.contacts.zcml">
 
     <include package="ftw.autofeature" file="meta.zcml" />
@@ -28,6 +29,11 @@
         directory="profiles/default"
         description="Installs the ftw.contacts package"
         provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
+
+    <upgrade-step:directory
+        profile="ftw.contacts:default"
+        directory="upgrades"
         />
 
     <browser:resourceDirectory

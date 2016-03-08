@@ -198,3 +198,7 @@ def generate_vcard(contact):
     io.seek(0)
 
     return io
+
+def portrait_img_tag(contact):
+    scaler = contact.restrictedTraverse('@@images')
+    return scaler.scale('image', scale='portrait', direction='down').tag()

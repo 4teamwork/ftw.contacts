@@ -6,7 +6,9 @@
     <include package="ftw.theming" file="meta.zcml"/>
 
     <theme:resources profile="ftw.contacts:default" slot="addon">
-        <theme:scss file="resources/contacts.scss" />
+        <theme:scss file="resources/scss/contacts.scss" />
+        <theme:scss file="resources/scss/search.scss" />
+        <theme:scss file="resources/scss/summary.scss" />
     </theme:resources>
 
 </configure>

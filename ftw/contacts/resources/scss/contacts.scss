@@ -1,0 +1,74 @@
+@include portal-type-font-awesome-icon(ftw-contacts-contactfolder, users);
+@include portal-type-font-awesome-icon(ftw-contacts-contact, user);
+@include portal-type-font-awesome-icon(ftw-contacts-memberblock, user);
+
+#contact-view {
+  header {
+    @include clearfix();
+    margin-bottom: $margin-vertical;
+  }
+}
+
+.contactPortrait {
+  @include portrait-still();
+  @include screen-small() {
+    float: left;
+    shape-outside: circle(em($scale-portrait-width / 2) + $padding-horizontal);
+    margin: 0 $padding-horizontal $padding-vertical 0;
+  }
+
+  text-align: center;
+  margin: 0 auto $padding-vertical auto;
+  border-radius: 50%;
+  width: 100%;
+  max-width: $scale-portrait-width;
+  min-height: $scale-portrait-height;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+
+  &.gender-f {
+    background-color: $color-gray-light;
+    background-image: embed-resource("../images/female.svg");
+  }
+
+  &.gender-m {
+    background-color: $color-gray-light;
+    background-image: embed-resource("../images/male.svg");
+  }
+
+  &.gender- {
+    background-color: $color-gray-light;
+    background-image: embed-resource("../images/company.svg");
+  }
+
+}
+
+.contactInfos {
+  width: auto;
+}
+
+.contactFolderContactsListig {
+  @include clearfix();
+  min-height: 400px;
+}
+
+.contactPrivateInfo {
+  width: auto;
+}
+
+.private-address {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-heading;
+}
+
+.contactFolderLoadMoreContacts {
+  @include button($color-button-default);
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+
+  @include screen-small {
+    max-width: 30%;
+  }
+}

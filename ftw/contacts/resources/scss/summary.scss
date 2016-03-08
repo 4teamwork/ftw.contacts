@@ -1,0 +1,108 @@
+.has-sidebar-column, .has-navigation-column {
+  .contactSummary {
+    @include floatgrid($row-width: 2);
+  }
+}
+
+.contactSummary {
+  @include clearfix();
+  @include floatgrid($row-width: 3);
+  padding: $padding-vertical $padding-horizontal;
+  border: 1px solid $color-gray-light;
+  box-shadow: $box-shadow-primary;
+  position: relative;
+  margin-bottom: $margin-vertical;
+  // We set this min-height manually because responsive equal height columns
+  // require javascript computation to determine the tallest item.
+  @include screen-small() {
+    min-height: 635px;
+  }
+
+  .title {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.contactFolderContactsListig {
+  margin-bottom: $margin-vertical;
+}
+
+.download-vcard {
+  @extend .fa-icon;
+  @extend .fa-download;
+  position: absolute;
+  top: $padding-vertical;
+  right: $padding-horizontal;
+  z-index: 1;
+}
+
+.contactImage {
+  @include portrait();
+  display: block;
+  text-align: center;
+  margin: 0 auto $margin-vertical auto;
+  border-radius: 50%;
+  max-width: $scale-portrait-width;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+
+  &.gender-f {
+    background-color: $color-gray-light;
+    background-image: embed-resource("../images/female.svg");
+  }
+
+  &.gender-m {
+    background-color: $color-gray-light;
+    background-image: embed-resource("../images/male.svg");
+  }
+
+  &.gender- {
+    background-color: $color-gray-light;
+    background-image: embed-resource("../images/company.svg");
+  }
+}
+
+.contact-placeholder {
+  padding-bottom: 100%;
+}
+
+.contactInfo {
+  @include list();
+  margin-bottom: $margin-vertical;
+}
+
+.contact-links {
+  @include horizontal-definition-list();
+  > dt {
+    @extend .fa-icon;
+    font-size: $font-size-medium;
+    min-width: $font-size-medium + $padding-horizontal;
+
+    &:before {
+      display: inline !important;
+    }
+  }
+}
+
+#contact-phone-office {
+  @extend .fa-phone;
+}
+
+#contact-phone-mobile {
+  @extend .fa-mobile;
+  // We need to set a manual font size here because the mobile
+  // icon seems to be smaller than the other next to it.
+  font-size: $font-size-large;
+}
+
+#contact-short-email {
+  @extend .fa-envelope-o;
+}
+
+#contact-short-www {
+  @extend .fa-globe;
+}
