@@ -1,6 +1,7 @@
 from ftw.contacts.interfaces import IMemberBlock
 from ftw.contacts.utils import get_backreferences
 from ftw.contacts.utils import safe_html
+from ftw.contacts.utils import portrait_img_tag
 from plone import api
 from Products.Five.browser import BrowserView
 
@@ -35,6 +36,17 @@ class ContactView(BrowserView):
 
         return address_map
 
+    @property
+    def portrait_css_class(self):
+        css_class = 'contactPortrait {}'
+        gender = self.context.gender
+        gender_css_class = 'gender-{}'.format(gender)
+        return css_class.format(gender_css_class)
+
+    @property
+    def img_tag(self):
+        return portrait_img_tag(self.context)
+
 
 class ContactSummary(BrowserView):
     """Contactsummary view
@@ -44,3 +56,7 @@ class ContactSummary(BrowserView):
 
     def safe_html(self, text):
         return safe_html(text)
+
+    @property
+    def img_tag(self):
+        return portrait_img_tag(self.context)

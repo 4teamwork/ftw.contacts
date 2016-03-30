@@ -16,24 +16,27 @@
 
         <div id="contact-folder-view">
 
-          <!-- Alphabetical Search -->
-          <div class="contactFolderAlphabeticalSearch"></div>
-          <!-- End Alphabetical Search -->
+          <div class="contact-search-section">
+            <!-- Alphabetical Search -->
+            <div class="contactFolderAlphabeticalSearch"></div>
+            <!-- End Alphabetical Search -->
 
-          <!-- Folder Search Slot -->
-          <div class="contactFolderSearchSlot">
-          <form>
-            <input name="SearchableContactsText"
-                   id="contactFolderSearchGadget"
-                   type="text"
-                   size="15"
-                   title="Search Contacts"
-                   placeholder="Search Contacts"
-                   i18n:attributes="title title_search_title;
-                                    placeholder title_search_site"/>
-          </form>
+            <!-- Folder Search Slot -->
+            <div class="contactFolderSearchSlot">
+            <form>
+              <input name="SearchableContactsText"
+                     id="contactFolderSearchGadget"
+                     type="text"
+                     size="15"
+                     title="Search Contacts"
+                     placeholder="Search Contacts"
+                     i18n:attributes="title title_search_title;
+                                      placeholder title_search_site"/>
+            </form>
+            </div>
+            <!-- End Folder Search Slot -->
           </div>
-          <!-- End Folder Search Slot -->
+
 
           <!-- Contactlisting -->
           <div class="contactFolderContactsListig"></div>

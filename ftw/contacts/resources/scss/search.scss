@@ -1,0 +1,109 @@
+@mixin letter($disabled: false) {
+  @include button-default($disabled: $disabled);
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  width: 1 / 27 * 100%;
+  float: left;
+  padding: $padding-vertical 0;
+  text-align: center;
+
+  &:hover, &:focus, &:active, &.active {
+    $hover-color: $color-primary;
+    @include auto-text-color($hover-color);
+    background-color: $hover-color;
+    border: none;
+  }
+
+  &:hover {
+    transform: scale(1.2);
+    z-index: 1;
+  }
+
+  &:first-child {
+    border-top-left-radius: $border-radius-primary;
+    border-bottom-left-radius: $border-radius-primary;
+  }
+
+  &:last-child {
+    border-top-right-radius: $border-radius-primary;
+    border-bottom-right-radius: $border-radius-primary;
+  }
+}
+
+#contact-folder-view {
+
+  .letters {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .letter.withContent {
+    @include letter;
+  }
+
+  .letter:not(.withContent):not(.active) {
+    @include letter($disabled: true);
+  }
+
+  .letter.active:not(.withContent) {
+    @include letter;
+  }
+
+}
+
+#contactFolderSearchGadget {
+  min-width: 0;
+  width: 100%;
+}
+
+.contact-search-section {
+  @include row();
+  margin-bottom: $margin-vertical;
+}
+
+.contactFolderAlphabeticalSearch {
+  @include gridposition($x: 0, $offset: false);
+  @include cell();
+
+  @include screen-small() {
+    @include gridwidth($x: 16, $offset: false);
+    display: block;
+  }
+
+  @include screen-medium() {
+    @include gridwidth($x: 12);
+  }
+
+  display: none;
+}
+
+.contactFolderSearchSlot {
+  @include cell();
+  @include gridposition($x: 0, $offset: false);
+  @include gridwidth($x: 16, $offset: false);
+
+  @include screen-medium() {
+    @include gridposition($x: 12, $offset: false);
+    @include gridwidth($x: 4, $offset: false);
+  }
+}
+
+.has-sidebar-column, .has-navigation-column {
+  .contactFolderAlphabeticalSearch {
+    display: none;
+  }
+
+  .contactFolderSearchSlot {
+    @include screen-medium() {
+      @include gridposition($x: 0, $offset: false);
+      @include gridwidth($x: 16, $offset: false);
+    }
+  }
+}
+
