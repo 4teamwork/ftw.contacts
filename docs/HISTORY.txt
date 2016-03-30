@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.1.0 (2016-03-30)
 ------------------
 
 - Remove unused geo configurations due to a changed map implementation
