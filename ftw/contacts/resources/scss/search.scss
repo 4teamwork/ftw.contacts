@@ -84,6 +84,9 @@
 }
 
 .contactFolderSearchSlot {
+  @extend .fa-icon;
+  @extend .fa-search;
+
   @include cell();
   @include gridposition($x: 0, $offset: false);
   @include gridwidth($x: 16, $offset: false);
@@ -91,6 +94,16 @@
   @include screen-medium() {
     @include gridposition($x: 12, $offset: false);
     @include gridwidth($x: 4, $offset: false);
+  }
+
+  &:before {
+      position: absolute;
+      z-index: 3;
+      right: 16px;
+      font-size: 18px;
+      background-color: transparent;
+      visibility: visible;
+      margin-top: 12px;
   }
 }
 
