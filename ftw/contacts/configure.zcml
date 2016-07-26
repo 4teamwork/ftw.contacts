@@ -22,6 +22,7 @@
 
     <include package=".geo" zcml:condition="have ftw.contacts:geo" />
     <include package=".simplelayout" zcml:condition="have ftw.contacts:simplelayout" />
+    <include package=".sync"  zcml:condition="installed ldap" />
 
     <genericsetup:registerProfile
         name="default"

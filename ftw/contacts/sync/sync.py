@@ -1,5 +1,4 @@
-from DateTime.interfaces import DateTimeError
-from DateTime import DateTime
+from ftw.contacts.contents.contact import IContactSchema
 from ftw.contacts.interfaces import IContact
 from ftw.contacts.interfaces import ILDAPAttributeMapper
 from ftw.contacts.interfaces import ILDAPCustomUpdater
@@ -7,9 +6,10 @@ from ftw.contacts.interfaces import ILDAPSearch
 from ftw.contacts.sync.mapper import DefaultLDAPAttributeMapper
 from OFS.Image import File
 from plone.app.blob.interfaces import IBlobWrapper
+from plone.dexterity.utils import addContentToContainer
+from plone.dexterity.utils import createContent
+from plone.namedfile.interfaces import INamedImageField
 from plone.registry.interfaces import IRegistry
-from Products.Archetypes.event import ObjectEditedEvent
-from Products.Archetypes.event import ObjectInitializedEvent
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from StringIO import StringIO
@@ -17,13 +17,17 @@ from zExceptions import BadRequest
 from zope.component import getAdapters
 from zope.component import getUtility
 from zope.component import queryUtility
+from zope.event import notify
+from zope.lifecycleevent import ObjectCreatedEvent
+from zope.lifecycleevent import ObjectModifiedEvent
+from zope.schema import getFields
 from zope.site.hooks import setSite
-from zope import event
 import argparse
 import ldif
 import logging
 import sys
 import transaction
+
 
 logger = logging.getLogger('ftw.contacts.sync')
 
@@ -140,8 +144,6 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
     # Statistics
     created = 0
     modified = 0
-    unchanged = 0
-    total = 0
     skipped = 0
     failed = 0
     deleted = 0
@@ -156,6 +158,8 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
 
         if not dn:
             continue
+
+        dn = dn.decode('unicode_escape').encode('iso8859-1').decode('utf-8')
 
         # Only entries with a contact id
         contact_id = entry.get(mapper.id(), [None, ])[0]
@@ -176,9 +180,13 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
 
         # Create contact
         if contact is None:
-            fti = ttool.getTypeInfo('ftw.contacts.Contact')
             try:
-                contact = fti._constructInstance(context, contact_id)
+                #TODO squash
+                contact = createContent('ftw.contacts.Contact')
+                contact.id = contact_id
+                addContentToContainer(context, contact)
+                context.manage_renameObject(contact.id, contact_id)
+
                 is_new_object = True
             # invalid id
             except BadRequest:
@@ -188,27 +196,14 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
                 continue
 
         # Update/set field values
-        contact.setLdap_dn(dn)
-        for ldap_name, at_name in mapper.mapping().items():
-            field = contact.getField(at_name)
+        IContactSchema(contact).ldap_dn = dn
+        field_mapping = dict(getFields(IContactSchema))
+        for ldap_name, field_name in mapper.mapping().items():
+            field = field_mapping.get(field_name, None)
             if field is None:
-                continue
-
-            # References are handled in a second pass to make sure the target
-            # already exists.
-            if field.type == 'reference':
-                continue
+                raise NotImplementedError()
 
             value = entry.get(ldap_name, [''])[0]
-
-            if field.type == 'datetime':
-                if not value:
-                    value = None
-                else:
-                    try:
-                        value = DateTime(value)
-                    except DateTimeError:
-                        value = None
 
             current_value = field.get(contact)
             if IBlobWrapper.providedBy(current_value):
@@ -216,7 +211,7 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
 
             if current_value != value:
                 # Handle images
-                if field.type == 'image' and value:
+                if INamedImageField.providedBy(field) and value:
                     infile = StringIO(value)
                     filename = '%s.jpg' % contact_id
                     value = File(filename, filename, infile, 'image/jpeg')
@@ -238,14 +233,14 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
                 contact.manage_setLocalRoles(contact_id, ['Owner'])
                 contact.reindexObjectSecurity()
 
-            event.notify(ObjectInitializedEvent(contact))
+            notify(ObjectCreatedEvent(contact))
 
             created += 1
             logger.debug("Created new contact '%s (%s)'." % (contact_id, dn))
 
         elif changed:
             contact.reindexObject()
-            event.notify(ObjectEditedEvent(contact))
+            notify(ObjectModifiedEvent(contact))
             modified += 1
             logger.debug("Modified contact '%s' (%s)." % (contact_id, dn))
 
@@ -263,7 +258,7 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
     to_be_deleted = {}
     for contact in all_contacts:
         obj = contact.getObject()
-        ldap_dn = obj.getLdap_dn()
+        ldap_dn = IContactSchema(obj).ldap_dn
         if ldap_dn and ldap_dn not in dn_contact_id_mapping:
             parent_path = '/'.join(obj.getPhysicalPath()[:-1])
             id_ = obj.getPhysicalPath()[-1]

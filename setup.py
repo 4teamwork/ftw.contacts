@@ -10,9 +10,7 @@ tests_require = [
     'ftw.builder',
     'plone.app.testing',
     'ftw.testbrowser',
-    'ftw.contacts [zip_export]',
-    'ftw.contacts [simplelayout]',
-    'ftw.contacts [geo]',
+    'ftw.contacts [zip_export, simplelayout, geo, ldap]',
     'unittest2',
     ]
 zip_export = [
@@ -26,11 +24,16 @@ geo = [
     'ftw.openlayerhotfix',
     'collective.geo.bundle [dexterity]',
     ]
+ldap = [
+    'python-ldap',
+    'Products.PloneLDAP'
+    ]
 extras_require = {
     'tests': tests_require,
     'zip_export': zip_export,
     'simplelayout': simplelayout,
     'geo': geo,
+    'ldap': ldap,
     }
 
 setup(name='ftw.contacts',
@@ -84,5 +87,8 @@ setup(name='ftw.contacts',
       # -*- Entry points: -*-
       [z3c.autoinclude.plugin]
       target = plone
+
+      [plone.recipe.zope2instance.ctl]
+      sync_contacts = ftw.contacts.sync.command:do_sync_profiles
       """,
       )
