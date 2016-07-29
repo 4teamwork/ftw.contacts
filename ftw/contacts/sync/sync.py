@@ -1,5 +1,5 @@
 from ftw.contacts.contents.contact import IContactSchema
-from ftw.contacts.interfaces import IContact
+from ftw.contacts.interfaces import IContact, IContactsSettings
 from ftw.contacts.interfaces import ILDAPAttributeMapper
 from ftw.contacts.interfaces import ILDAPCustomUpdater
 from ftw.contacts.interfaces import ILDAPSearch
@@ -9,7 +9,7 @@ from plone.app.blob.interfaces import IBlobWrapper
 from plone.dexterity.utils import addContentToContainer
 from plone.dexterity.utils import createContent
 from plone.namedfile.interfaces import INamedImageField
-from plone.registry.interfaces import IRegistry
+from plone import api
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from StringIO import StringIO
@@ -79,13 +79,14 @@ def main():
         sys.exit("Plone site not found at %s" % options.plone_site)
     setSite(portal)
 
-    registry = getUtility(IRegistry)
-    contacts_path = registry.get('ftw.contacts.contacts_path')
+    contacts_path = api.portal.get_registry_record(
+        name='contacts_path', interface=IContactsSettings)
     if not contacts_path:
         sys.exit("Contacts path not set. Please configure the path to the "
                  "folder containing contacts in the configuration registry.")
-    contacts_folder = portal.unrestrictedTraverse(contacts_path.lstrip('/'),
-                                                  None)
+    contacts_folder = portal.unrestrictedTraverse(
+        contacts_path.lstrip('/').encode('utf-8'), None)
+
     if contacts_folder is None:
         sys.exit("Contacts folder not found at %s.")
 

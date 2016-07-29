@@ -1,10 +1,9 @@
 from __future__ import absolute_import
+from ftw.contacts.interfaces import ILDAPSearch, IContactsSettings
+from ldap.controls import SimplePagedResultsControl
+from plone import api
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import base_hasattr
-from ftw.contacts.interfaces import ILDAPSearch
-from ldap.controls import SimplePagedResultsControl
-from plone.registry.interfaces import IRegistry
-from zope.component import getUtility
 from zope.interface import implements
 from zope.site.hooks import getSite
 import ldap
@@ -42,8 +41,8 @@ class LDAPSearch(object):
             return None
 
         uf = getToolByName(site, 'acl_users')
-        registry = getUtility(IRegistry)
-        plugin_id = registry.get('ftw.contacts.ldap_plugin_id')
+        plugin_id = api.portal.get_registry_record(
+            name='ldap_plugin_id', interface=IContactsSettings)
 
         # No plugin id configured, try to find an ldap plugin
         if not plugin_id:
