@@ -25,7 +25,7 @@ geo = [
     'collective.geo.bundle [dexterity]',
     ]
 ldap = [
-    'python-ldap',
+    'python-ldap<=2.4.25',
     'Products.PloneLDAP'
     ]
 extras_require = {
