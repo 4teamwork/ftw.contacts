@@ -56,7 +56,7 @@ class ILDAPSearch(Interface):
 
 
 class IContactsSettings(Interface):
-    """Registry entries for ftw.contactst"""
+    """Registry entries for ftw.contacts"""
 
     ldap_plugin_id = schema.TextLine(
         title=_(u'LDAP Plugin ID'),
