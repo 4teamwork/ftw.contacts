@@ -33,7 +33,7 @@ class TestContactSynchronization(FunctionalTestCase):
         res = sync_contacts(self.contacts, get_ldif_records('contact.ldif'))
         self.assertEquals(1, res['created'])
 
-        contact = self.contacts['nina.mueller']
+        contact = self.contacts['nina-mueller']
         self.assertEquals(u'cn=M\xfcller Nina,ou=Payroll,dc=domain, dc=net',
                           IContactSchema(contact).ldap_dn)
         self.assertEquals('Nina', IContactSchema(contact).firstname)
@@ -49,7 +49,7 @@ class TestContactSynchronization(FunctionalTestCase):
             firstname='Nina',
             lastname='Meier',
             ))
-        self.contacts.manage_renameObject(contact.id, 'nina.mueller')
+        self.contacts.manage_renameObject(contact.id, 'nina-mueller')
         res = sync_contacts(self.contacts, get_ldif_records('contact.ldif'))
         self.assertEquals(1, res['modified'])
         self.assertEquals('Nina', IContactSchema(contact).firstname)
@@ -73,12 +73,12 @@ class TestContactSynchronization(FunctionalTestCase):
 
     def test_sync_reindexes_updated_contact(self):
         contact = create(Builder('contact').within(self.contacts).having(
-            _id='nina.mueller',
+            _id='nina-mueller',
             ldap_dn=u'cn=M\u00fcller Nina,ou=Payroll,dc=domain, dc=net',
             firstname='Nina',
             lastname='Meier',
             ))
-        self.contacts.manage_renameObject(contact.id, 'nina.mueller')
+        self.contacts.manage_renameObject(contact.id, 'nina-mueller')
         res = sync_contacts(self.contacts, get_ldif_records('contact.ldif'))
         self.assertEquals(1, res['modified'])
         catalog_results = self.portal.portal_catalog(Title='M\xc3\xbcller')
@@ -141,7 +141,7 @@ class TestCustomUpdater(FunctionalTestCase):
         sync_contacts(self.contacts, get_ldif_records('contact.ldif'))
         self.assertEquals(
             'Tania',
-            IContactSchema(self.contacts['nina.mueller']).firstname)
+            IContactSchema(self.contacts['nina-mueller']).firstname)
 
 
 def get_ldif_records(filename):

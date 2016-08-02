@@ -17,6 +17,7 @@ from zExceptions import BadRequest
 from zope.component import getAdapters
 from zope.component import getUtility
 from zope.component import queryUtility
+from zope.container.interfaces import INameChooser
 from zope.event import notify
 from zope.lifecycleevent import ObjectCreatedEvent
 from zope.lifecycleevent import ObjectModifiedEvent
@@ -139,7 +140,7 @@ def get_plone_sites(root):
     return result
 
 
-def sync_contacts(context, ldap_records, delete=True, set_owner=False):
+def sync_contacts(context, ldap_records, set_owner=False):
     """Synchronize the given ldap results """
 
     # Statistics
@@ -151,8 +152,10 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
 
     dn_contact_id_mapping = {}
 
-    ttool = getToolByName(context, 'portal_types')
+    ct = getToolByName(context, 'portal_catalog')
     mapper = get_ldap_attribute_mapper()
+    dummy_contact = createContent('ftw.contacts.Contact')
+    dummy_contact_folder = createContent('ftw.contacts.ContactFolder')
 
     # 1st pass: create or update profiles
     for dn, entry in ldap_records:
@@ -168,6 +171,11 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
             skipped += 1
             logger.debug("Skipping entry '%s'. No contact id." % dn)
             continue
+        # Get the normalzied name for the contact with the given id. This has
+        # to be done on a dummy folder because existing content would influence
+        # the resulting id.
+        contact_id = INameChooser(dummy_contact_folder).chooseName(
+            contact_id, dummy_contact)
 
         dn_contact_id_mapping[dn] = contact_id
 
@@ -182,11 +190,9 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
         # Create contact
         if contact is None:
             try:
-                #TODO squash
                 contact = createContent('ftw.contacts.Contact')
                 contact.id = contact_id
                 addContentToContainer(context, contact)
-                context.manage_renameObject(contact.id, contact_id)
 
                 is_new_object = True
             # invalid id
@@ -236,6 +242,9 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
 
             notify(ObjectCreatedEvent(contact))
 
+            aq_contact = context.get(contact_id)
+            ct.catalog_object(aq_contact, '/'.join(aq_contact.getPhysicalPath()))
+
             created += 1
             logger.debug("Created new contact '%s (%s)'." % (contact_id, dn))
 
@@ -252,7 +261,6 @@ def sync_contacts(context, ldap_records, delete=True, set_owner=False):
     # TODO
 
     # 3rd pass: delete contacts which have an ldap_id but are not in LDAP.
-    ct = getToolByName(context, 'portal_catalog')
     all_contacts = ct.unrestrictedSearchResults(
         portal_type='ftw.contacts.Contact',
         path=dict(query='/'.join(context.getPhysicalPath()), depth=1))
