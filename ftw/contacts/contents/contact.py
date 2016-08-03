@@ -183,6 +183,13 @@ class IContactSchema(model.Schema):
         default=u"",
         required=False)
 
+    directives.mode(uid='hidden')
+    uid = schema.TextLine(
+        title=_(u'label_uid', default=u'UID'),
+        missing_value=u"",
+        default=u"",
+        required=False)
+
     directives.mode(ldap_dn='hidden')
     ldap_dn = schema.TextLine(
         title=_(u'label_ldap_dn', default=u'LDAP DN'),
