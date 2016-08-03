@@ -52,7 +52,7 @@ class LDAPSearch(object):
             return None
 
         # Get ldap plugin configured in registry
-        ldap_plugin = uf.unrestrictedTraverse(plugin_id, None)
+        ldap_plugin = uf.unrestrictedTraverse(plugin_id.encode('ascii'), None)
         if ldap_plugin is None:
             return None
         return ldap_plugin._getLDAPUserFolder()
