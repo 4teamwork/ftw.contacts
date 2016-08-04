@@ -3,7 +3,7 @@ from ftw.contacts import _
 from ftw.contacts.interfaces import IContact
 from ftw.contacts.utils import get_contact_title
 from plone.app.textfield import RichText
-from plone.autoform import directives as form
+from plone.autoform import directives
 from plone.dexterity.content import Item
 from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
@@ -79,7 +79,7 @@ class IContactSchema(model.Schema):
         default=u"",
         required=False)
 
-    form.mode(country='hidden')
+    directives.mode(country='hidden')
     country = schema.TextLine(
         title=_(u'label_country', default=u'Country'),
         required=False,
@@ -182,6 +182,21 @@ class IContactSchema(model.Schema):
         missing_value=u"",
         default=u"",
         required=False)
+
+    directives.mode(uid='hidden')
+    uid = schema.TextLine(
+        title=_(u'label_uid', default=u'UID'),
+        missing_value=u"",
+        default=u"",
+        required=False)
+
+    directives.mode(ldap_dn='hidden')
+    ldap_dn = schema.TextLine(
+        title=_(u'label_ldap_dn', default=u'LDAP DN'),
+        missing_value=u"",
+        default=u"",
+        required=False)
+
 
     model.fieldset(
         'extended',
