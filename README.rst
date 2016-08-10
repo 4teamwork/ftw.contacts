@@ -83,6 +83,9 @@ In addition you can download the kml-representation or the vCard-representation 
 ftw.simplelayout integration
 ----------------------------
 
+This is an addon for `ftw.simplelayout <http://github.com/4teamwork/ftw.simplelayout>`_. Please make sure you
+already installed ``ftw.simplelayout`` on your plone site before installing this addon.
+
 Add the simplelayout extra to your egg:
 
 .. code:: ini
