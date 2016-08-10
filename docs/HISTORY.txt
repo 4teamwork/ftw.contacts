@@ -5,6 +5,10 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
+- Remove metadata.xml-dependencie to ftw.simplelayout for the simplelayout extra.
+  The extra is an addon of ftw.simplelayout and should not install it.
+  [elioschmutz]
+
 - Added ldap-to-contact sync.
   [lknoepfel]
 
