@@ -5,6 +5,8 @@ Changelog
 1.3.1 (unreleased)
 ------------------
 
+- Inplace migrators for migrating from egov.contactdirectory. [jone]
+
 - Display the function of the contact of a member block if the option
   "Acquire address" is checked on the member block.
   [mbaechtold]
