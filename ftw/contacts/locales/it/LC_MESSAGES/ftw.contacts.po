@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-08-22 09:14+0000\n"
+"POT-Creation-Date: 2016-08-22 09:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,11 @@ msgstr "Blocco membro"
 msgid "Path to the folder containing contacts"
 msgstr ""
 
+#. Default: "Will be displayed even if the address is acquired and the contact has a function."
+#: ./ftw/contacts/contents/contact.py:134
+msgid "description_function"
+msgstr ""
+
 #. Default: "Academic title"
 #: ./ftw/contacts/contents/contact.py:126
 msgid "label_academic_title"
@@ -68,7 +73,7 @@ msgid "label_address"
 msgstr "Indirizzo"
 
 #. Default: "Address"
-#: ./ftw/contacts/contents/contact.py:167
+#: ./ftw/contacts/contents/contact.py:172
 msgid "label_address_private"
 msgstr "Indirizzo"
 
@@ -79,7 +84,7 @@ msgid "label_city"
 msgstr "Città"
 
 #. Default: "City"
-#: ./ftw/contacts/contents/contact.py:181
+#: ./ftw/contacts/contents/contact.py:186
 msgid "label_city_private"
 msgstr "Città"
 
@@ -112,7 +117,7 @@ msgstr "Nazione"
 
 #. Default: "Department"
 #: ./ftw/contacts/browser/templates/contact.pt:71
-#: ./ftw/contacts/contents/contact.py:140
+#: ./ftw/contacts/contents/contact.py:145
 msgid "label_department"
 msgstr "Dipartimento"
 
@@ -141,12 +146,12 @@ msgid "label_fieldset_contact"
 msgstr "Contatto"
 
 #. Default: "Extended"
-#: ./ftw/contacts/contents/contact.py:203
+#: ./ftw/contacts/contents/contact.py:208
 msgid "label_fieldset_extended"
 msgstr "Estesa"
 
 #. Default: "Home address"
-#: ./ftw/contacts/contents/contact.py:215
+#: ./ftw/contacts/contents/contact.py:220
 msgid "label_fieldset_homeaddress"
 msgstr "Indirizzo di casa"
 
@@ -188,7 +193,7 @@ msgid "label_lastname"
 msgstr "Cognome"
 
 #. Default: "LDAP DN"
-#: ./ftw/contacts/contents/contact.py:195
+#: ./ftw/contacts/contents/contact.py:200
 msgid "label_ldap_dn"
 msgstr ""
 
@@ -255,7 +260,7 @@ msgstr "Numero di telefono dell'ufficio"
 
 #. Default: "Private phone number"
 #: ./ftw/contacts/browser/templates/contact.pt:124
-#: ./ftw/contacts/contents/contact.py:160
+#: ./ftw/contacts/contents/contact.py:165
 msgid "label_phone_private"
 msgstr "Numero di telefono privato"
 
@@ -266,12 +271,12 @@ msgid "label_postal_code"
 msgstr "Codice postale"
 
 #. Default: "Postal code"
-#: ./ftw/contacts/contents/contact.py:174
+#: ./ftw/contacts/contents/contact.py:179
 msgid "label_postal_code_private"
 msgstr "Codice postale"
 
 #. Default: "Salutation"
-#: ./ftw/contacts/contents/contact.py:147
+#: ./ftw/contacts/contents/contact.py:152
 msgid "label_salutation"
 msgstr "Saluto"
 
@@ -318,7 +323,7 @@ msgid "label_show_title"
 msgstr "Mostra titolo"
 
 #. Default: "Text"
-#: ./ftw/contacts/contents/contact.py:154
+#: ./ftw/contacts/contents/contact.py:159
 msgid "label_text"
 msgstr "Testo"
 
@@ -328,7 +333,7 @@ msgid "label_title"
 msgstr "Titolo"
 
 #. Default: "UID"
-#: ./ftw/contacts/contents/contact.py:188
+#: ./ftw/contacts/contents/contact.py:193
 msgid "label_uid"
 msgstr ""
 
@@ -354,7 +359,7 @@ msgid "vCard Download"
 msgstr "Scaricare vCard"
 
 #. Default: "Either the name of the organization or first- and lastname of the person is required."
-#: ./ftw/contacts/contents/contact.py:228
+#: ./ftw/contacts/contents/contact.py:233
 msgid "validation_error_organization_or_name_required"
 msgstr "In entrambi i casi è necessario il nome dell'organizzazione o il nome di primo e ultimo della persona."
 

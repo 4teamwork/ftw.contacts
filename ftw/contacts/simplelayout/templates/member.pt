@@ -12,14 +12,14 @@
         <tal:main condition="view/has_related_contact">
           <div id="member-view" tal:define="
             member view/memberaccessor;
-            contact nocall:context/contact/to_object">
+            contact nocall:view/contact">
             <div class="memberInfos">
               <h2 tal:condition="python: contact.firstname and contact.lastname">
                 <tal:title condition="contact/academic_title" tal:replace="contact/academic_title">Dr.</tal:title>
                 <tal:name tal:replace="string:${contact/lastname} ${contact/firstname}">Boss Hugo</tal:name>
               </h2>
               <div class="memberInfo">
-                <span tal:condition="context/function" tal:content="contact/function" />
+                <span tal:condition="view/function" tal:content="view/function" />
                 <tal:address condition="context/show_address">
                   <span tal:condition="member/address" tal:content="structure python:view.safe_html(member.address)" />
                   <span tal:condition="python: member.postal_code and member.city" tal:content="string:${member/postal_code} ${member/city}" />
