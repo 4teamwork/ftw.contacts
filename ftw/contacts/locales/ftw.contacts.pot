@@ -4,11 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-<<<<<<< 0cfae8b888081f9f6674aea325b225d529811cf8
-"POT-Creation-Date: 2016-03-08 06:54+0000\n"
-=======
-"POT-Creation-Date: 2016-03-21 10:16+0000\n"
->>>>>>> Define styling for contacts.
+"POT-Creation-Date: 2016-08-22 09:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +22,10 @@ msgstr ""
 msgid "ContactFolder"
 msgstr ""
 
+#: ./ftw/contacts/interfaces.py:69
+msgid "Contacts Path"
+msgstr ""
+
 #: ./ftw/contacts/profiles/default/actions.xml
 msgid "Download a Contact as a vCard."
 msgstr ""
@@ -34,8 +34,20 @@ msgstr ""
 msgid "Download vCard"
 msgstr ""
 
+#: ./ftw/contacts/interfaces.py:63
+msgid "ID of the LDAP PAS plugin to use for contact synchronisation"
+msgstr ""
+
+#: ./ftw/contacts/interfaces.py:62
+msgid "LDAP Plugin ID"
+msgstr ""
+
 #: ./ftw/contacts/simplelayout/profiles/default/types/ftw.contacts.MemberBlock.xml
 msgid "MemberBlock"
+msgstr ""
+
+#: ./ftw/contacts/interfaces.py:70
+msgid "Path to the folder containing contacts"
 msgstr ""
 
 #. Default: "Academic title"
@@ -49,7 +61,7 @@ msgid "label_acquire_address"
 msgstr ""
 
 #. Default: "Address"
-#: ./ftw/contacts/browser/templates/contact.pt:76
+#: ./ftw/contacts/browser/templates/contact.pt:75
 #: ./ftw/contacts/contents/contact.py:63
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:78
 msgid "label_address"
@@ -99,20 +111,20 @@ msgid "label_country"
 msgstr ""
 
 #. Default: "Department"
-#: ./ftw/contacts/browser/templates/contact.pt:72
+#: ./ftw/contacts/browser/templates/contact.pt:71
 #: ./ftw/contacts/contents/contact.py:140
 msgid "label_department"
 msgstr ""
 
 #. Default: "E-Mail"
-#: ./ftw/contacts/browser/templates/contact.pt:96
+#: ./ftw/contacts/browser/templates/contact.pt:95
 #: ./ftw/contacts/contents/contact.py:90
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:99
 msgid "label_email"
 msgstr ""
 
 #. Default: "Fax number"
-#: ./ftw/contacts/browser/templates/contact.pt:92
+#: ./ftw/contacts/browser/templates/contact.pt:91
 #: ./ftw/contacts/contents/contact.py:110
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:119
 msgid "label_fax"
@@ -129,12 +141,12 @@ msgid "label_fieldset_contact"
 msgstr ""
 
 #. Default: "Extended"
-#: ./ftw/contacts/contents/contact.py:188
+#: ./ftw/contacts/contents/contact.py:203
 msgid "label_fieldset_extended"
 msgstr ""
 
 #. Default: "Home address"
-#: ./ftw/contacts/contents/contact.py:200
+#: ./ftw/contacts/contents/contact.py:215
 msgid "label_fieldset_homeaddress"
 msgstr ""
 
@@ -144,7 +156,7 @@ msgid "label_firstname"
 msgstr ""
 
 #. Default: "Function"
-#: ./ftw/contacts/browser/templates/contact.pt:64
+#: ./ftw/contacts/browser/templates/contact.pt:63
 #: ./ftw/contacts/contents/contact.py:133
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:59
 msgid "label_function"
@@ -173,6 +185,11 @@ msgstr ""
 #. Default: "Lastname"
 #: ./ftw/contacts/contents/contact.py:49
 msgid "label_lastname"
+msgstr ""
+
+#. Default: "LDAP DN"
+#: ./ftw/contacts/contents/contact.py:195
+msgid "label_ldap_dn"
 msgstr ""
 
 #. Default: "Load more contacts"
@@ -206,37 +223,37 @@ msgid "label_member_www"
 msgstr ""
 
 #. Default: "Memberships"
-#: ./ftw/contacts/browser/templates/contact.pt:130
+#: ./ftw/contacts/browser/templates/contact.pt:131
 msgid "label_memberships"
 msgstr ""
 
 #. Default: "Name"
-#: ./ftw/contacts/browser/templates/contact.pt:57
+#: ./ftw/contacts/browser/templates/contact.pt:56
 msgid "label_name"
 msgstr ""
 
 #. Default: "Organization"
-#: ./ftw/contacts/browser/templates/contact.pt:68
+#: ./ftw/contacts/browser/templates/contact.pt:67
 #: ./ftw/contacts/contents/contact.py:36
 msgid "label_organization"
 msgstr ""
 
 #. Default: "Mobile phone number"
-#: ./ftw/contacts/browser/templates/contact.pt:88
+#: ./ftw/contacts/browser/templates/contact.pt:87
 #: ./ftw/contacts/contents/contact.py:103
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:112
 msgid "label_phone_mobile"
 msgstr ""
 
 #. Default: "Office phone number"
-#: ./ftw/contacts/browser/templates/contact.pt:84
+#: ./ftw/contacts/browser/templates/contact.pt:83
 #: ./ftw/contacts/contents/contact.py:96
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:105
 msgid "label_phone_office"
 msgstr ""
 
 #. Default: "Private phone number"
-#: ./ftw/contacts/browser/templates/contact.pt:123
+#: ./ftw/contacts/browser/templates/contact.pt:124
 #: ./ftw/contacts/contents/contact.py:160
 msgid "label_phone_private"
 msgstr ""
@@ -307,8 +324,13 @@ msgstr ""
 msgid "label_title"
 msgstr ""
 
+#. Default: "UID"
+#: ./ftw/contacts/contents/contact.py:188
+msgid "label_uid"
+msgstr ""
+
 #. Default: "www"
-#: ./ftw/contacts/browser/templates/contact.pt:103
+#: ./ftw/contacts/browser/templates/contact.pt:102
 #: ./ftw/contacts/contents/contact.py:116
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:125
 msgid "label_www"
@@ -329,8 +351,7 @@ msgid "vCard Download"
 msgstr ""
 
 #. Default: "Either the name of the organization or first- and lastname of the person is required."
-#: ./ftw/contacts/contents/contact.py:213
+#: ./ftw/contacts/contents/contact.py:228
 msgid "validation_error_organization_or_name_required"
 msgstr ""
-
 
