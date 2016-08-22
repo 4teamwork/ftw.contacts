@@ -86,3 +86,50 @@ class TestMemberBlockView(TestCase):
         browser.visit(member_block, view="block_view")
 
         self.assertEqual(1, len(browser.css('#member-empty')))
+
+    @browsing
+    def test_function_is_acquired(self, browser):
+        """
+        This test makes sure that the function of the contact is rendered
+        on the member block if the address is acquired.
+        """
+        contact = create(Builder('contact')
+                         .with_minimal_info(u'Dent', u'Arthur')
+                         .having(address=u'End Of The Universe')
+                         .having(function=u'Function of the contact')
+                         .within(self.contactfolder))
+
+        member_block = create(Builder('member block')
+                              .within(self.contactfolder)
+                              .having(acquire_address=True)
+                              .contact(contact))
+
+        browser.visit(member_block, view='block_view')
+        self.assertEqual(
+            ['Dent Arthur Function of the contact'],
+            browser.css('.memberContactInfo').text
+        )
+
+    @browsing
+    def test_memberblock_function_takes_precendence_over_contact_function(self, browser):
+        """
+        This test makes sure that the function of the memberblock
+        takes precedence over the acquired function from the contact.
+        """
+        contact = create(Builder('contact')
+                         .with_minimal_info(u'Dent', u'Arthur')
+                         .having(address=u'End Of The Universe')
+                         .having(function=u'Function of the contact')
+                         .within(self.contactfolder))
+
+        member_block = create(Builder('member block')
+                              .within(self.contactfolder)
+                              .having(acquire_address=True)
+                              .having(function=u'Function of the member block')
+                              .contact(contact))
+
+        browser.visit(member_block, view='block_view')
+        self.assertEqual(
+            ['Dent Arthur Function of the member block'],
+            browser.css('.memberContactInfo').text
+        )

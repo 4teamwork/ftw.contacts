@@ -2,7 +2,7 @@
   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
   tal:omit-tag="python: 1"
   tal:define="member view/memberaccessor;
-              contact nocall:context/contact/to_object"
+              contact nocall:view/contact"
   i18n:domain="ftw.contacts">
 
   <tal:main condition="view/has_related_contact">
@@ -20,7 +20,7 @@
       tal:content="view/contact_title"></a>
     </strong>
     <p>
-       <tal:fn tal:condition="context/function" tal:content="context/function" /><br/>
+       <tal:fn tal:condition="view/function" tal:content="view/function" /><br/>
        <tal:addr tal:condition="context/show_address">
             <tal:block><span tal:replace="structure python:view.safe_html(member.address)" /><br /></tal:block>
             <span tal:content="member/postal_code"/>

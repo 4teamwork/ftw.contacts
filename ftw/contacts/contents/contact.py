@@ -131,6 +131,11 @@ class IContactSchema(model.Schema):
     dexteritytextindexer.searchable('function')
     function = schema.TextLine(
         title=_(u'label_function', default=u'Function'),
+        description=_(
+            u'description_function',
+            default=u'Will be displayed even if the address is '
+                    u'acquired and the contact has a function.'
+        ),
         missing_value=u"",
         default=u"",
         required=False)
