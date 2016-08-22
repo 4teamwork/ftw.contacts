@@ -21,7 +21,7 @@ simplelayout = [
     ]
 geo = [
     'ftw.geo',
-    'ftw.openlayerhotfix',
+    'collective.geo.openlayers >= 3.2b1',
     'collective.geo.bundle [dexterity]',
     ]
 ldap = [
