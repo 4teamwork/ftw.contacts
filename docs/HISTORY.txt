@@ -9,6 +9,9 @@ Changelog
 
 - Add option to hide the memberships on the contact detail view. [mbaechtold]
 
+- Add ftw.referencewidget and use it instead of formwidget.contenttree.
+  [tschanzt]
+
 - Inplace migrators for migrating from egov.contactdirectory. [jone]
 
 - Display the function of the contact of a member block if the option

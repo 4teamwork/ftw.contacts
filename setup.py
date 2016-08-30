@@ -18,6 +18,7 @@ zip_export = [
     ]
 simplelayout = [
     'ftw.simplelayout [contenttypes]',
+    'ftw.referencewidget',
     ]
 geo = [
     'ftw.geo',
