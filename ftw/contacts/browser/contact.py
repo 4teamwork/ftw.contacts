@@ -1,3 +1,4 @@
+from Acquisition import aq_inner, aq_parent
 from ftw.contacts.interfaces import IMemberBlock
 from ftw.contacts.utils import get_backreferences
 from ftw.contacts.utils import safe_html
@@ -46,6 +47,15 @@ class ContactView(BrowserView):
     @property
     def img_tag(self):
         return portrait_img_tag(self.context)
+
+    def get_membership_url(self, memberblock):
+        """
+        Called from the template to construct the membership links so that
+        the link points to the container of the memberblock and not the
+        memberblock (obj) itself.
+        """
+        memberblock_container = aq_parent(aq_inner(memberblock))
+        return memberblock_container.absolute_url() + '#' + memberblock.getId()
 
 
 class ContactSummary(BrowserView):

@@ -3,6 +3,7 @@ from ftw.builder.dexterity import DexterityBuilder
 from plone.app.textfield.value import RichTextValue
 from plone.namedfile import NamedImage
 from z3c.relationfield.relation import create_relation
+from ftw.simplelayout.tests import builders
 
 
 class ContactFolderBuilder(DexterityBuilder):

@@ -5,6 +5,10 @@ Changelog
 1.3.1 (unreleased)
 ------------------
 
+- The membership links on the contact detail view now point to the
+  container containing the memberblock and not to the memberblock
+  itself. [mbaechtold]
+
 - Add option to hide the map on the contact detail view. [mbaechtold]
 
 - Add option to hide the memberships on the contact detail view. [mbaechtold]

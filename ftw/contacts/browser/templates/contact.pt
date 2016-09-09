@@ -133,7 +133,7 @@
                 <ul>
                   <tal:items tal:repeat="member memberships">
                     <li>
-                      <a href="" tal:attributes="href string:${member/absolute_url}">
+                      <a href="" tal:attributes="href python:view.get_membership_url(member)">
                         <span tal:condition="member/organization" tal:replace="member/organization"/>
                         <span tal:condition="member/function" tal:replace="string:(${member/function})"/></a>
                     </li>
