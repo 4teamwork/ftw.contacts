@@ -72,6 +72,31 @@ class TestDefaultView(TestCase):
         browser.fill({u'Hide memberships': True}).submit()
         self.assertEqual([], browser.css('.memberships'))
 
+    @browsing
+    def test_membership_links_point_to_container(self, browser):
+        """
+        This test makes sure that the membership links on the contact
+        point to the container of the memberblock and not the
+        memberblock itself.
+        """
+        contact = create(Builder('contact')
+                         .with_minimal_info(u'Ch\xf6ck', u'4orris')
+                         .within(self.contactfolder))
+
+        page = create(Builder('sl content page').titled(u'Team'))
+
+        create(Builder('member block')
+               .within(page)
+               .contact(contact)
+               .titled(u"A MemberBlock")
+               .having(function=u'Epic splitter'))
+
+        browser.login().visit(contact)
+        self.assertEqual(
+            'http://nohost/plone/team#a-memberblock',
+            browser.css('.memberships li a').first.attrib['href']
+        )
+
 
 class TestIdGeneration(TestCase):
 

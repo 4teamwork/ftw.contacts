@@ -6,6 +6,7 @@ from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import PLONE_FIXTURE
 from plone.app.testing import PloneSandboxLayer
+from plone.testing import z2
 from zope.configuration import xmlconfig
 
 
@@ -22,8 +23,10 @@ class ContactsLayer(PloneSandboxLayer):
             '</configure>',
             context=configurationContext)
 
+        z2.installProduct(app, 'ftw.simplelayout')
+
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'ftw.contacts:default')
+        applyProfile(portal, 'ftw.simplelayout.contenttypes:default')
         applyProfile(portal, 'ftw.contacts.simplelayout:default')
         applyProfile(portal, 'ftw.zipexport:default')
 
