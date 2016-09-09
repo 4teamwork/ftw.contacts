@@ -28,7 +28,7 @@ class ContactView(BrowserView):
     def show_map(self):
         """
         """
-        return HAS_GEO_EXTRA and IGeoreferenceable.providedBy(self.context)
+        return HAS_GEO_EXTRA and IGeoreferenceable.providedBy(self.context) and not self.context.hide_map
 
     def get_address_map(self):
         address_map = MapWidget(self, self.request, self.context)

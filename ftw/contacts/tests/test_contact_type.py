@@ -316,3 +316,8 @@ class TestDefaultGeoView(TestCase):
             'Lastname': 'N\xc3\xb6rris'}).submit()
 
         self.assertEqual(1, len(browser.css('.mapWidget')))
+
+        # Now hide map
+        browser.find('Edit').click()
+        browser.fill({u'Hide map': True}).submit()
+        self.assertEqual([], browser.css('.mapWidget'))
