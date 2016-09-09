@@ -67,6 +67,11 @@ class TestDefaultView(TestCase):
 
         self.assertEqual(2, len(browser.css('.memberships li')))
 
+        # Now hide the memberships
+        browser.visit(contact, view='edit')
+        browser.fill({u'Hide memberships': True}).submit()
+        self.assertEqual([], browser.css('.memberships'))
+
 
 class TestIdGeneration(TestCase):
 

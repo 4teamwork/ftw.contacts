@@ -202,6 +202,10 @@ class IContactSchema(model.Schema):
         default=u"",
         required=False)
 
+    hide_memberships = schema.Bool(
+        title=_(u'label_hide_memberships', default=u'Hide memberships'),
+        default=False,
+        required=False)
 
     model.fieldset(
         'extended',
@@ -212,7 +216,9 @@ class IContactSchema(model.Schema):
             'function',
             'department',
             'salutation',
-            'text']
+            'text',
+            'hide_memberships',
+        ]
     )
 
     model.fieldset(

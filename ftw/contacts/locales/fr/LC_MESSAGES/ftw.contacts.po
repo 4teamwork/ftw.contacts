@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-08-22 09:18+0000\n"
+"POT-Creation-Date: 2016-09-09 10:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,12 +146,12 @@ msgid "label_fieldset_contact"
 msgstr "Contact"
 
 #. Default: "Extended"
-#: ./ftw/contacts/contents/contact.py:208
+#: ./ftw/contacts/contents/contact.py:212
 msgid "label_fieldset_extended"
 msgstr "Prolongé"
 
 #. Default: "Home address"
-#: ./ftw/contacts/contents/contact.py:220
+#: ./ftw/contacts/contents/contact.py:226
 msgid "label_fieldset_homeaddress"
 msgstr "Adresse du domicile"
 
@@ -176,6 +176,11 @@ msgstr "Genre"
 #: ./ftw/contacts/contents/contact.py:27
 msgid "label_gender_neutral"
 msgstr "-"
+
+#. Default: "Hide memberships"
+#: ./ftw/contacts/contents/contact.py:206
+msgid "label_hide_memberships"
+msgstr ""
 
 #. Default: "Home address"
 #: ./ftw/contacts/browser/templates/contact.pt:112
@@ -228,7 +233,7 @@ msgid "label_member_www"
 msgstr "www"
 
 #. Default: "Memberships"
-#: ./ftw/contacts/browser/templates/contact.pt:131
+#: ./ftw/contacts/browser/templates/contact.pt:132
 msgid "label_memberships"
 msgstr "Adhésions"
 
@@ -359,7 +364,7 @@ msgid "vCard Download"
 msgstr "Télécharge vCard"
 
 #. Default: "Either the name of the organization or first- and lastname of the person is required."
-#: ./ftw/contacts/contents/contact.py:233
+#: ./ftw/contacts/contents/contact.py:239
 msgid "validation_error_organization_or_name_required"
 msgstr "Soit le nom de l'organisation ou le nom du premier et du dernier de la personne est nécessaire."
 
