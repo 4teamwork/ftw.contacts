@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-09-09 10:12+0000\n"
+"POT-Creation-Date: 2016-09-09 11:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -146,12 +146,12 @@ msgid "label_fieldset_contact"
 msgstr "Kontakt"
 
 #. Default: "Extended"
-#: ./ftw/contacts/contents/contact.py:212
+#: ./ftw/contacts/contents/contact.py:217
 msgid "label_fieldset_extended"
 msgstr "Erweitert"
 
 #. Default: "Home address"
-#: ./ftw/contacts/contents/contact.py:226
+#: ./ftw/contacts/contents/contact.py:232
 msgid "label_fieldset_homeaddress"
 msgstr "Adresse"
 
@@ -176,6 +176,11 @@ msgstr "Geschlecht"
 #: ./ftw/contacts/contents/contact.py:27
 msgid "label_gender_neutral"
 msgstr "-"
+
+#. Default: "Hide map"
+#: ./ftw/contacts/contents/contact.py:211
+msgid "label_hide_map"
+msgstr "Karte nicht anzeigen"
 
 #. Default: "Hide memberships"
 #: ./ftw/contacts/contents/contact.py:206
@@ -364,7 +369,7 @@ msgid "vCard Download"
 msgstr "vCard herunterladen"
 
 #. Default: "Either the name of the organization or first- and lastname of the person is required."
-#: ./ftw/contacts/contents/contact.py:239
+#: ./ftw/contacts/contents/contact.py:245
 msgid "validation_error_organization_or_name_required"
 msgstr "Geben Sie bitte entweder eine Organisation oder Vor- und Nachname an."
 

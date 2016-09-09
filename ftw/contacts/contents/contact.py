@@ -207,6 +207,11 @@ class IContactSchema(model.Schema):
         default=False,
         required=False)
 
+    hide_map = schema.Bool(
+        title=_(u'label_hide_map', default=u'Hide map'),
+        default=False,
+        required=False)
+
     model.fieldset(
         'extended',
         label=_(u'label_fieldset_extended', default=u"Extended"),
@@ -218,6 +223,7 @@ class IContactSchema(model.Schema):
             'salutation',
             'text',
             'hide_memberships',
+            'hide_map',
         ]
     )
 
