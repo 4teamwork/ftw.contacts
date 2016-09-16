@@ -45,10 +45,10 @@
   margin: 0 auto $margin-vertical auto;
   border-radius: 50%;
   max-width: $scale-portrait-width;
-  height: 100%;
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: center;
+  position:relative;
 
   &.gender-f {
     background-color: $color-gray-light;
@@ -63,6 +63,18 @@
   &.gender- {
     background-color: $color-gray-light;
     background-image: embed-resource("../images/company.svg");
+  }
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 100%;  /* initial ratio of 1:1*/
+  }
+  & > * {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
   }
 }
 

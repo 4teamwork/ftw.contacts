@@ -21,7 +21,8 @@ var ContactFolderListing = (function($) {
         loadMoreButton.on('click', function(e) {reloadView();});
 
         $(document).on('click', '.contactFolderAlphabeticalSearch .letter', letterClick);
-
+        $(document).on('contactsReloaded', setHeights);
+        $(window).on('resize', setHeights);
         searchInput.on('keyup', function() {
             var value = $(this).val();
             delay(function() {
@@ -90,6 +91,37 @@ var ContactFolderListing = (function($) {
         }
     };
 
+    var setHeights = function(e){
+      var rowsize = 1;
+      var top;
+      var secondline = false;
+      var counter = 0;
+      var items = $(".contactSummary");
+      while (!secondline){
+        if (!top) {
+          top = $(items[counter]).position()["top"];
+          counter++;
+        }
+        else{
+          if (top === $(items[counter]).position()["top"]){
+            rowsize += 1;
+            counter++;
+          }
+          else{
+            secondline = true;
+          }
+        }
+      }
+      for(var i=0; i<=items.length;i=i+rowsize){
+        var end = i + rowsize;
+        if (end > items.length){
+          end = items.length;
+        }
+        var sliced = $(items.slice(i, end));
+        var height = sliced.outerHeight();
+        sliced.height(height);
+      }
+    };
     var updateSearch = function(text) {
         searchableText = text;
         reloadView(true);
