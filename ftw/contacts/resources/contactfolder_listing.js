@@ -22,7 +22,10 @@ var ContactFolderListing = (function($) {
 
         $(document).on('click', '.contactFolderAlphabeticalSearch .letter', letterClick);
         $(document).on('contactsReloaded', setHeights);
-        $(window).on('resize', setHeights);
+        function throttle(func) {
+            return function () { requestAnimationFrame(func); };
+        }
+        $(window).on('resize', throttle(setHeights));
         searchInput.on('keyup', function() {
             var value = $(this).val();
             delay(function() {
