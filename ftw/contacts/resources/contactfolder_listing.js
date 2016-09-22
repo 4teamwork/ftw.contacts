@@ -91,37 +91,25 @@ var ContactFolderListing = (function($) {
         }
     };
 
-    var setHeights = function(e){
-      var rowsize = 1;
-      var top;
-      var secondline = false;
-      var counter = 0;
-      var items = $(".contactSummary");
-      while (!secondline){
-        if (!top) {
-          top = $(items[counter]).position()["top"];
-          counter++;
+    var setHeights = function(e) {
+        var rowsize = -1;
+        var items = $(".contactSummary");
+        items.css('clear', '');
+
+        // checks how many contacts fit on one row
+        var top = -1;
+        for (var i = 0; i <= items.length; i++) {
+            if (top == -1) top = $(items[i]).position()["top"];
+            if (top !== $(items[i]).position()["top"]) {
+                rowsize = i;
+                break;
+            }
         }
-        else{
-          if (top === $(items[counter]).position()["top"]){
-            rowsize += 1;
-            counter++;
-          }
-          else{
-            secondline = true;
-          }
-        }
-      }
-      for(var i=0; i<=items.length;i=i+rowsize){
-        var end = i + rowsize;
-        if (end > items.length){
-          end = items.length;
-        }
-        var sliced = $(items.slice(i, end));
-        var height = sliced.outerHeight();
-        sliced.height(height);
-      }
+
+        // adds a float clear to the first element of every row
+        $('.contactSummary:nth-of-type('+rowsize+'n+1)').css('clear', 'both');
     };
+
     var updateSearch = function(text) {
         searchableText = text;
         reloadView(true);
