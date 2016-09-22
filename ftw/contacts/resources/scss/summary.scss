@@ -45,10 +45,10 @@
   margin: 0 auto $margin-vertical auto;
   border-radius: 50%;
   max-width: $scale-portrait-width;
-  height: 100%;
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: center;
+  position:relative;
 
   &.gender-f {
     background-color: $color-gray-light;
