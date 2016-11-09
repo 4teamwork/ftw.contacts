@@ -5,7 +5,9 @@ Changelog
 1.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix permission check in utls.py (get_backreferences). It's "View" not "zope2.View".
+  [mathias.leimgruber]
+
 
 
 1.4.0 (2016-09-13)

@@ -55,6 +55,7 @@ class TestBackReferences(TestCase):
         self.assertEqual(
             [member_block], get_backreferences(contact, IMemberBlock))
 
+        member_block.manage_permission('View', roles=[])
         logout()
 
         self.assertEqual([], get_backreferences(contact, IMemberBlock))
