@@ -15,7 +15,7 @@ class TestBackReferences(TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        setRoles(self.portal, TEST_USER_ID, ['Site Administrator'])
 
         self.contactfolder = create(
             Builder('contact folder').titled(u'Contact folder'))
