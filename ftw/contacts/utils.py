@@ -74,7 +74,7 @@ def get_backreferences(source_object, from_interface):
 
         obj = intids.queryObject(rel.from_id)
 
-        if obj is not None and mtool.checkPermission('zope2.View', obj):
+        if obj is not None and mtool.checkPermission('View', obj):
             result.append(obj)
     return result
 

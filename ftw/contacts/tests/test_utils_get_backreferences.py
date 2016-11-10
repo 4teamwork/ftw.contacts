@@ -15,7 +15,7 @@ class TestBackReferences(TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        setRoles(self.portal, TEST_USER_ID, ['Site Administrator'])
 
         self.contactfolder = create(
             Builder('contact folder').titled(u'Contact folder'))
@@ -55,6 +55,7 @@ class TestBackReferences(TestCase):
         self.assertEqual(
             [member_block], get_backreferences(contact, IMemberBlock))
 
+        member_block.manage_permission('View', roles=[])
         logout()
 
         self.assertEqual([], get_backreferences(contact, IMemberBlock))
