@@ -20,25 +20,37 @@
                tal:content="view/contact_title"></a>
         </strong>
         <p>
-            <tal:fn tal:condition="view/function" tal:content="view/function" /><br/>
-            <tal:addr tal:condition="context/show_address">
-                <tal:block><span tal:replace="structure python:view.safe_html(member.address)" /><br /></tal:block>
-                <span tal:content="member/postal_code"/>
-                <span tal:content="member/city"/><br />
+            <tal:fn tal:condition="view/function">
+                <span tal:replace="view/function" />
+            </tal:fn>
+            <tal:addr tal:condition="python: context.show_address and (member.address or member.postal_code or member.city)">
+                <tal:block tal:condition="member/address">
+                    <br />
+                    <span tal:replace="structure python:view.safe_html(member.address)" />
+                </tal:block>
+                <tal:block tal:condition="python: member.postal_code or member.city">
+                    <br />
+                    <span tal:content="member/postal_code"/>
+                    <span tal:content="member/city"/>
+                </tal:block>
             </tal:addr>
             <tal:phone tal:condition="member/phone_office">
+                <br />
                 <span i18n:translate="label_short_office">Office</span>:
-                <a tal:attributes="href string:tel:${member/phone_office}" tal:content="member/phone_office" /><br/>
+                <a tal:attributes="href string:tel:${member/phone_office}" tal:content="member/phone_office" />
             </tal:phone>
             <tal:mobile tal:condition="member/phone_mobile">
+                <br/>
                 <span i18n:translate="label_short_mobile">Mobile</span>:
-                <a tal:attributes="href string:tel:${member/phone_mobile}" tal:content="member/phone_mobile" /><br/>
+                <a tal:attributes="href string:tel:${member/phone_mobile}" tal:content="member/phone_mobile" />
             </tal:mobile>
             <tal:fax tal:condition="member/fax">
+                <br/>
                 <span i18n:translate="label_short_fax">Fax</span>:
-                <a tal:attributes="href string:tel:${member/fax}" tal:content="member/fax" /><br/>
+                <a tal:attributes="href string:tel:${member/fax}" tal:content="member/fax" />
             </tal:fax>
             <tal:email tal:condition="member/email">
+                <br/>
                 <a tal:attributes="href string:mailto:${member/email}"
                    tal:content="member/email" />
             </tal:email>
