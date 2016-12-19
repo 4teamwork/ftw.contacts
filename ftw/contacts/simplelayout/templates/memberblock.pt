@@ -1,57 +1,69 @@
 <html xmlns:tal="http://xml.zope.org/namespaces/tal"
-  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-  tal:omit-tag="python: 1"
-  tal:define="member view/memberaccessor;
-              contact nocall:view/contact"
-  i18n:domain="ftw.contacts">
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      tal:omit-tag="python: 1"
+      tal:define="member view/memberaccessor;
+                  contact nocall:view/contact"
+      i18n:domain="ftw.contacts">
 
-  <tal:main condition="view/has_related_contact">
-  <h3 tal:content="context/Title" tal:condition="context/show_title">Title</h3>
+<tal:main condition="view/has_related_contact">
+    <h3 tal:content="context/Title" tal:condition="context/show_title">Title</h3>
 
-  <tal:image tal:condition="context/show_image">
-    <div tal:condition="contact/image" class="memberBlockPortrait sl-image right">
-      <img tal:replace="structure contact/@@images/image/mini" />
+    <tal:image tal:condition="context/show_image">
+        <div tal:condition="contact/image" class="memberBlockPortrait sl-image right">
+            <img tal:replace="structure contact/@@images/image/mini" />
+        </div>
+        <div tal:condition="not:contact/image" tal:attributes="class string:memberBlockPortraitEmpty sl-image right gender-${contact/gender}"></div>
+    </tal:image>
+    <div class="memberContactInfo">
+        <strong>
+            <a tal:attributes="href contact/absolute_url"
+               tal:content="view/contact_title"></a>
+        </strong>
+        <p>
+            <tal:fn tal:condition="view/function">
+                <span tal:replace="view/function" />
+            </tal:fn>
+            <tal:addr tal:condition="python: context.show_address and (member.address or member.postal_code or member.city)">
+                <tal:block tal:condition="member/address">
+                    <br />
+                    <span tal:replace="structure python:view.safe_html(member.address)" />
+                </tal:block>
+                <tal:block tal:condition="python: member.postal_code or member.city">
+                    <br />
+                    <span tal:content="member/postal_code"/>
+                    <span tal:content="member/city"/>
+                </tal:block>
+            </tal:addr>
+            <tal:phone tal:condition="member/phone_office">
+                <br />
+                <span i18n:translate="label_short_office">Office</span>:
+                <a tal:attributes="href string:tel:${member/phone_office}" tal:content="member/phone_office" />
+            </tal:phone>
+            <tal:mobile tal:condition="member/phone_mobile">
+                <br/>
+                <span i18n:translate="label_short_mobile">Mobile</span>:
+                <a tal:attributes="href string:tel:${member/phone_mobile}" tal:content="member/phone_mobile" />
+            </tal:mobile>
+            <tal:fax tal:condition="member/fax">
+                <br/>
+                <span i18n:translate="label_short_fax">Fax</span>:
+                <a tal:attributes="href string:tel:${member/fax}" tal:content="member/fax" />
+            </tal:fax>
+            <tal:email tal:condition="member/email">
+                <br/>
+                <a tal:attributes="href string:mailto:${member/email}"
+                   tal:content="member/email" />
+            </tal:email>
+        </p>
     </div>
-    <div tal:condition="not:contact/image" tal:attributes="class string:memberBlockPortraitEmpty sl-image right gender-${contact/gender}"></div>
-  </tal:image>
-  <div class="memberContactInfo">
-    <strong>
-      <a tal:attributes="href contact/absolute_url"
-      tal:content="view/contact_title"></a>
-    </strong>
-    <p>
-       <tal:fn tal:condition="view/function" tal:content="view/function" /><br/>
-       <tal:addr tal:condition="context/show_address">
-            <tal:block><span tal:replace="structure python:view.safe_html(member.address)" /><br /></tal:block>
-            <span tal:content="member/postal_code"/>
-            <span tal:content="member/city"/><br />
-       </tal:addr>
-       <tal:phone tal:condition="member/phone_office">
-            <span i18n:translate="label_short_office">Office</span>:
-            <a tal:attributes="href string:tel:${member/phone_office}" tal:content="member/phone_office" /><br/>
-       </tal:phone>
-       <tal:mobile tal:condition="member/phone_mobile">
-            <span i18n:translate="label_short_mobile">Mobile</span>:
-            <a tal:attributes="href string:tel:${member/phone_mobile}" tal:content="member/phone_mobile" /><br/>
-       </tal:mobile>
-       <tal:fax tal:condition="member/fax">
-            <span i18n:translate="label_short_fax">Fax</span>:
-            <a tal:attributes="href string:tel:${member/fax}" tal:content="member/fax" /><br/>
-       </tal:fax>
-       <tal:email tal:condition="member/email">
-            <a tal:attributes="href string:mailto:${member/email}"
-               tal:content="member/email" />
-       </tal:email>
-    </p>
-  </div>
-  </tal:main>
-  <tal:nocontact condition="python:not view.has_related_contact and view.has_permission">
+</tal:main>
+<tal:nocontact condition="python:not view.has_related_contact and view.has_permission">
     <div id="member-no-contact-exist">
-      <h3 i18n:translate="label_contact_does_no_longer_exists">The related contact does no longer exists.</h3>
-      <p i18n:translate="label_contact_does_no_longer_exists_hint">Delete this content or edit it to replace the deleted with an existing contact</p>
+        <h3 i18n:translate="label_contact_does_no_longer_exists">The related contact does no longer exists.</h3>
+        <p i18n:translate="label_contact_does_no_longer_exists_hint">Delete this content or edit it to replace the deleted with an existing contact</p>
     </div>
-  </tal:nocontact>
-  <tal:nocontactandanonymous condition="python:not view.has_related_contact and not view.has_permission">
+</tal:nocontact>
+<tal:nocontactandanonymous condition="python:not view.has_related_contact and not view.has_permission">
     <div id="member-empty"></div>
-  </tal:nocontactandanonymous>
+</tal:nocontactandanonymous>
 </html>
