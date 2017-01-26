@@ -21,7 +21,9 @@ class ContactView(BrowserView):
     """Contact view
     """
     def get_memberships(self):
-        return get_backreferences(self.context, IMemberBlock)
+        memberships = get_backreferences(self.context, IMemberBlock)
+        # Sort the memberships alphabetically by their title before returning.
+        return sorted(memberships, key=lambda membership: membership.Title().lower())
 
     def safe_html(self, text):
         return safe_html(text)

@@ -73,6 +73,44 @@ class TestDefaultView(TestCase):
         self.assertEqual([], browser.css('.memberships'))
 
     @browsing
+    def test_memberships_sorted_alphabetically(self, browser):
+        """
+        This test makes sure that the back references (AKA member ships)
+        of a contact are sorted alphabetically.
+        """
+        contact = create(Builder('contact')
+                         .with_minimal_info(u'John', u'Doe')
+                         .within(self.contactfolder))
+
+        zzz = create(Builder('sl content page').titled(u'ZZZ'))
+        create(Builder('member block')
+               .within(zzz)
+               .contact(contact)
+               .titled(u"A member block on ZZZ"))
+
+        aaa = create(Builder('sl content page').titled(u'AAA'))
+        create(Builder('member block')
+               .within(aaa)
+               .contact(contact)
+               .titled(u"A member block on AAA"))
+
+        ttt = create(Builder('sl content page').titled(u'TTT'))
+        create(Builder('member block')
+               .within(ttt)
+               .contact(contact)
+               .titled(u"A member block on TTT"))
+
+        browser.login().visit(contact)
+        self.assertEqual(
+            [
+                'AAA',
+                'TTT',
+                'ZZZ',
+            ],
+            browser.css('.memberships li').text
+        )
+
+    @browsing
     def test_membership_links_point_to_container(self, browser):
         """
         This test makes sure that the membership links on the contact
