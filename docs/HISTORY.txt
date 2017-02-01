@@ -5,7 +5,9 @@ Changelog
 1.4.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Sort the memberships alphabetically by the title of their container (on the
+  contact detail view). Replaces 1.4.3.
+  [mbaechtold]
 
 
 1.4.3 (2017-01-26)
