@@ -76,7 +76,8 @@ class TestDefaultView(TestCase):
     def test_memberships_sorted_alphabetically(self, browser):
         """
         This test makes sure that the back references (AKA member ships)
-        of a contact are sorted alphabetically.
+        of a contact are sorted alphabetically by the title of their
+        container.
         """
         contact = create(Builder('contact')
                          .with_minimal_info(u'John', u'Doe')
@@ -85,20 +86,17 @@ class TestDefaultView(TestCase):
         zzz = create(Builder('sl content page').titled(u'ZZZ'))
         create(Builder('member block')
                .within(zzz)
-               .contact(contact)
-               .titled(u"A member block on ZZZ"))
+               .contact(contact))
 
         aaa = create(Builder('sl content page').titled(u'AAA'))
         create(Builder('member block')
                .within(aaa)
-               .contact(contact)
-               .titled(u"A member block on AAA"))
+               .contact(contact))
 
         ttt = create(Builder('sl content page').titled(u'TTT'))
         create(Builder('member block')
                .within(ttt)
-               .contact(contact)
-               .titled(u"A member block on TTT"))
+               .contact(contact))
 
         browser.login().visit(contact)
         self.assertEqual(
