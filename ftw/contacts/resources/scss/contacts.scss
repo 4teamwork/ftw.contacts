@@ -63,7 +63,7 @@
 }
 
 .contactFolderLoadMoreContacts {
-  @include button($color-button-default);
+  @include button();
   text-align: center;
   margin: 0 auto;
   display: block;
