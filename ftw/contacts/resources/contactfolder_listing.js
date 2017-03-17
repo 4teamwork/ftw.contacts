@@ -95,22 +95,21 @@ var ContactFolderListing = (function($) {
     };
 
     var setHeights = function(e) {
-        var rowsize = -1;
         var items = $(".contactSummary");
-        items.css('clear', '');
-
-        // checks how many contacts fit on one row
-        var top = -1;
-        for (var i = 0; i <= items.length; i++) {
-            if (top == -1) top = $(items[i]).position()["top"];
-            if (top !== $(items[i]).position()["top"]) {
-                rowsize = i;
-                break;
-            }
+        items.css("clear", "none");
+        if(!items.length) {
+            return;
         }
-
-        // adds a float clear to the first element of every row
-        $('.contactSummary:nth-of-type('+rowsize+'n+1)').css('clear', 'both');
+        var itemOffsets = $.map(items, function(item) { return $(item).offset().top });
+        itemOffsets.sort();
+        var search = itemOffsets[0];
+        if(!search) {
+            return;
+        }
+        var count = itemOffsets.reduce(function(n, val) {
+            return n + (val === search);
+        }, 0);
+        $(".contactSummary:nth-child(" + (count + 1) + ")").css("clear", "both");
     };
 
     var updateSearch = function(text) {

@@ -12,11 +12,6 @@
   box-shadow: $box-shadow-primary;
   position: relative;
   margin-bottom: $margin-vertical;
-  // We set this min-height manually because responsive equal height columns
-  // require javascript computation to determine the tallest item.
-  @include screen-small() {
-    min-height: 635px;
-  }
 
   .title {
     white-space: nowrap;
