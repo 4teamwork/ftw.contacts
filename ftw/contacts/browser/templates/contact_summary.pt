@@ -16,11 +16,11 @@
     </h3>
 
     <ul class="contactInfo">
-      <li tal:condition="context/function" tal:content="context/function" />
-      <li tal:condition="context/organization" tal:content="context/organization" />
-      <li tal:content="context/title" tal:condition="python:context.title != context.organization" />
-      <li tal:condition="context/address" tal:content="structure python:view.safe_html(context.address)" />
-      <li tal:condition="python: context.postal_code and context.city"
+      <li class="contact-function" tal:condition="context/function" tal:content="context/function" />
+      <li class="contact-organization" tal:condition="context/organization" tal:content="context/organization" />
+      <li class="contact-title" tal:content="context/title" tal:condition="python:context.title != context.organization" />
+      <li class="contact-address" tal:condition="context/address" tal:content="structure python:view.safe_html(context.address)" />
+      <li class="contact-city" tal:condition="python: context.postal_code and context.city"
            tal:content="string:${context/postal_code} ${context/city}" />
     </ul>
 
