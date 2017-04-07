@@ -13,7 +13,8 @@
   position: relative;
   margin-bottom: $margin-vertical;
 
-  .title {
+  .title > a {
+    display: block;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;

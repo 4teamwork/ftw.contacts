@@ -11,7 +11,8 @@
            class="contact-placeholder" />
     </a>
     <h3 tal:attributes="class string:state-${view/get_review_state} title">
-      <span tal:content="context/title" />
+        <a tal:attributes="href context/absolute_url; title context/title"
+           tal:content="context/title"/>
     </h3>
 
     <ul class="contactInfo">
