@@ -109,7 +109,7 @@ var ContactFolderListing = (function($) {
         var count = itemOffsets.reduce(function(n, val) {
             return n + (val === search);
         }, 0);
-        $(".contactSummary:nth-child(" + (count + 1) + ")").css("clear", "both");
+        $(".contactSummary:nth-child(" + (count) + "n+" + (count + 1) + ")").css("clear", "both");
     };
 
     var updateSearch = function(text) {
