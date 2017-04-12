@@ -5,7 +5,9 @@ Changelog
 1.4.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix row distribution for n rows. [Kevin Bieri]
+
+- Use link for contact title in the card. [Kevin Bieri]
 
 
 1.4.7 (2017-04-07)
