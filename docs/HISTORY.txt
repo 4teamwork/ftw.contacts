@@ -5,7 +5,7 @@ Changelog
 1.4.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add contactfolder setting for hiding contact images in listing view. [raphael-s]
 
 
 1.4.8 (2017-04-13)
