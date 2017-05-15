@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2016-09-09 11:24+0000\n"
+"POT-Creation-Date: 2017-05-15 08:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,6 +53,11 @@ msgstr ""
 #. Default: "Will be displayed even if the address is acquired and the contact has a function."
 #: ./ftw/contacts/contents/contact.py:134
 msgid "description_function"
+msgstr ""
+
+#. Default: "If activated, the images of the contacts are not shown."
+#: ./ftw/contacts/contents/contactfolder.py:16
+msgid "help_contactdirectory_hide_contacts_image"
 msgstr ""
 
 #. Default: "Academic title"
@@ -108,6 +113,11 @@ msgstr ""
 #. Default: "Contact reference"
 #: ./ftw/contacts/simplelayout/contents/memberblock.py:53
 msgid "label_contact_reference"
+msgstr ""
+
+#. Default: "Hide images of contacts"
+#: ./ftw/contacts/contents/contactfolder.py:14
+msgid "label_contactdirectory_hide_contacts_image"
 msgstr ""
 
 #. Default: "Country"

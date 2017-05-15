@@ -16,7 +16,12 @@ class ContactBuilder(DexterityBuilder):
     portal_type = 'ftw.contacts.Contact'
 
     def with_image(self):
-        self.arguments["image"] = NamedImage('GIF89a;', filename=u'image.gif')
+        image_data = (
+            'GIF89a\x01\x00\x01\x00\x80\x00\x00\x00\x00\x00\x00\x00'
+            '\x00!\xf9\x04\x04\x00\x00\x00\x00,\x00\x00\x00\x00\x01\x00'
+            '\x01\x00\x00\x02\x02D\x01\x00;'
+        )
+        self.arguments["image"] = NamedImage(image_data, filename=u'image.gif')
         return self
 
     def with_minimal_info(self, firstname, lastname):
