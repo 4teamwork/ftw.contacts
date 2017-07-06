@@ -37,7 +37,7 @@ class TestMemberBlockView(TestCase):
         self.assertEqual(u'A MemberBlock', browser.css('h3').first.text)
 
     @browsing
-    def test_call_with_deleted_contact_returns_hint(self, browser):
+    def test_block_with_deleted_contact_returns_hint_for_editors(self, browser):
 
         contact = create(Builder('contact')
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
@@ -53,6 +53,29 @@ class TestMemberBlockView(TestCase):
         browser.login().visit(member_block, view="block_view")
 
         self.assertEqual(1, len(browser.css('#member-no-contact-exist')))
+
+    @browsing
+    def test_block_without_contact_renders_hint_for_editors(self, browser):
+        page = create(Builder('sl content page'))
+        contact = create(Builder('contact')
+                         .with_minimal_info(u'Ch\xf6ck', u'4orris')
+                         .within(self.contactfolder))
+        member_block = create(Builder('member block').within(page).contact(contact))
+
+        # Remove the referenced contact.
+        member_block.contact = None
+        transaction.commit()
+
+        browser.raise_http_errors = False
+        browser.login().visit(member_block, view='block_view')
+        self.assertEqual(
+            [
+                'The related contact does no longer exists. '
+                'Delete this content or edit it to replace the deleted with an existing contact'
+            ],
+            browser.css('#member-no-contact-exist').text,
+            'A hint should be rendered about the block\'s missing contact.'
+        )
 
     @browsing
     def test_call_returns_member_view(self, browser):
@@ -71,7 +94,7 @@ class TestMemberBlockView(TestCase):
         self.assertEqual(1, len(browser.css('.memberContactInfo')))
 
     @browsing
-    def test_anonymous_without_contact_returns_no_content(self, browser):
+    def test_block_with_deleted_contact_returns_hint_for_anonymous(self, browser):
         contact = create(Builder('contact')
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
@@ -86,6 +109,26 @@ class TestMemberBlockView(TestCase):
         browser.visit(member_block, view="block_view")
 
         self.assertEqual(1, len(browser.css('#member-empty')))
+
+    @browsing
+    def test_block_without_contact_renders_hint_for_anonymous(self, browser):
+        page = create(Builder('sl content page'))
+        contact = create(Builder('contact')
+                         .with_minimal_info(u'Ch\xf6ck', u'4orris')
+                         .within(self.contactfolder))
+        member_block = create(Builder('member block').within(page).contact(contact))
+
+        # Remove the referenced contact.
+        member_block.contact = None
+        transaction.commit()
+
+        browser.raise_http_errors = False
+        browser.visit(member_block, view='block_view')
+        self.assertEqual(
+            [],
+            browser.css('#member-no-contact-exist').text,
+            'Blocks without contact should render nothing for anonymous users.'
+        )
 
     @browsing
     def test_function_is_acquired(self, browser):

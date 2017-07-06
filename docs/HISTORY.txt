@@ -5,6 +5,8 @@ Changelog
 1.5.1 (unreleased)
 ------------------
 
+- Make memberblock more robust. [mbaechtold]
+
 - Improve contact detail view. [mbaechtold]
 
 
