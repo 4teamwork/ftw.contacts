@@ -126,9 +126,10 @@
               </tr>
             </table>
 
-            <tal:block tal:condition="not: context/hide_memberships"
-                       tal:define="memberships view/get_memberships">
-              <div class="memberships" tal:condition="memberships">
+            <tal:block tal:condition="not: context/hide_memberships">
+              <div class="memberships"
+                   tal:define="memberships view/get_memberships"
+                   tal:condition="memberships">
                 <h3 i18n:translate="label_memberships">Memberships</h3>
                 <ul>
                   <tal:items tal:repeat="member memberships">
