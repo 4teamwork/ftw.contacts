@@ -12,6 +12,8 @@ class MemberView(BrowserView):
         self.contact = self.get_related_contact()
 
     def memberaccessor(self):
+        if not self.contact:
+            return None
         return IMemberAccessor(self.context)
 
     @property
