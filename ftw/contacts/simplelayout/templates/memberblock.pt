@@ -51,6 +51,7 @@
             </tal:fax>
             <tal:email tal:condition="member/email">
                 <br/>
+                <span i18n:translate="label_email">E-Mail</span>:
                 <a tal:attributes="href string:mailto:${member/email}"
                    tal:content="member/email" />
             </tal:email>
