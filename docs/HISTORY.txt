@@ -5,7 +5,7 @@ Changelog
 1.5.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix contacts summary view. [Kevin Bieri]
 
 
 1.5.1 (2017-08-04)

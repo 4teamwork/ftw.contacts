@@ -101,7 +101,7 @@ var ContactFolderListing = (function($) {
             return;
         }
         var itemOffsets = $.map(items, function(item) { return $(item).offset().top });
-        itemOffsets.sort();
+        itemOffsets.sort(function(a ,b) { return a - b; });
         var search = itemOffsets[0];
         if(!search) {
             return;
