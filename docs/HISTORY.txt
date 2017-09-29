@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.5.2 (unreleased)
+1.5.2 (2017-09-29)
 ------------------
 
 - Fix contacts summary view. [Kevin Bieri]
