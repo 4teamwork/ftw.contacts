@@ -1,0 +1,13 @@
+[
+    {
+        "ldap_plugin_id": "intern",
+        "base_dn": "ou=4teamwork,ou=Users,dc=4teamwork,dc=ch",
+        "filter": "(objectClass=*)"
+    },
+    {
+        "ldap_plugin_id": "extern",
+        "userid_prefix": "extern_",
+        "base_dn": "ou=External,ou=Users,dc=4teamwork,dc=ch",
+        "filter": "(objectClass=*)"
+    }
+]

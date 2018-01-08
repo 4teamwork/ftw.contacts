@@ -24,6 +24,7 @@ from zope.lifecycleevent import ObjectModifiedEvent
 from zope.schema import getFields
 from zope.site.hooks import setSite
 import argparse
+import json
 import ldif
 import logging
 import sys
@@ -37,6 +38,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', dest='plone_site', default=None,
                         help='Absolute path to the Plone site')
+    parser.add_argument('-c', dest='config_file_path', default=None,
+                        help='Absolute path to the config file')
     parser.add_argument('-b', dest='base_dn', default=None,
                         help='Base DN for contacts')
     parser.add_argument('-f', dest='filter', default='(objectClass=*)',
@@ -80,6 +83,7 @@ def main():
         sys.exit("Plone site not found at %s" % options.plone_site)
     setSite(portal)
 
+    # get the contact folder
     contacts_path = api.portal.get_registry_record(
         name='contacts_path', interface=IContactsSettings)
     if not contacts_path:
@@ -90,6 +94,11 @@ def main():
 
     if contacts_folder is None:
         sys.exit("Contacts folder not found at %s.")
+
+    # parse config file
+    if options.config_file_path:
+        with open(options.config_file_path) as config_file:
+            config = json.load(config_file)
 
     # Read records from an LDIF file
     if options.ldif_file:
