@@ -95,10 +95,20 @@ def main():
     if contacts_folder is None:
         sys.exit("Contacts folder not found at %s.")
 
-    # parse config file
+    # collect config
+    config = []
+    # read the config from the provided file
     if options.config_file_path:
         with open(options.config_file_path) as config_file:
             config = json.load(config_file)
+    # or use registry and command line parameter
+    else:
+        config.append({
+            'ldap_plugin_id': api.portal.get_registry_record(
+                name='ldap_plugin_id', interface=IContactsSettings),
+            'base_dn': options.base_dn,
+            'filter': options.filter
+        })
 
     # Read records from an LDIF file
     if options.ldif_file:
@@ -109,11 +119,24 @@ def main():
     # Get records from LDAP
     else:
         ldap = getUtility(ILDAPSearch)
-        ldap_records = ldap.search(
-            base_dn=options.base_dn,
-            filter=options.filter,
-            attrs=get_ldap_attribute_mapper().mapping().keys(),
-        )
+        ldap_records = []
+
+        for ldap_config in config:
+            plugin_records = ldap.search(
+                plugin_id=ldap_config.get('ldap_plugin_id'),
+                base_dn=ldap_config.get('base_dn'),
+                filter=ldap_config.get('filter'),
+                attrs=get_ldap_attribute_mapper().mapping().keys(),
+            )
+
+            # prepend the prefix to avoid id collisions
+            if ldap_config.get('userid_prefix'):
+                for dn, entry in plugin_records:
+                    id_arr = entry.get(get_ldap_attribute_mapper().id())
+                    if id_arr:
+                        id_arr[0] = ldap_config.get('userid_prefix') + id_arr[0]
+
+            ldap_records += plugin_records
 
     stats = sync_contacts(contacts_folder, ldap_records)
 

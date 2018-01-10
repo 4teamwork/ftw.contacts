@@ -28,21 +28,19 @@ class LDAPSearch(object):
     """
     implements(ILDAPSearch)
 
-    def connect(self):
-        ldap_uf = self.ldap_userfolder()
+    def connect(self, plugin_id):
+        ldap_uf = self.ldap_userfolder(plugin_id)
         if ldap_uf is None:
             return None
         self.base_dn = ldap_uf.users_base
         return ldap_uf._delegate.connect()
 
-    def ldap_userfolder(self):
+    def ldap_userfolder(self, plugin_id):
         site = getSite()
         if site is None:
             return None
 
         uf = getToolByName(site, 'acl_users')
-        plugin_id = api.portal.get_registry_record(
-            name='ldap_plugin_id', interface=IContactsSettings)
 
         # No plugin id configured, try to find an ldap plugin
         if not plugin_id:
@@ -57,9 +55,9 @@ class LDAPSearch(object):
             return None
         return ldap_plugin._getLDAPUserFolder()
 
-    def search(self, base_dn=None, scope=ldap.SCOPE_SUBTREE,
+    def search(self, plugin_id=None, base_dn=None, scope=ldap.SCOPE_SUBTREE,
                filter='(objectClass=*)', attrs=[]):
-        conn = self.connect()
+        conn = self.connect(plugin_id)
         if conn is None:
             return []
 
