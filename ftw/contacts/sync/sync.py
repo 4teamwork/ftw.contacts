@@ -101,6 +101,12 @@ def main():
     if options.config_file_path:
         with open(options.config_file_path) as config_file:
             config = json.load(config_file)
+            # validate
+            for entry in config:
+                if not entry.get('ldap_plugin_id', False):
+                    sys.exit("Please provide the ldap_plugin_id"
+                             "in the config file.")
+
     # or use registry and command line parameter
     else:
         config.append({
