@@ -5,7 +5,7 @@ Changelog
 1.5.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Move configuration of addable types of Plone Site to the simplelayout profile. [raphael-s]
 
 
 1.5.3 (2017-10-12)
