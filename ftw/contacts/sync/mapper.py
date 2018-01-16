@@ -2,6 +2,7 @@ class DefaultLDAPAttributeMapper(object):
 
     def mapping(self):
         return {
+            'uid': 'uid',
             'o': 'organization',
             'sn': 'lastname',
             'givenName': 'firstname',

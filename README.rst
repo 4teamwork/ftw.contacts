@@ -39,6 +39,7 @@ Quick overview of the functions
 - vCard-Representation of Contact
 - `ftw.zipexport`_ integration if you install the [zipexport]-extra
 - `ftw.simplelayout`_ integration if you install the [simplelayout]-extra
+- Synchronization of contacts with an ldap.
 
 How it looks
 ------------
@@ -123,6 +124,49 @@ After installing the geo-extra, you'll see a maplayer on each contact-type
 if you entered a valid address.
 
 If you don't know `ftw.geo`_, please read https://github.com/4teamwork/ftw.geo
+
+Contact synchronization through ldap
+------------------------------------
+
+The synchronization is executed through the ``sync_contacts`` entry point. The configuration
+for the sync is as follows:
+
+- The plone site on which to execute the sync: Parameter ``-p`` - only required when there are multiple sites.
+- The path to the contacts folder: Configured in the registry under ``IContactsSettings.contacts_path``
+- The mapping of the ldap attributes to the contact fields and which field to use as ID: Register a ``ILDAPAttributeMapper`` utility. Default: ``DefaultLDAPAttributeMapper``
+
+- The ldap plugin id inside of ``acl_users``: Configured in the registry under ``IContactsSettings.ldap_plugin_id``
+- The base dn for the contacts. Parameter ``-b`` - defaults to the base dn configured in the plugin
+- The filter ldap query to only get contacts. Parameter ``-f`` - defaults to ``(objectClass=*)``
+
+Synchronize contacts from multiple ldap sources
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To synchronize multiple sources (multiple plugins in ``acl_users``) a config file is required.
+Pass the path to the file through the ``-c`` parameter.
+
+The only required attribute per source is the ``ldap_plugin_id`. ``base_dn`` will default to the base dn of the plugin and ``filter`` will default to ``(objectClass=*)``.
+
+To avoid id collisions a ``userid_prefix`` can be specified. The prefix will then be applied to all contacts of this source.
+In the case where an existing site wants to add a second source but already has synchronized contacts only specify a prefix for the new source.
+This way the id's of the existing source do not change and the already synchronized contacts can still be identified.
+This is important, because the customer may have already added additional information to the contacts like images. If the ids change the sync will not recognize them and delete them!
+
+.. code:: json
+
+    [
+        {
+            "ldap_plugin_id": "intern",
+            "base_dn": "ou=Employees,ou=Users,dc=4teamwork,dc=ch",
+            "filter": "(objectClass=*)"
+        },
+        {
+            "ldap_plugin_id": "extern",
+            "userid_prefix": "extern-",
+            "base_dn": "ou=Customers,ou=Users,dc=4teamwork,dc=ch",
+            "filter": "(objectClass=*)"
+        }
+    ]
 
 Compatibility
 -------------

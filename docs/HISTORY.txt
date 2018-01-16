@@ -5,6 +5,8 @@ Changelog
 1.5.4 (unreleased)
 ------------------
 
+- Expand contact synchronization to handle multiple ldap sources. [lknoepfel]
+
 - Move configuration of addable types of Plone Site to the simplelayout profile. [raphael-s]
 
 

@@ -24,6 +24,7 @@ from zope.lifecycleevent import ObjectModifiedEvent
 from zope.schema import getFields
 from zope.site.hooks import setSite
 import argparse
+import json
 import ldif
 import logging
 import sys
@@ -37,6 +38,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', dest='plone_site', default=None,
                         help='Absolute path to the Plone site')
+    parser.add_argument('-c', dest='config_file_path', default=None,
+                        help='Absolute path to the config file')
     parser.add_argument('-b', dest='base_dn', default=None,
                         help='Base DN for contacts')
     parser.add_argument('-f', dest='filter', default='(objectClass=*)',
@@ -80,6 +83,7 @@ def main():
         sys.exit("Plone site not found at %s" % options.plone_site)
     setSite(portal)
 
+    # get the contact folder
     contacts_path = api.portal.get_registry_record(
         name='contacts_path', interface=IContactsSettings)
     if not contacts_path:
@@ -91,6 +95,27 @@ def main():
     if contacts_folder is None:
         sys.exit("Contacts folder not found at %s.")
 
+    # collect config
+    config = []
+    # read the config from the provided file
+    if options.config_file_path:
+        with open(options.config_file_path) as config_file:
+            config = json.load(config_file)
+            # validate
+            for entry in config:
+                if not entry.get('ldap_plugin_id', False):
+                    sys.exit("Please provide the ldap_plugin_id"
+                             "in the config file.")
+
+    # or use registry and command line parameter
+    else:
+        config.append({
+            'ldap_plugin_id': api.portal.get_registry_record(
+                name='ldap_plugin_id', interface=IContactsSettings),
+            'base_dn': options.base_dn,
+            'filter': options.filter
+        })
+
     # Read records from an LDIF file
     if options.ldif_file:
         rlist = ldif.LDIFRecordList(open(options.ldif_file, 'rb'))
@@ -100,11 +125,24 @@ def main():
     # Get records from LDAP
     else:
         ldap = getUtility(ILDAPSearch)
-        ldap_records = ldap.search(
-            base_dn=options.base_dn,
-            filter=options.filter,
-            attrs=get_ldap_attribute_mapper().mapping().keys(),
-        )
+        ldap_records = []
+
+        for ldap_config in config:
+            plugin_records = ldap.search(
+                plugin_id=ldap_config.get('ldap_plugin_id'),
+                base_dn=ldap_config.get('base_dn'),
+                filter=ldap_config.get('filter'),
+                attrs=get_ldap_attribute_mapper().mapping().keys(),
+            )
+
+            # prepend the prefix to avoid id collisions
+            if ldap_config.get('userid_prefix'):
+                for dn, entry in plugin_records:
+                    id_arr = entry.get(get_ldap_attribute_mapper().id())
+                    if id_arr:
+                        id_arr[0] = ldap_config.get('userid_prefix') + id_arr[0]
+
+            ldap_records += plugin_records
 
     stats = sync_contacts(contacts_folder, ldap_records)
 
