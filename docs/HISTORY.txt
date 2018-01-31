@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.6.1 (unreleased)
+1.6.1 (2018-01-31)
 ------------------
 
 - Fix contact sync for umlaut id's and group objects. [lknoepfel]
