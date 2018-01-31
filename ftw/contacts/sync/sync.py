@@ -138,9 +138,11 @@ def main():
             # prepend the prefix to avoid id collisions
             if ldap_config.get('userid_prefix'):
                 for dn, entry in plugin_records:
+                    if not dn:
+                        continue
                     id_arr = entry.get(get_ldap_attribute_mapper().id())
                     if id_arr:
-                        id_arr[0] = ldap_config.get('userid_prefix') + id_arr[0]
+                        id_arr[0] = ldap_config.get('userid_prefix').encode('ascii') + id_arr[0]
 
             ldap_records += plugin_records
 
