@@ -7,6 +7,7 @@ from ftw.contacts.sync.mapper import DefaultLDAPAttributeMapper
 from OFS.Image import File
 from plone.app.blob.interfaces import IBlobWrapper
 from plone.dexterity.utils import addContentToContainer
+from plone.dexterity.utils import iterSchemata
 from plone.dexterity.utils import createContent
 from plone.namedfile.interfaces import INamedImageField
 from plone import api
@@ -21,7 +22,7 @@ from zope.container.interfaces import INameChooser
 from zope.event import notify
 from zope.lifecycleevent import ObjectCreatedEvent
 from zope.lifecycleevent import ObjectModifiedEvent
-from zope.schema import getFields
+from zope.schema import getFieldsInOrder
 from zope.site.hooks import setSite
 import argparse
 import json
@@ -244,7 +245,10 @@ def sync_contacts(context, ldap_records, set_owner=False):
 
         # Update/set field values
         IContactSchema(contact).ldap_dn = dn
-        field_mapping = dict(getFields(IContactSchema))
+        field_mapping = {}
+        for schemata in iterSchemata(contact):
+            for name, field in getFieldsInOrder(schemata):
+                field_mapping[name] = field
         for ldap_name, field_name in mapper.mapping().items():
             field = field_mapping.get(field_name, None)
             if field is None:
