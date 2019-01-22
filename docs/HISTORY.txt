@@ -5,7 +5,7 @@ Changelog
 1.7.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix synchronisation of images. [mbaechtold]
 
 
 1.7.0 (2019-01-21)

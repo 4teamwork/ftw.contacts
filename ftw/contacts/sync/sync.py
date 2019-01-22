@@ -4,16 +4,15 @@ from ftw.contacts.interfaces import ILDAPAttributeMapper
 from ftw.contacts.interfaces import ILDAPCustomUpdater
 from ftw.contacts.interfaces import ILDAPSearch
 from ftw.contacts.sync.mapper import DefaultLDAPAttributeMapper
-from OFS.Image import File
 from plone.app.blob.interfaces import IBlobWrapper
 from plone.dexterity.utils import addContentToContainer
 from plone.dexterity.utils import iterSchemata
 from plone.dexterity.utils import createContent
+from plone.namedfile import NamedBlobImage
 from plone.namedfile.interfaces import INamedImageField
 from plone import api
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-from StringIO import StringIO
 from zExceptions import BadRequest
 from zope.component import getAdapters
 from zope.component import getUtility
@@ -263,11 +262,11 @@ def sync_contacts(context, ldap_records, set_owner=False):
             if current_value != value:
                 # Handle images
                 if INamedImageField.providedBy(field) and value:
-                    infile = StringIO(value)
-                    filename = '%s.jpg' % contact_id
-                    value = File(filename, filename, infile, 'image/jpeg')
-                    value.filename = filename
-
+                    value = NamedBlobImage(
+                        data=value,
+                        contentType='image/jpeg',
+                        filename=u'%s.jpg' % contact_id
+                    )
                 field.set(contact, value)
                 changed = True
 
