@@ -47,12 +47,20 @@ var ContactFolderListing = (function($) {
         }
     };
 
+    var req = null;
+
     var reloadView = function(reset) {
         reset = typeof reset !== 'undefined' ? reset : false;
         if (reset) {
             index = 0;
         }
-        $.getJSON('@@reload_contacts', {
+        if (req) {
+            // This prevents a strange race condition where "index" equals "steps",
+            // causing the more-button to be hidden even if there were more
+            // contacts to be displayed.
+            req.abort();
+        }
+        req = $.getJSON('@@reload_contacts', {
                 index_from: index,
                 index_to: index + step,
                 letter: letter,
