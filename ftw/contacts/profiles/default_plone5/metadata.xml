@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<metadata>
+  <dependencies>
+    <dependency>profile-plone.app.dexterity:default</dependency>
+    <dependency>profile-plone.app.relationfield:default</dependency>
+    <dependency>profile-plone.formwidget.contenttree:default</dependency>
+    <dependency>profile-ftw.upgrade:default</dependency>
+  </dependencies>
+</metadata>

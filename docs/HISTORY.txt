@@ -5,7 +5,7 @@ Changelog
 1.7.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add plone 5.1 support [busykoala]
 
 
 1.7.2 (2019-03-13)

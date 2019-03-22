@@ -12,6 +12,7 @@ tests_require = [
     'ftw.testbrowser',
     'ftw.contacts [zip_export, simplelayout, geo, ldap]',
     'unittest2',
+    'ftw.testing',
     ]
 zip_export = [
     'ftw.zipexport',
@@ -49,6 +50,7 @@ setup(name='ftw.contacts',
       classifiers=[
           'Framework :: Plone',
           'Framework :: Plone :: 4.2',
+          'Framework :: Plone :: 5.1',
           'License :: OSI Approved :: GNU General Public License (GPL)',
           'Programming Language :: Python',
           'Programming Language :: Python :: 2.7',
