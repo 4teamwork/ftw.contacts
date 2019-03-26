@@ -283,10 +283,10 @@ def sync_contacts(context, ldap_records, set_owner=False):
                 contact.manage_setLocalRoles(contact_id, ['Owner'])
                 contact.reindexObjectSecurity()
 
-            notify(ObjectAddedEvent(contact))
-
             aq_contact = context.get(contact_id)
             ct.catalog_object(aq_contact, '/'.join(aq_contact.getPhysicalPath()))
+
+            notify(ObjectAddedEvent(aq_contact))
 
             created += 1
             logger.debug("Created new contact '%s (%s)'." % (contact_id, dn))
