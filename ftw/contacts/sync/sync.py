@@ -19,7 +19,7 @@ from zope.component import getUtility
 from zope.component import queryUtility
 from zope.container.interfaces import INameChooser
 from zope.event import notify
-from zope.lifecycleevent import ObjectCreatedEvent
+from zope.lifecycleevent import ObjectAddedEvent
 from zope.lifecycleevent import ObjectModifiedEvent
 from zope.schema import getFieldsInOrder
 from zope.site.hooks import setSite
@@ -283,10 +283,10 @@ def sync_contacts(context, ldap_records, set_owner=False):
                 contact.manage_setLocalRoles(contact_id, ['Owner'])
                 contact.reindexObjectSecurity()
 
-            notify(ObjectCreatedEvent(contact))
-
             aq_contact = context.get(contact_id)
             ct.catalog_object(aq_contact, '/'.join(aq_contact.getPhysicalPath()))
+
+            notify(ObjectAddedEvent(aq_contact))
 
             created += 1
             logger.debug("Created new contact '%s (%s)'." % (contact_id, dn))
