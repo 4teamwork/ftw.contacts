@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.7.3 (unreleased)
+1.8.0 (2019-04-01)
 ------------------
 
 - Setup security in the in the sync script. [mbaechtold]
