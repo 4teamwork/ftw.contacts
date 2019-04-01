@@ -5,6 +5,8 @@ Changelog
 1.7.3 (unreleased)
 ------------------
 
+- Setup security in the in the sync script. [mbaechtold]
+
 - Fire different event in the sync script. [mbaechtold]
 
 

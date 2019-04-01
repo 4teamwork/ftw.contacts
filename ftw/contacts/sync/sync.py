@@ -1,3 +1,4 @@
+from AccessControl.SecurityManagement import newSecurityManager
 from ftw.contacts.contents.contact import IContactSchema
 from ftw.contacts.interfaces import IContact, IContactsSettings
 from ftw.contacts.interfaces import ILDAPAttributeMapper
@@ -81,6 +82,10 @@ def main():
         portal = app.unrestrictedTraverse(options.plone_site, None)
     if not portal:
         sys.exit("Plone site not found at %s" % options.plone_site)
+
+    user = portal.getOwner()
+    newSecurityManager(app, user)
+
     setSite(portal)
 
     # get the contact folder
