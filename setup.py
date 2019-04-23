@@ -81,6 +81,7 @@ setup(name='ftw.contacts',
           'ftw.zipexport',
           'ftw.autofeature',
           'ftw.upgrade',
+          'Products.LDAPUserFolder < 3a'
           ],
 
       tests_require=tests_require,
