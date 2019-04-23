@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registry>
+
+    <record
+        name="plone.types_not_searched"
+        interface="Products.CMFPlone.interfaces.controlpanel.ISearchSchema"
+        field="types_not_searched">
+        <value>
+            <element>ftw.contacts.MemberBlock</element>
+        </value>
+    </record>
+
+    <records interface="ftw.contacts.simplelayout.interfaces.IMemberRegistry" />
+</registry>

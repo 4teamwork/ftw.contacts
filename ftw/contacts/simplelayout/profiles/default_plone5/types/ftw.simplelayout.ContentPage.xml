@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<object name="ftw.simplelayout.ContentPage" meta_type="Dexterity FTI">
+    <property name="allowed_content_types" purge="False">
+        <element value="ftw.contacts.MemberBlock" />
+    </property>
+</object>
