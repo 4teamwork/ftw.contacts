@@ -11,6 +11,9 @@
 
     <include package="ftw.upgrade" file="meta.zcml" />
 
+    <!-- include is needed to use zcml:condition -->
+    <include package="Products.CMFPlone" file="meta.zcml" />
+
     <genericsetup:registerProfile
         zcml:condition="not-have plone-5"
         name="default"
