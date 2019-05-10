@@ -28,7 +28,8 @@ geo = [
     ]
 ldap = [
     'python-ldap<=2.4.25',
-    'Products.PloneLDAP'
+    'Products.PloneLDAP',
+    'Products.LDAPUserFolder < 3a',
     ]
 extras_require = {
     'tests': tests_require,
@@ -36,6 +37,9 @@ extras_require = {
     'simplelayout': simplelayout,
     'geo': geo,
     'ldap': ldap,
+    'plone4': [
+        'plone.app.referenceablebehavior',
+    ],
     }
 
 setup(name='ftw.contacts',
@@ -76,12 +80,10 @@ setup(name='ftw.contacts',
           'collective.dexteritytextindexer',
           'collective.js.jqueryui',
           'plone.app.relationfield',
-          'plone.app.referenceablebehavior',
           'plone.api >= 1.3.3',
           'ftw.zipexport',
           'ftw.autofeature',
           'ftw.upgrade',
-          'Products.LDAPUserFolder < 3a'
           ],
 
       tests_require=tests_require,
