@@ -63,6 +63,15 @@ class ContactView(BrowserView):
 class ContactSummary(BrowserView):
     """Contactsummary view
     """
+
+    def __call__(self):
+        # Partial views are encoded wrong when not called by ajax in plone 5.
+        # In consequece in tests, encoding errors can appear if we do not
+        # disable the diazo theme 'encoder'.
+        # Also see: https://github.com/4teamwork/ftw.testbrowser/commit/8ea19ffbefd251cd6712775336d2a1e76beb79de
+        self.request.response.setHeader('X-Theme-Disabled', 'True')
+        return super(ContactSummary, self).__call__()
+
     def get_review_state(self):
         return api.content.get_state(obj=self.context, default='')
 
