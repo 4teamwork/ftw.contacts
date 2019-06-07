@@ -47,7 +47,7 @@ class TestMemberBlockView(TestCase):
                               .within(self.contactfolder)
                               .contact(contact))
 
-        delete(contact)
+        delete(contact, check_linkintegrity=False)
         transaction.commit()
 
         browser.login().visit(member_block, view="block_view")
@@ -103,7 +103,7 @@ class TestMemberBlockView(TestCase):
                               .within(self.contactfolder)
                               .contact(contact))
 
-        delete(contact)
+        delete(contact, check_linkintegrity=False)
         transaction.commit()
 
         browser.visit(member_block, view="block_view")

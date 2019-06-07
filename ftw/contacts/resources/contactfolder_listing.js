@@ -60,7 +60,18 @@ var ContactFolderListing = (function($) {
             // contacts to be displayed.
             req.abort();
         }
-        req = $.getJSON('@@reload_contacts', {
+
+        // use plone 5 data-base-url if exists,
+        // otherwise go with the plone 4 way using the base tag.
+        var json_url;
+        var data_base_url = document.getElementsByTagName("body")[0].getAttribute('data-base-url');
+        if (data_base_url) {
+          json_url = data_base_url + '/@@reload_contacts';
+        } else {
+          json_url = '@@reload_contacts';
+        }
+
+        req = $.getJSON(json_url, {
                 index_from: index,
                 index_to: index + step,
                 letter: letter,

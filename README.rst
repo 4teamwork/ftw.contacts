@@ -27,6 +27,8 @@ or to your buildout configuration:
 
 and rerun buildout.
 
+For Plone 4.x add `eggs += ftw.contacts ['plone4']` option.
+
 Install the Generic Setup profile.
 
 

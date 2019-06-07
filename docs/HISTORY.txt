@@ -5,7 +5,7 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add plone 5.1 support [busykoala]
 
 
 1.8.0 (2019-04-01)
