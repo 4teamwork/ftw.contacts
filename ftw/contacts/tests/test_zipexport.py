@@ -3,7 +3,7 @@ from ftw.builder import create
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.testbrowser import browsing
 from StringIO import StringIO
-from unittest2 import TestCase
+from unittest import TestCase
 from zipfile import ZipFile
 
 import os

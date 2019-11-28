@@ -11,7 +11,6 @@ tests_require = [
     'plone.app.testing',
     'ftw.testbrowser',
     'ftw.contacts [zip_export, simplelayout, geo, ldap]',
-    'unittest2',
     'ftw.testing',
     ]
 zip_export = [

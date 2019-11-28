@@ -3,7 +3,7 @@ from ftw.builder import create
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import AlphabeticLetters
 from Products.CMFCore.utils import getToolByName
-from unittest2 import TestCase
+from unittest import TestCase
 
 
 class TestAlphabeticalSubjectListing(TestCase):

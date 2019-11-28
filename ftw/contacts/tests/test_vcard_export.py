@@ -3,7 +3,7 @@ from ftw.builder import create
 from ftw.contacts.browser.vcard import DownloadVCardView
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import generate_vcard
-from unittest2 import TestCase
+from unittest import TestCase
 
 import os
 
