@@ -8,7 +8,7 @@ from ftw.testbrowser import browsing
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from plone.dexterity.interfaces import IDexterityFTI
-from unittest2 import TestCase
+from unittest import TestCase
 from z3c.relationfield.interfaces import IHasIncomingRelations
 from zope.component import createObject
 from zope.component import queryUtility

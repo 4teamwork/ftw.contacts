@@ -1,6 +1,6 @@
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import make_sortable
-from unittest2 import TestCase
+from unittest import TestCase
 
 
 class TestMakeSortable(TestCase):

@@ -5,7 +5,7 @@ from ftw.testbrowser import browsing
 from plone.api.content import delete
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
-from unittest2 import TestCase
+from unittest import TestCase
 
 import transaction
 
