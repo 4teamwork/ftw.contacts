@@ -1,0 +1,17 @@
+{
+  "name": "ftw.contacts",
+  "version": "1.0.0",
+  "repository": "git@github.com:4teamwork/ftw.contacts.git",
+  "author": "4teamwork AG <info@4teamwork.ch>",
+  "license": "GPL2",
+  "scripts": {
+    "build": "r.js -o buildcss.js",
+    "build-css": "r.js -o buildcss.js",
+    "watch": "chokidar \"./ftw/contacts/resources/*.css\" -i \"**/*-compiled.css\" -c \"r.js -o buildcss.js;\""
+  },
+  "private": true,
+  "devDependencies": {
+    "chokidar-cli": "^2.1.0",
+    "requirejs": "^2.3.6"
+  }
+}

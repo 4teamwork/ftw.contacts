@@ -9,6 +9,7 @@
 /coverage/
 /develop-eggs/
 /eggs/
+/node_modules/
 /parts/
 /src/
 /var/

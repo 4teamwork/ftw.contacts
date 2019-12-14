@@ -1,14 +1,12 @@
 <registry>
 
-    <records interface="ftw.contacts.interfaces.IContactsSettings" />
+    <records prefix="plone.resources/ftw-contacts-css"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'
+             remove="True"/>
 
-    <records interface="Products.CMFPlone.interfaces.controlpanel.IImagingSchema" prefix="plone">
-        <value key="allowed_sizes" purge="false">
-            <element>portrait 300:300</element>
-        </value>
-    </records>
-
-    <records prefix="plone.bundles/ftw-contacts-resources" interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+    <records prefix="plone.bundles/ftw-contacts-resources"
+             interface="Products.CMFPlone.interfaces.IBundleRegistry">
+        <value key="resources" purge="True"></value>
         <value key="enabled">True</value>
         <value key="depends">plone</value>
         <value key="stub_js_modules">jquery</value>
