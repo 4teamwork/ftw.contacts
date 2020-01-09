@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.9.3 (unreleased)
+1.9.3 (2020-01-09)
 ------------------
 
 - Add ftw.contacts portal_types translations to plone domain. [tinagerber]
