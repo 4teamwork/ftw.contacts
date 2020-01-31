@@ -5,7 +5,7 @@ Changelog
 1.9.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove usage of spamProtect script, since it's no longer available in plone 5. [mathias.leimgruber]
 
 
 1.9.3 (2020-01-09)
