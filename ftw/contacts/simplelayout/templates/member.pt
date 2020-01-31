@@ -36,6 +36,7 @@
                   <tr tal:condition="member/email">
                     <th><span i18n:translate="label_member_email">Email</span></th>
                     <td><span tal:content="structure python:context.spamProtect(mailaddress=member.email)" /></td>
+                    <td><span><a tal:attributes="href string:mailto:${member/email}" tal:content="member/email"></span></td>
                   </tr>
                   <tr tal:condition="member/www">
                     <th><span i18n:translate="label_member_www">www</span></th>
