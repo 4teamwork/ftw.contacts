@@ -5,7 +5,7 @@ Changelog
 1.9.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix i18n build. [djowett-ftw]
 
 
 1.9.5 (2020-01-31)
