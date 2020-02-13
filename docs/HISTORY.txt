@@ -6,6 +6,7 @@ Changelog
 ------------------
 
 - Fix i18n build. [djowett-ftw]
+- Fix object_rename error by not trying to set Title field when renaming a Contact. [djowett-ftw]
 
 
 1.9.5 (2020-01-31)
