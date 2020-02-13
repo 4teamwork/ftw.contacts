@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-05-15 08:26+0000\n"
+"POT-Creation-Date: 2020-02-13 13:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,10 +15,12 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 
 #: ./ftw/contacts/profiles/default/types/ftw.contacts.Contact.xml
+#: ./ftw/contacts/profiles/default_plone5/types/ftw.contacts.Contact.xml
 msgid "Contact"
 msgstr "Kontakt"
 
 #: ./ftw/contacts/profiles/default/types/ftw.contacts.ContactFolder.xml
+#: ./ftw/contacts/profiles/default_plone5/types/ftw.contacts.ContactFolder.xml
 msgid "ContactFolder"
 msgstr "Kontaktordner"
 
@@ -27,10 +29,12 @@ msgid "Contacts Path"
 msgstr ""
 
 #: ./ftw/contacts/profiles/default/actions.xml
+#: ./ftw/contacts/profiles/default_plone5/actions.xml
 msgid "Download a Contact as a vCard."
 msgstr "Kontakt als vCard herunterladen"
 
 #: ./ftw/contacts/profiles/default/actions.xml
+#: ./ftw/contacts/profiles/default_plone5/actions.xml
 msgid "Download vCard"
 msgstr "vCard herunterladen"
 
@@ -43,6 +47,7 @@ msgid "LDAP Plugin ID"
 msgstr ""
 
 #: ./ftw/contacts/simplelayout/profiles/default/types/ftw.contacts.MemberBlock.xml
+#: ./ftw/contacts/simplelayout/profiles/default_plone5/types/ftw.contacts.MemberBlock.xml
 msgid "MemberBlock"
 msgstr "Mitgliedblock"
 
@@ -55,8 +60,9 @@ msgstr ""
 msgid "description_function"
 msgstr "Wird angezeigt auch wenn die Adresse übernommen wird und beim Kontakt eine Funktion hinterlegt ist."
 
-#. Default: "If activated, the images of the contacts are not shown."
-#: ./ftw/contacts/contents/contactfolder.py:16
+#. Default: "If activated, the images of the contacts are not shown in the listing-view."
+#: ./ftw/contacts/contents/contactfolder.py:17
+#, fuzzy
 msgid "help_contactdirectory_hide_contacts_image"
 msgstr "Wenn aktivert, werden die Bilder der Kontakte in der Auflistungs-Ansicht nicht angezeigt."
 
@@ -66,14 +72,14 @@ msgid "label_academic_title"
 msgstr "Akademischer Titel"
 
 #. Default: "Acquire address"
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:73
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:63
 msgid "label_acquire_address"
 msgstr "Adresse von Stammdaten übernehmen"
 
 #. Default: "Address"
 #: ./ftw/contacts/browser/templates/contact.pt:75
 #: ./ftw/contacts/contents/contact.py:63
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:78
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:68
 msgid "label_address"
 msgstr "Adresse"
 
@@ -84,7 +90,7 @@ msgstr "Adresse"
 
 #. Default: "City"
 #: ./ftw/contacts/contents/contact.py:77
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:92
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:82
 msgid "label_city"
 msgstr "Ort"
 
@@ -95,13 +101,13 @@ msgstr "Ort"
 
 #. Default: "The related contact does no longer exists."
 #: ./ftw/contacts/simplelayout/templates/member.pt:70
-#: ./ftw/contacts/simplelayout/templates/memberblock.pt:50
+#: ./ftw/contacts/simplelayout/templates/memberblock.pt:63
 msgid "label_contact_does_no_longer_exists"
 msgstr "Der dazugehörige Kontakt existiert nicht mehr."
 
 #. Default: "Delete this content or edit it to replace the deleted with an existing contact"
 #: ./ftw/contacts/simplelayout/templates/member.pt:71
-#: ./ftw/contacts/simplelayout/templates/memberblock.pt:51
+#: ./ftw/contacts/simplelayout/templates/memberblock.pt:64
 msgid "label_contact_does_no_longer_exists_hint"
 msgstr "Bitte weisen Sie diesem Mitglied einen neuen Kontakt hinzu oder löschen sie dieses."
 
@@ -111,7 +117,7 @@ msgid "label_contact_more"
 msgstr "Kontakt"
 
 #. Default: "Contact reference"
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:53
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:44
 msgid "label_contact_reference"
 msgstr "Stammdaten Kontakt"
 
@@ -134,14 +140,14 @@ msgstr "Abteilung"
 #. Default: "E-Mail"
 #: ./ftw/contacts/browser/templates/contact.pt:95
 #: ./ftw/contacts/contents/contact.py:90
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:99
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:89
 msgid "label_email"
 msgstr "E-Mail"
 
 #. Default: "Fax number"
 #: ./ftw/contacts/browser/templates/contact.pt:91
 #: ./ftw/contacts/contents/contact.py:110
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:119
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:109
 msgid "label_fax"
 msgstr "Fax"
 
@@ -151,7 +157,7 @@ msgid "label_female"
 msgstr "Frau"
 
 #. Default: "Contact"
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:131
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:121
 msgid "label_fieldset_contact"
 msgstr "Kontakt"
 
@@ -173,7 +179,7 @@ msgstr "Vorname"
 #. Default: "Function"
 #: ./ftw/contacts/browser/templates/contact.pt:63
 #: ./ftw/contacts/contents/contact.py:133
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:59
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:49
 msgid "label_function"
 msgstr "Funktion"
 
@@ -248,7 +254,7 @@ msgid "label_member_www"
 msgstr "Url"
 
 #. Default: "Memberships"
-#: ./ftw/contacts/browser/templates/contact.pt:132
+#: ./ftw/contacts/browser/templates/contact.pt:133
 msgid "label_memberships"
 msgstr "Mitgliedschaften"
 
@@ -267,14 +273,14 @@ msgstr "Organisation"
 #. Default: "Mobile phone number"
 #: ./ftw/contacts/browser/templates/contact.pt:87
 #: ./ftw/contacts/contents/contact.py:103
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:112
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:102
 msgid "label_phone_mobile"
 msgstr "Telefon mobil"
 
 #. Default: "Office phone number"
 #: ./ftw/contacts/browser/templates/contact.pt:83
 #: ./ftw/contacts/contents/contact.py:96
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:105
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:95
 msgid "label_phone_office"
 msgstr "Telefon geschäftlich"
 
@@ -286,7 +292,7 @@ msgstr "Telefon privat"
 
 #. Default: "Postal code"
 #: ./ftw/contacts/contents/contact.py:70
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:85
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:75
 msgid "label_postal_code"
 msgstr "PLZ"
 
@@ -301,44 +307,44 @@ msgid "label_salutation"
 msgstr "Begrüssung"
 
 #. Default: "Fax"
-#: ./ftw/contacts/simplelayout/templates/memberblock.pt:38
+#: ./ftw/contacts/simplelayout/templates/memberblock.pt:49
 msgid "label_short_fax"
 msgstr "Fax"
 
 #. Default: "Mobile"
-#: ./ftw/contacts/simplelayout/templates/memberblock.pt:34
+#: ./ftw/contacts/simplelayout/templates/memberblock.pt:44
 msgid "label_short_mobile"
 msgstr "Mobile"
 
 #. Default: "Office"
-#: ./ftw/contacts/simplelayout/templates/memberblock.pt:30
+#: ./ftw/contacts/simplelayout/templates/memberblock.pt:39
 msgid "label_short_office"
 msgstr "Geschäft"
 
 #. Default: "phone m"
-#: ./ftw/contacts/browser/templates/contact_summary.pt:37
+#: ./ftw/contacts/browser/templates/contact_summary.pt:38
 #, fuzzy
 msgid "label_short_phone_mobile"
 msgstr "Telefon mobile:"
 
 #. Default: "phone o"
-#: ./ftw/contacts/browser/templates/contact_summary.pt:28
+#: ./ftw/contacts/browser/templates/contact_summary.pt:29
 #, fuzzy
 msgid "label_short_phone_office"
 msgstr "Telefon geschäftlich:"
 
 #. Default: "Show address"
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:65
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:55
 msgid "label_show_address"
 msgstr "Adresse anzeigen"
 
 #. Default: "Show image"
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:69
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:59
 msgid "label_show_image"
 msgstr "Bild anzeigen"
 
 #. Default: "Show title"
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:49
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:38
 msgid "label_show_title"
 msgstr "Titel anzeigen"
 
@@ -348,7 +354,7 @@ msgid "label_text"
 msgstr "Text"
 
 #. Default: "Title"
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:43
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:32
 msgid "label_title"
 msgstr "Titel"
 
@@ -360,7 +366,7 @@ msgstr ""
 #. Default: "www"
 #: ./ftw/contacts/browser/templates/contact.pt:102
 #: ./ftw/contacts/contents/contact.py:116
-#: ./ftw/contacts/simplelayout/contents/memberblock.py:125
+#: ./ftw/contacts/simplelayout/contents/memberblock.py:115
 msgid "label_www"
 msgstr "URL"
 
