@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-02-13 13:04+0000\n"
+"POT-Creation-Date: 2020-02-13 13:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,6 +58,11 @@ msgstr ""
 #. Default: "Will be displayed even if the address is acquired and the contact has a function."
 #: ./ftw/contacts/contents/contact.py:134
 msgid "description_function"
+msgstr ""
+
+#. Default: "Each item has a Short Name which you can change by entering the new details below (Note that the 'Title' of a Contact is generated from other fields, so it can't be changed here)."
+#: ./ftw/contacts/browser/contact.py:94
+msgid "description_rename_contact"
 msgstr ""
 
 #. Default: "If activated, the images of the contacts are not shown in the listing-view."
