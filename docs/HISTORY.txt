@@ -7,7 +7,7 @@ Changelog
 
 - Fix i18n build. [djowett-ftw]
 - Fix object_rename error by not trying to set Title field when renaming a Contact. [djowett-ftw]
-- Brush up English in README and clarify Plone 5.1 support. [djowett-ftw]
+- Brush up English in README and clarify supported versions of Plone (4.3 and 5.1). [djowett-ftw]
 
 1.9.5 (2020-01-31)
 ------------------
