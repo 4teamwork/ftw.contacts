@@ -1,10 +1,17 @@
 from Acquisition import aq_inner, aq_parent
+from ftw.contacts import _
+from ftw.contacts import IS_PLONE_5
 from ftw.contacts.interfaces import IMemberBlock
 from ftw.contacts.utils import get_backreferences
 from ftw.contacts.utils import safe_html
 from ftw.contacts.utils import portrait_img_tag
 from plone import api
 from Products.Five.browser import BrowserView
+from z3c.form.interfaces import HIDDEN_MODE
+
+
+if IS_PLONE_5:
+    from plone.app.content.browser.actions import RenameForm as PloneRenameForm
 
 # Check for ftw.geo
 try:
@@ -81,3 +88,20 @@ class ContactSummary(BrowserView):
     @property
     def img_tag(self):
         return portrait_img_tag(self.context)
+
+
+if IS_PLONE_5:
+    class RenameForm(PloneRenameForm):
+        """ Plone's standard RenameForm will try to """
+
+        description = _(
+            u'description_rename_contact',
+            default=u"Each item has a Short Name which you can change by " +
+                    u"entering the new details below (Note that the 'Title' of " +
+                    u"a Contact is generated from other fields, so it can't be " +
+                    u"changed here)."
+        )
+
+        def updateWidgets(self):
+            super(RenameForm, self).updateWidgets()
+            self.widgets["new_title"].mode = HIDDEN_MODE

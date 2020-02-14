@@ -263,5 +263,7 @@ class Contact(Item):
         """
         return get_contact_title(self)
 
-    def setTitle(self, value):
+    @title.setter
+    def title(self, value):
+        # This method is necessary for rename(), but we ignore the value passed
         return

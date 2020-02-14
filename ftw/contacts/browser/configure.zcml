@@ -28,6 +28,14 @@
         />
 
     <browser:page
+        zcml:condition="have plone-5"
+        for="ftw.contacts.interfaces.IContact"
+        name="object_rename"
+        class=".contact.RenameForm"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <browser:page
         for="ftw.contacts.interfaces.IContactFolder"
         name="letters"
         class=".contactfolder.Letters"
