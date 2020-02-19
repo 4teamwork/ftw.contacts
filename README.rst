@@ -156,6 +156,8 @@ that have already been synchronized can still be identified.
 This is important, because the customer may have already added additional information (e.g. images) to the contacts.
 If the ids change the sync will not recognize them and would then delete them!
 
+Scope can be set to: ``SCOPE_BASE``, ``SCOPE_ONELEVEL``, ``SCOPE_SUBTREE`` or ``SCOPE_SUBORDINATE``.
+
 .. code:: json
 
     [
@@ -168,7 +170,8 @@ If the ids change the sync will not recognize them and would then delete them!
             "ldap_plugin_id": "extern",
             "userid_prefix": "extern-",
             "base_dn": "ou=Customers,ou=Users,dc=4teamwork,dc=ch",
-            "filter": "(objectClass=*)"
+            "filter": "(objectClass=*)",
+            "scope": "SCOPE_ONELEVEL"
         }
     ]
 

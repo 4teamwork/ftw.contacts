@@ -55,8 +55,9 @@ class LDAPSearch(object):
             return None
         return ldap_plugin._getLDAPUserFolder()
 
-    def search(self, plugin_id=None, base_dn=None, scope=ldap.SCOPE_SUBTREE,
+    def search(self, plugin_id=None, base_dn=None, scope=None,
                filter='(objectClass=*)', attrs=[]):
+        scope = getattr(ldap, scope) if scope else ldap.SCOPE_SUBTREE
         conn = self.connect(plugin_id)
         if conn is None:
             return []

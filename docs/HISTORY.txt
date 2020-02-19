@@ -5,7 +5,7 @@ Changelog
 1.9.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Support ldap scope attribute for contact sync [Nachtalb]
 
 
 1.9.6 (2020-02-14)
