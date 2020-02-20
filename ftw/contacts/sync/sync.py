@@ -137,6 +137,7 @@ def main():
                 plugin_id=ldap_config.get('ldap_plugin_id'),
                 base_dn=ldap_config.get('base_dn'),
                 filter=ldap_config.get('filter'),
+                scope=ldap_config.get('scope'),
                 attrs=get_ldap_attribute_mapper().mapping().keys(),
             )
 
