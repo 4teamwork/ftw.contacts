@@ -265,6 +265,9 @@ def sync_contacts(context, ldap_records, set_owner=False):
             if IBlobWrapper.providedBy(current_value):
                 current_value = current_value.data
 
+            if isinstance(value, basestring):
+                value = value.strip()
+
             if current_value != value:
                 # Handle images
                 if INamedImageField.providedBy(field) and value:
