@@ -5,7 +5,7 @@ Changelog
 1.10.2 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix contenttree dependency in metadata.xml, since it has been removed with version 1.4.0. [mathias.leimgruber]
 
 
 1.10.1 (2020-02-21)
