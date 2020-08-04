@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.10.2 (unreleased)
+1.10.2 (2020-08-04)
 -------------------
 
 - Fix contenttree dependency in metadata.xml, since it has been removed with version 1.4.0. [mathias.leimgruber]
