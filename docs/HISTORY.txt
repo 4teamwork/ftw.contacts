@@ -6,6 +6,7 @@ Changelog
 -------------------
 
 - Fix contenttree dependency in metadata.xml, since it has been removed with version 1.4.0. [mathias.leimgruber]
+- Remove obsolete behaviors from Plone 5 profile [Nachtalb]
 
 
 1.10.1 (2020-02-21)
