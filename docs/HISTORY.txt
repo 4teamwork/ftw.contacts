@@ -5,7 +5,7 @@ Changelog
 1.10.3 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Remove obsolete behaviour in Plone 5 [Nachtalb]
 
 
 1.10.2 (2020-08-04)
