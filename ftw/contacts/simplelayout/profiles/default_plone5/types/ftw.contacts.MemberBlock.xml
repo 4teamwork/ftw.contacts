@@ -18,7 +18,6 @@
       <element value="plone.app.content.interfaces.INameFromTitle" />
       <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
       <element value="ftw.simplelayout.interfaces.ISimplelayoutBlock" />
-      <element value="plone.app.referenceablebehavior.referenceable.IReferenceable"/>
   </property>
 
   <!-- class used for content items -->
