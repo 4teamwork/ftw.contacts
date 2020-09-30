@@ -27,14 +27,14 @@ class TestMemberBlockView(TestCase):
                          .with_minimal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
 
-        member_block = create(Builder('member block')
-                              .within(self.contactfolder)
-                              .contact(contact)
-                              .titled(u"A MemberBlock")
-                              .having(show_title=True))
+        create(Builder('member block')
+               .within(self.portal)
+               .contact(contact)
+               .titled(u"A MemberBlock")
+               .having(show_title=True))
 
-        browser.login().visit(member_block, view="block_view")
-        self.assertEqual(u'A MemberBlock', browser.css('h3').first.text)
+        browser.login().visit(self.portal, view='simplelayout-view')
+        self.assertEqual(u'A MemberBlock', browser.css('.ftw-contacts-memberblock h3').first.text)
 
     @browsing
     def test_block_with_deleted_contact_returns_hint_for_editors(self, browser):
@@ -83,15 +83,15 @@ class TestMemberBlockView(TestCase):
                          .with_maximal_info(u'Ch\xf6ck', u'4orris')
                          .within(self.contactfolder))
 
-        member_block = create(Builder('member block')
-                              .within(self.contactfolder)
-                              .contact(contact))
+        create(Builder('member block')
+               .within(self.portal)
+               .contact(contact))
 
-        browser.login().visit(member_block, view="block_view")
+        browser.login().visit(self.portal, view='simplelayout-view')
 
-        self.assertEqual(0, len(browser.css('#member-no-contact-exist')))
-        self.assertEqual(0, len(browser.css('#member-empty')))
-        self.assertEqual(1, len(browser.css('.memberContactInfo')))
+        self.assertEqual(0, len(browser.css('.ftw-contacts-memberblock #member-no-contact-exist')))
+        self.assertEqual(0, len(browser.css('.ftw-contacts-memberblock #member-empty')))
+        self.assertEqual(1, len(browser.css('.ftw-contacts-memberblock .memberContactInfo')))
 
     @browsing
     def test_block_with_deleted_contact_returns_hint_for_anonymous(self, browser):

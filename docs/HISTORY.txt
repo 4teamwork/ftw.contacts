@@ -6,6 +6,7 @@ Changelog
 -------------------
 
 - Remove obsolete behaviour in Plone 5 [Nachtalb]
+- Fix broken contentpage containing a memberblock [Nachtalb]
 
 
 1.10.2 (2020-08-04)
