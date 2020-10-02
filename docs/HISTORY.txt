@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.10.3 (unreleased)
+1.10.3 (2020-10-02)
 -------------------
 
 - Remove obsolete behaviour in Plone 5 [Nachtalb]
