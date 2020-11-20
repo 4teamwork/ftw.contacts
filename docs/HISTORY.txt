@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.10.4 (unreleased)
+1.10.4 (2020-11-20)
 -------------------
 
 - Always return False for getIcon on contacts. [mathias.leimgruber]
