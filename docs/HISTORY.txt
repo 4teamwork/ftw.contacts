@@ -5,7 +5,7 @@ Changelog
 1.10.4 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Always return False for getIcon on contacts. [mathias.leimgruber]
 
 
 1.10.3 (2020-10-02)
