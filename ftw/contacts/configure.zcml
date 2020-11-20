@@ -73,4 +73,8 @@
     </configure>
     <!-- End ftw.zipexport -->
 
+    <configure zcml:condition="have plone-5">
+        <adapter name="getIcon" factory=".indexers.getIcon" />
+    </configure>
+
 </configure>
