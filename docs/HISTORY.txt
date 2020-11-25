@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.10.5 (unreleased)
+1.10.5 (2020-11-25)
 -------------------
 
 - Fix harming upgrade step from release 1.10.3, which removed all behaviors. [mathias.leimgruber]
