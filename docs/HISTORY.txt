@@ -5,7 +5,10 @@ Changelog
 1.10.5 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix harming upgrade step from release 1.10.3, which removed all behaviors. [mathias.leimgruber]
+
+
+WARNING: Do not upgrade to release 1.10.3, it most likely will break the MemberBlock.
 
 
 1.10.4 (2020-11-20)
