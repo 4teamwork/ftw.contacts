@@ -17,12 +17,12 @@ ALPHABET = map(chr, range(ord('A'), ord('Z') + 1))
 LETTERS = ALPHABET + ['#']
 
 
-def encode(text):
+def encode(text, encoding='UTF-8'):
     if not text:
         return ''
     if isinstance(text, unicode):
-        return text.encode('utf-8')
-    return text
+        return text.encode(encoding)
+    return text.decode('utf-8').encode(encoding)
 
 
 def get_organization(context, portal_types=[]):
@@ -148,9 +148,10 @@ class AlphabeticLetters(object):
         return sorted(letters, key=LETTERS.index)
 
 
-def generate_vcard(contact):
+def generate_vcard(contact, encoding='UTF-8'):
     # TODO: Refactoring
     io = StringIO()
+    charset = 'CHARSET=' + encoding
 
     gender_map = {
         'm': 'M',
@@ -158,36 +159,39 @@ def generate_vcard(contact):
         '': 'U'
     }
 
+    def encoder(text):
+        return encode(text, encoding=encoding)
+
     def addProp(name, value):
         if not value:
             return
-        io.write('{0}:{1}\n'.format(encode(name), encode(value)))
+        io.write('{0}:{1}\n'.format(encoder(name),value))
 
     addProp('BEGIN', 'VCARD')
-    addProp('VERSION', '3.0')
-    addProp('N', '{0};{1};;{2}'.format(encode(contact.lastname),
-                                       encode(contact.firstname),
-                                       encode(contact.salutation)))
-    addProp('FN', encode(contact.title))
-    addProp('GENDER', gender_map.get(encode(contact.gender), ''))
-    addProp('ORG', encode(contact.organization))
-    addProp('ADR;TYPE=WORK', ';;{0};{1};;{2};{3}'.format(
-        encode(contact.address.replace('\n', '\\n').replace('\r', '')),
-        encode(contact.city),
-        encode(contact.postal_code),
-        encode(contact.country)))
-    addProp('EMAIL', encode(contact.email))
-    addProp('TEL;TYPE=WORK', encode(contact.phone_office))
-    addProp('TEL;TYPE=WORK;TYPE=CELL', encode(contact.phone_mobile))
-    addProp('TEL;TYPE=WORK;TYPE=FAX', encode(contact.fax))
-    addProp('URL', encode(contact.www))
-    addProp('ROLE', encode(contact.function))
-    addProp('TEL;TYPE=HOME', encode(contact.phone_private))
+    addProp('VERSION', '2.1')
+    addProp('N;' + charset, '{0};{1};;{2}'.format(encoder(contact.lastname),
+                                                  encoder(contact.firstname),
+                                                  encoder(contact.salutation)))
+    addProp('FN;' + charset, encoder(contact.title))
+    addProp('GENDER', gender_map.get(encoder(contact.gender), ''))
+    addProp('ORG;' + charset, encoder(contact.organization))
+    addProp('ADR;TYPE=WORK;' + charset, ';;{0};{1};;{2};{3}'.format(
+        encoder(contact.address.replace('\n', '\\n').replace('\r', '')),
+        encoder(contact.city),
+        encoder(contact.postal_code),
+        encoder(contact.country)))
+    addProp('EMAIL', encoder(contact.email))
+    addProp('TEL;TYPE=WORK', encoder(contact.phone_office))
+    addProp('TEL;TYPE=WORK;TYPE=CELL', encoder(contact.phone_mobile))
+    addProp('TEL;TYPE=WORK;TYPE=FAX', encoder(contact.fax))
+    addProp('URL;' + charset, encoder(contact.www))
+    addProp('ROLE;' + charset, encoder(contact.function))
+    addProp('TEL;TYPE=HOME', encoder(contact.phone_private))
     addProp('ADR;TYPE=HOME', ';;{0};{1};;{2};'.format(
-        encode(contact.address_private.replace(
+        encoder(contact.address_private.replace(
             '\r\n', '\\n').replace('\r', '')),
-        encode(contact.city_private),
-        encode(contact.postal_code_private)))
+        encoder(contact.city_private),
+        encoder(contact.postal_code_private)))
 
     if contact.image:
         imgdata = StringIO()
@@ -198,6 +202,7 @@ def generate_vcard(contact):
     io.seek(0)
 
     return io
+
 
 def portrait_img_tag(contact):
     scaler = contact.restrictedTraverse('@@images')

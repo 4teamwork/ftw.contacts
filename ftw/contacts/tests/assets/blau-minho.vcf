@@ -1,8 +1,8 @@
 BEGIN:VCARD
-VERSION:3.0
-N:Blau;Minho;;
-FN:Blau Minho
+VERSION:2.1
+N;CHARSET=UTF-8:Blau;Minho;;
+FN;CHARSET=UTF-8:Blau Minho
 GENDER:U
-ADR;TYPE=WORK:;;;;;;Schweiz
+ADR;TYPE=WORK;CHARSET=UTF-8:;;;;;;Schweiz
 ADR;TYPE=HOME:;;;;;;
 END:VCARD

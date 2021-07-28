@@ -4,15 +4,14 @@ from ftw.contacts.browser.vcard import DownloadVCardView
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import generate_vcard
 from unittest import TestCase
-
 import os
 
 
-def asset(filename):
+def asset(filename, encoding='UTF-8'):
     here = os.path.dirname(__file__)
     path = os.path.join(here, 'assets', filename)
     with open(path, 'r') as file_:
-        return file_.read()
+        return file_.read().decode('UTF-8').encode(encoding)
 
 
 class TextVCardExport(TestCase):
@@ -30,6 +29,18 @@ class TextVCardExport(TestCase):
 
         self.assertMultiLineEqual(
             asset('fritz-meier.vcf'), generate_vcard(contact).getvalue())
+
+    def test_detailed_contact_works_windows_1252_encoded(self):
+        contact = create(Builder('contact').with_maximal_info(
+            firstname=u'Fr\xedtz',
+            lastname=u'M\xe9ier'
+        ))
+
+        self.maxDiff = None
+        self.assertMultiLineEqual(
+            asset('fritz-meier_windows1252.vcf', encoding='Windows-1252'),
+            generate_vcard(contact, encoding='Windows-1252').getvalue()
+        )
 
     def test_minimal_contact_works(self):
         contact = create(Builder('contact').with_minimal_info(
