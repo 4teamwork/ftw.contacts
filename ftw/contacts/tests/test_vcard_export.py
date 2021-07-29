@@ -1,8 +1,10 @@
 from ftw.builder import Builder
 from ftw.builder import create
 from ftw.contacts.browser.vcard import DownloadVCardView
+from ftw.contacts.interfaces import IContactsSettings
 from ftw.contacts.testing import FTW_CONTACTS_FUNCTIONAL_TESTING
 from ftw.contacts.utils import generate_vcard
+from plone import api
 from unittest import TestCase
 import os
 
@@ -20,12 +22,17 @@ class TextVCardExport(TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
+        api.portal.set_registry_record(
+            name='vcard_encoding',
+            value=u'UTF-8',
+            interface=IContactsSettings
+        )
 
     def test_detailed_contact_works(self):
         contact = create(Builder('contact').with_maximal_info(
             firstname=u'Fr\xedtz',
             lastname=u'M\xe9ier'
-            ))
+        ))
 
         self.assertMultiLineEqual(
             asset('fritz-meier.vcf'), generate_vcard(contact).getvalue())
@@ -54,7 +61,6 @@ class TextVCardExport(TestCase):
         contact = create(Builder('contact').with_minimal_info(
             firstname='Minho',
             lastname='Blau'))
-
         vcard_view = DownloadVCardView(contact, self.request)
 
         self.assertMultiLineEqual(asset('blau-minho.vcf'), vcard_view())

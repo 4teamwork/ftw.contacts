@@ -70,3 +70,9 @@ class IContactsSettings(Interface):
         description=_(u'Path to the folder containing contacts'),
         default=None,
         required=False)
+
+    vcard_encoding = schema.TextLine(
+        title=_(u'Vcard encoding'),
+        description=_(u'Encoding of Vcard export of a contact'),
+        default=u'Windows-1252',
+        required=False)

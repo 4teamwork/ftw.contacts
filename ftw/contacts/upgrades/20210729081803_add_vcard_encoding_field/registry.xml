@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<registry>
+    <record field="vcard_encoding"
+            interface="ftw.contacts.interfaces.IContactsSettings" />
+</registry>
