@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.10.6 (unreleased)
+1.11.0 (2021-07-29)
 -------------------
 
 - Implelment option to configure the encoding of the vcard. [mathias.leimgruber]
