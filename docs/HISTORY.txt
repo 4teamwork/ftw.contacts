@@ -8,7 +8,6 @@ Changelog
 - Implelment option to configure the encoding of the vcard. [mathias.leimgruber]
 
 - Change the default encoding to Windows-1252 in order to support Outlook by default. [mathias.leimgruber]
-]
 
 
 1.10.5 (2020-11-25)
