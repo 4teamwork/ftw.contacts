@@ -72,7 +72,12 @@ def get_backreferences(source_object, from_interface):
             'to_id': intids.getId(aq_inner(source_object)),
             'from_interfaces_flattened': from_interface}):
 
-        obj = intids.queryObject(rel.from_id)
+        try:
+            obj = intids.queryObject(rel.from_id)
+        except KeyError:
+            # Happends if a deleted content does not get garbage collected
+            # Details see https://community.plone.org/t/image-scale-blobs-no-cleaned-by-zeopack-after-removing-scalesdict/12214
+            continue
 
         if obj is not None and mtool.checkPermission('View', obj):
             result.append(obj)
