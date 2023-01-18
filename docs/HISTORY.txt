@@ -5,7 +5,7 @@ Changelog
 1.11.1 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fix get_membership render issue on contact detail view if deleted memberblock does not get garbage collected. [mathias.leimgruber]
 
 
 1.11.0 (2021-07-29)
